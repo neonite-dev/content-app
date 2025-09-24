@@ -1,0 +1,578 @@
+﻿/*CSS for StarPlayer Skin UI*/
+@charset "utf-8";
+
+.starplayer_script_ui {
+	text-decoration:none;
+	text-align:center;
+	font-family:굴림, Gulim, AppleGothic, sans-serif;
+	font-size:11px; 
+	color:#77767a;
+	display:block;
+	background:url('../img/bg.png') repeat-x 0 0;
+	
+}
+
+.btn_common {
+	display:block;
+	cursor:pointer;
+}
+
+.btn_common2 {
+	display:block;
+	cursor:pointer;
+}
+
+
+.top_area {
+	position:relative;
+	margin:0;
+	padding:0;
+	display:block;
+	width:100%;
+	height:18px;
+}
+
+.bottom_area {
+	position:relative;
+	margin:0;
+	padding:0;
+	display:block;
+	width:100%;
+	height:37px;
+}
+
+
+.seekbar_l {
+	position:absolute;
+	display:block;
+	left:0px;
+	top:6px;
+	right:0px;
+	height:12px;
+	background:url('../img/control_bg_speed.png') repeat-x 0px 0px;
+}
+
+.seekbar_area {
+	position:absolute;
+	display:block;
+	left:-3px;
+	top:0px;
+	right:10px;
+	height:100%;
+}
+
+
+.volumebar_area {
+	position:absolute;
+	display:block;
+	left:-7px;
+	top:0px;
+	right:3px;
+	height:100%;
+}
+
+.seekbar_r {
+	position:absolute;
+	display:block;
+	left:216px;
+	width:175px;
+	height:33px;
+}
+
+.control_l {
+	position:relative;
+	float:left;
+	left:11px;
+	top:3px;
+	width:185px;
+	height:33px;
+}
+
+.control_r {
+	position:relative;
+	float:right;
+	height:36px;
+	width:169px;
+	
+}
+
+.btn_seek  {
+	position:absolute;
+	width:13px;
+	height:14px;
+	z-index:100;
+	display:none;
+	background:url('../img/milkt.png') no-repeat -0px -120px;
+}
+
+.btn_seek:hover{
+background:url('../img/milkt.png') no-repeat -20px -120px;
+}
+
+.btn_volume  {
+	position:absolute;
+	width:11px;
+	height:12px;
+	z-index:100;
+	display:none;
+	background:url('../img/milkt.png') no-repeat -70px -40px;
+}
+
+.btn_volume:hover{
+background:url('../img/milkt.png') no-repeat -40px -120px;
+}
+
+
+.currentbar {
+	position:absolute;
+	display:block;
+	left:0px;
+	top:0px;
+	height:12px;
+	background:url('../img/control_bg_speed_over.png') repeat-x 0px 0px;
+}
+
+.current_volumebar {
+	position:absolute;
+	display:block;
+	left:0px;
+	top:0px;
+	height:10px;
+	background:url('../img/control_bg_sound_over.png') repeat-x 0px 0px;
+}
+
+
+.speed_controls {
+	margin:0px 0px 0 0;
+}
+
+.speed_controls li {
+	display:inline;
+	list-style-type:none;
+	float:left;
+	margin:0;
+	padding:0;
+}
+
+
+.btn_play {
+	position:absolute;
+	left:60px;
+	top:0px;
+	width:25px;
+	height:25px;
+	background:url('../img/milkt.png') no-repeat -0px -60px;
+}
+
+.btn_play:hover{
+	background:url('../img/milkt.png') no-repeat -30px -60px;
+}
+
+.btn_pause {
+	position:absolute;
+	left:60px;
+	top:0px;
+	width:25px;
+	height:25px;
+	background:url('../img/milkt.png') no-repeat -40px -0px;
+}
+
+.btn_pause:hover{
+	background:url('../img/milkt.png') no-repeat -40px -30px;
+}
+
+.btn_backward {
+	position:absolute;
+	left:10px;
+	top:0px;
+	width:25px;
+	height:25px;
+	background:url('../img/milkt.png') no-repeat -60px -60px;
+}
+
+.btn_backward:hover{
+	background:url('../img/milkt.png') no-repeat -90px -0px;
+}
+
+.btn_forward{
+	position:absolute;
+	left:110px;
+	top:0px;
+	width:25px;
+	height:25px;
+	background:url('../img/milkt.png') no-repeat -10px 0px;
+}
+
+.btn_forward:hover{
+	background:url('../img/milkt.png') no-repeat -10px -30px;
+}
+
+.btn_repeatA{
+	position:absolute;
+	left:0px;
+	top:-5px;
+	width:13px;
+	height:13px;
+	z-index:90;
+	background:url('../img/milkt.png') no-repeat -70px -0px;
+}
+
+.btn_repeatB {
+	position:absolute;
+	left:0px;
+	top:-5px;
+	width:13px;
+	height:13px;
+	z-index:90;
+	background:url('../img/milkt.png') no-repeat -70px -20px;
+}
+.btn_repeat {
+	position:absolute;
+	left:153px;
+	width:25px;
+	height:25px;
+	background:url('../img/milkt.png') no-repeat -90px -30px;
+}
+
+.btn_repeat:hover, .btn_repeat.active{
+	background:url('../img/milkt.png') no-repeat -90px -60px;
+}
+.btn_fullscreen {
+	position:absolute;
+	right:10px;
+	top:3px;
+	width:25px;
+	height:25px;
+	background:url('../img/milkt.png') no-repeat -90px -120px;
+}
+
+.btn_fullscreen:hover{
+	background:url('../img/milkt.png') no-repeat -120px -120px;
+}
+
+.btn_fullscreen.active{
+	background:url('../img/milkt.png') no-repeat -0px -140px;
+}
+
+.btn_fullscreen.active:hover{
+	background:url('../img/milkt.png') no-repeat -60px -120px;
+}
+
+
+.btn_mute {
+	position:absolute;
+	top:3px;
+	width:25px;
+	height:25px;
+	background:url('../img/milkt.png') no-repeat -0px -90px;
+}
+
+.btn_mute:hover{
+	background:url('../img/milkt.png') no-repeat -90px -90px;
+}
+
+.btn_mute.active {
+	background:url('../img/milkt.png') no-repeat -30px -90px;
+}
+
+.btn_mute.active:hover {
+	background:url('../img/milkt.png') no-repeat -60px -90px;
+}
+
+
+
+.volumebar {
+	position:absolute;
+	left:33px;
+	top:11px;
+	width:110px;
+	height:10px;
+	background:url('../img/control_bg_sound.png') repeat-x left top;
+}
+
+#text_currentTime{
+	color:#53cbc1;
+}
+.control_text_status {
+	position:absolute;
+	display:block;
+	top:10px;
+	left:165px;
+	width:50px;
+	height:17px;
+}
+
+.control_text_time {
+	position:absolute;
+	display:block;
+	text-align:left;
+	top:10px;
+	left:220px;
+	width:110px;
+	height:17px;
+}
+
+.show_rate{
+position:relative;
+top:3px;
+
+}
+.rate_popup{
+	width:57px;
+	height: 160px;
+	top:-190px;
+	left:-20px;
+	position: absolute;	
+}
+.btn_rate_minus{
+	position:absolute;
+	left:5px;
+	width:25px;
+	height:25px;
+	background:url('../img/milkt.png') no-repeat -120px -0px;
+}
+.btn_rate_minus:hover{
+	background:url('../img/milkt.png') no-repeat -120px -30px;
+}
+
+.btn_rate_plus{
+	position:absolute;
+	width:25px;
+	height:25px;
+	left:55px;
+	background:url('../img/milkt.png') no-repeat -120px -60px;
+}
+.btn_rate_plus:hover{
+	background:url('../img/milkt.png') no-repeat -120px -90px;
+}
+.btn_rate{
+	position:absolute;
+	top:8px;
+	left: 35px;
+	width:13px;
+	height:9px;
+	background:url('../img/milkt.png') no-repeat -240px -150px;
+}
+
+.btn_speed06{
+	float:left;
+	width:57px;
+	height:21px;
+	background:transparent url('../img/milkt.png') no-repeat -150px -120px;
+}
+
+.btn_speed06:hover, .btn_speed06.active {
+	background:url('../img/milkt.png') no-repeat -0px -170px;
+}
+
+.btn_speed08{
+	width:57px;
+	height:20px;
+	background:transparent url('../img/milkt.png') no-repeat -60px -150px;
+}
+
+.btn_speed08:hover, .btn_speed08.active {
+	background:url('../img/milkt.png') no-repeat -120px -150px;
+}
+
+.btn_speed10{
+	width:57px;
+	height:20px;
+	background:transparent url('../img/milkt.png') no-repeat -0px -200px;
+}
+
+.btn_speed10:hover, .btn_speed10.active {
+	background:url('../img/milkt.png') no-repeat -60px -180px;
+}
+
+.btn_speed12{
+	width:57px;
+	height:20px;
+	background:transparent url('../img/milkt.png') no-repeat -120px -180px;
+}
+
+.btn_speed12:hover, .btn_speed12.active {
+	background:url('../img/milkt.png') no-repeat -210px -0px;
+}
+
+.btn_speed14{
+	width:57px;
+	height:20px;
+	background:transparent url('../img/milkt.png') no-repeat -210px -30px;
+}
+
+.btn_speed14:hover, .btn_speed14.active {
+	background:url('../img/milkt.png') no-repeat -210px -60px;
+}
+
+.btn_speed16{
+	width:57px;
+	height:20px;
+	background:transparent url('../img/milkt.png') no-repeat -210px -90px;
+}
+
+.btn_speed16:hover, .btn_speed16.active {
+	background:url('../img/milkt.png') no-repeat -210px -120px;
+}
+
+.btn_speed18{
+	width:57px;
+	height:20px;
+	background:transparent url('../img/milkt.png') no-repeat -180px -150px;
+}
+
+.btn_speed18:hover, .btn_speed18.active {
+	background:url('../img/milkt.png') no-repeat -180px -180px;
+}
+
+.btn_speed20{
+	width:57px;
+	height:21px;
+	background:transparent url('../img/milkt.png') no-repeat -0px -230px;
+}
+
+.btn_speed20:hover, .btn_speed20.active {
+	background:url('../img/milkt.png') no-repeat -60px -210px;
+}
+
+.btn_resolution{
+	position:absolute;
+	right:51px;
+	top:3px;
+	width:25px;
+	height:25px;
+	
+}
+
+.btn_resolution.hd{
+
+	background:url('../img/milkt.png') no-repeat -240px -200px;
+}
+
+.btn_resolution.sd{
+
+	background:url('../img/milkt.png') no-repeat -120px -210px;
+}
+
+/* 2023-09-13 super 추가 */
+.btn_resolution.super{
+
+	background:url('../img/txt_super.png') no-repeat center;
+}
+
+.resolution_controls {
+	position:absolute;
+	right:18px;
+	top:11px;
+	margin:0px 0px 0 0;
+}
+
+.resolution_controls li {
+	display:inline;
+	list-style-type:none;
+	float:left;
+	margin:0;
+	padding:0;
+}
+.resolution_popup{
+	width:57px;
+	
+	top:-73px;
+	
+	position: relative;
+	
+	
+}
+
+.btn_hd{
+	float:left;
+	width:57px;
+	height:20px;
+	border-top:1px solid #000; /* 2023-09-13 추가 */ 
+	background:url('../img/milkt.png') no-repeat -150px -0px;
+	
+}
+.btn_hd:hover, .btn_hd.active {
+	background:url('../img/milkt.png') no-repeat -150px -30px;
+}
+
+.btn_sd{
+	float:left;
+	width:57px;
+	height:21px;
+	background:url('../img/milkt.png') no-repeat -150px -60px;
+	
+}
+.btn_sd:hover, .btn_sd.active {
+	background:url('../img/milkt.png') no-repeat -150px -90px;
+}
+
+/* 2023-09-13 super 추가 */
+.btn_super{
+	float:left;
+	width:57px;
+	height:21px;
+	background:url('../img/btn_super.png') no-repeat center top 0px;
+
+}
+.btn_super:hover, .btn_super.active {
+	background:url('../img/btn_super.png') no-repeat center bottom 0px;
+}
+/* 2023-09-13 추가 */
+.resolution_controls li + li {
+	margin-top:-1px;
+}
+
+.fullscreen_controller{
+        opacity : 0.7;
+        filter: alpha(opacity=70);
+        -moz-opacity:0.7;
+        -khtml-opacity: 0.7;
+}
+
+#video-container {
+	position:relative;
+	margin:0;
+	padding:0;
+	display:block;
+	width:100%;
+	height:100%;
+}
+
+#watermark {
+	position:absolute;
+	left:0px;
+	top:0px;
+	float:left;
+	margin:0;
+	padding:0;
+	height:40px;
+/*	text-align: left;*/
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 150%;
+	color: #ffffff;
+	opacity : 0.4;
+	filter: alpha(opacity=40);
+        -moz-opacity:0.4;
+        -khtml-opacity: 0.4;
+}
+
+#subtitle {
+	position:absolute;
+	font:normal 1.2em KaTeX_Main, Times New Roman, serif;
+	display: none;
+	left:0px;
+	float:left;
+	margin:0;
+	padding:0;
+	height:60px;
+	text-align: center;
+	font-weight: bold;
+	font-size: 0%;
+	color: #ffffff;
+	opacity : 0.9;
+	filter: alpha(opacity=90);
+        -moz-opacity:0.9;
+        -khtml-opacity: 0.9;
+}

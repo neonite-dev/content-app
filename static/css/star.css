@@ -1,0 +1,3685 @@
+﻿@charset "utf-8";
+
+/* 별점 공통 레이어 typeA */
+.lpop_studyinfo_star {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 31;
+	background: rgba(0, 0, 0, 0.65);
+}
+.lpop_studyinfo_star .txt_area {
+	position: absolute;
+	width: 624px;
+	height: 365px;
+	top: 50%;
+	left: 50%;
+	margin-top: -182.5px;
+	margin-left: -312px;
+	background: #fff;
+	border: 0;
+	border-radius: 20px;
+}
+.lpop_studyinfo_star .txt_area:after {
+	content: '';
+	background: url(//cdndata.milkt.co.kr/ele/app/images/mystudy/v2/star_char.png) no-repeat 0 0;
+	background-size: 173px;
+	width: 173px;
+	height: 204px;
+	position: absolute;
+	bottom: -28px;
+	right: -84px;
+}
+.lpop_studyinfo_star .txt_area > div {
+	padding: 0;
+	margin: 0;
+}
+.lpop_studyinfo_star .txt_area .lpop_close {
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	width: 32px;
+	height: 32px;
+	background: url(//cdndata.milkt.co.kr/ele/app/images/mystudy/v2/star_close.png) no-repeat 50% 50%;
+	background-size: 20px;
+	text-indent: -9999px;
+	border: 0;
+	box-shadow: none;
+	border-radius: 0;
+}
+.lpop_studyinfo_star .txt_area .cont {
+	height: 100%; /*auto !important;*/
+	margin-top: 55px;
+}
+.lpop_studyinfo_star .txt_area .star-input > .input,
+.lpop_studyinfo_star .txt_area .star-input > .input > label:hover,
+.lpop_studyinfo_star .txt_area .star-input > .input > input:focus + label,
+.lpop_studyinfo_star .txt_area .star-input > .input > input:checked + label {
+	display: inline-block;
+	vertical-align: middle;
+	background: url('//cdndata.milkt.co.kr/ele/app/images/mystudy/v2/grade_star.png') no-repeat;
+}
+.lpop_studyinfo_star .txt_area .star-input {
+	display: inline-block;
+	white-space: nowrap;
+}
+.lpop_studyinfo_star .txt_area .star-input > .input {
+	display: inline-block;
+	width: 280.5px;
+	background-size: 280.5px;
+	height: 46px;
+	white-space: nowrap;
+	overflow: hidden;
+	position: relative;
+	border: 0;
+}
+.lpop_studyinfo_star .txt_area .star-input > .input > input {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	opacity: 0;
+}
+.lpop_studyinfo_star .txt_area .star-input > .input > label {
+	width: 30px;
+	height: 0;
+	padding: 25px 0 21px 0;
+	overflow: hidden;
+	float: left;
+	cursor: pointer;
+	position: absolute;
+	top: 0;
+	left: 0;
+	font-size: 0;
+}
+.lpop_studyinfo_star .txt_area .star-input > .input > label:hover,
+.lpop_studyinfo_star .txt_area .star-input > .input > input:focus + label,
+.lpop_studyinfo_star .txt_area .star-input > .input > input:checked + label {
+	background-size: 280.5px;
+	background-position: 0 bottom;
+}
+.lpop_studyinfo_star .txt_area .star-input > .input > label:hover ~ label {
+	background-image: none;
+}
+.lpop_studyinfo_star .txt_area .star-input > .input > .p1 {
+	width: 58px;
+	z-index: 5;
+}
+.lpop_studyinfo_star .txt_area .star-input > .input > .p2 {
+	width: 116px;
+	z-index: 4;
+}
+.lpop_studyinfo_star .txt_area .star-input > .input > .p3 {
+	width: 174px;
+	z-index: 3;
+}
+.lpop_studyinfo_star .txt_area .star-input > .input > .p4 {
+	width: 232px;
+	z-index: 2;
+}
+.lpop_studyinfo_star .txt_area .star-input > .input > .p5 {
+	width: 280.5px;
+	z-index: 1;
+}
+.lpop_studyinfo_star .txt_area .star-input > output {
+	display: inline-block;
+	width: 60px;
+	font-size: 18px;
+	text-align: right;
+	vertical-align: middle;
+}
+.lpop_studyinfo_star .txt_area .btn_star {
+	background: #fe7a0d;
+	color: rgb(19, 2, 2);
+	width: 175px;
+	height: 50px;
+	line-height: 53px;
+	display: block;
+	border-radius: 40px;
+	margin: 0 auto;
+	text-align: center;
+}
+.lpop_studyinfo_star .txt_area .btn_star span {
+	font-size: 1.3125rem;
+	font-weight: bold;
+}
+.lpop_studyinfo_star .txt_area .starboxwrap {
+	background: #f6f6f6;
+	font-weight: bold;
+	width: 525px;
+	margin: 25px auto 30px;
+	padding: 25px 0;
+}
+.lpop_studyinfo_star .startxt {
+	overflow: hidden;
+	font-size: 1.25rem;
+	text-align: center;
+	color: #222;
+	width: 82% /*80%*/;
+	margin: 0 auto;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	font-weight: bold;
+}
+.lpop_studyinfo_star .startit {
+	display: inline-block;
+	font-size: 1.125rem;
+	text-align: center;
+	color: #fe7a0d;
+	border-bottom: 1px solid #fe7a0d;
+	margin-left: 50px;
+	margin-right: 70px;
+	margin-top: 8px;
+}
+.lpop_studyinfo_star .startit01 {
+	display: inline-block;
+	font-size: 1.125rem;
+	text-align: center;
+	color: #fe7a0d;
+	border-bottom: 1px solid #fe7a0d;
+	margin-left: 50px;
+	margin-right: 28px;
+	margin-top: 8px;
+}
+.lpop_studyinfo_star .starinfo {
+	font-size: 1rem;
+	text-align: center;
+	color: #666;
+}
+.lpop_studyinfo_star .starinfo p {
+	font-size: 1.6rem;
+	text-align: center;
+	color: #fe7a0d;
+	font-family:
+		BM JUA,
+		'나눔고딕';
+	font-weight: normal;
+	padding-top: 3px;
+}
+.lpop_studyinfo_star01 {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 31;
+	background: rgba(0, 0, 0, 0.65);
+}
+.lpop_studyinfo_star01 .txt_area {
+	position: absolute;
+	width: 380px;
+	height: 231px;
+	top: 50%;
+	left: 50%;
+	margin-top: -115.5px;
+	margin-left: -190px;
+	background: #fff;
+	border: 0;
+	border-radius: 20px;
+}
+.lpop_studyinfo_star01 .txt_area .btn_star {
+	background: #fe7a0d;
+	color: #fff;
+	width: 160px;
+	height: 50px;
+	line-height: 53px;
+	display: block;
+	border-radius: 40px;
+	margin: 25px auto 0;
+	text-align: center;
+}
+.lpop_studyinfo_star01 .txt_area .btn_star span {
+	font-size: 1.3rem;
+	font-weight: bold;
+}
+.lpop_studyinfo_star01 .txt_area .lpop_close {
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	width: 30px;
+	height: 30px;
+	background: url(//cdndata.milkt.co.kr/ele/app/images/mystudy/v2/star_close.png) no-repeat 50% 50%;
+	background-size: 20px;
+	text-indent: -9999px;
+	border: 0;
+	box-shadow: none;
+	border-radius: 0;
+}
+.lpop_studyinfo_star01 .startxt {
+	overflow: hidden;
+	font-size: 1.4rem;
+	text-align: center;
+	color: #222;
+	width: 80%;
+	margin: 0 auto;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	padding-top: 55px;
+	font-weight: bold;
+}
+
+/* 별점 공통 레이어 typeA new */
+.lpop_studyinfo_star .txt_area .star-input_new > .input,
+.lpop_studyinfo_star .txt_area .star-input_new > .input > label:hover,
+.lpop_studyinfo_star .txt_area .star-input_new > .input > input:focus + label,
+.lpop_studyinfo_star .txt_area .star-input_new > .input > input:checked + label {
+	display: inline-block;
+	vertical-align: middle;
+	background: url('//cdndata.milkt.co.kr/ele/app/images/mystudy/v2/grade_star.png') no-repeat;
+}
+.lpop_studyinfo_star .txt_area .star-input_new {
+	display: inline-block;
+	white-space: nowrap;
+}
+.lpop_studyinfo_star .txt_area .star-input_new > .input {
+	display: inline-block;
+	width: 280.5px;
+	background-size: 280.5px;
+	height: 46px;
+	white-space: nowrap;
+	overflow: hidden;
+	position: relative;
+	border: 0;
+}
+.lpop_studyinfo_star .txt_area .star-input_new > .input > input {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	opacity: 0;
+}
+.lpop_studyinfo_star .txt_area .star-input_new > .input > label {
+	width: 30px;
+	height: 0;
+	padding: 25px 0 21px 0;
+	overflow: hidden;
+	float: left;
+	cursor: pointer;
+	position: absolute;
+	top: 0;
+	left: 0;
+	font-size: 0;
+}
+.lpop_studyinfo_star .txt_area .star-input_new > .input > label:hover,
+.lpop_studyinfo_star .txt_area .star-input_new > .input > input:focus + label,
+.lpop_studyinfo_star .txt_area .star-input_new > .input > input:checked + label {
+	background-size: 280.5px;
+	background-position: 0 bottom;
+}
+.lpop_studyinfo_star .txt_area .star-input_new > .input > label:hover ~ label {
+	background-image: none;
+}
+.lpop_studyinfo_star .txt_area .star-input_new > .input > .p1 {
+	width: 58px;
+	z-index: 5;
+}
+.lpop_studyinfo_star .txt_area .star-input_new > .input > .p2 {
+	width: 116px;
+	z-index: 4;
+}
+.lpop_studyinfo_star .txt_area .star-input_new > .input > .p3 {
+	width: 174px;
+	z-index: 3;
+}
+.lpop_studyinfo_star .txt_area .star-input_new > .input > .p4 {
+	width: 232px;
+	z-index: 2;
+}
+.lpop_studyinfo_star .txt_area .star-input_new > .input > .p5 {
+	width: 280.5px;
+	z-index: 1;
+}
+.lpop_studyinfo_star .txt_area .star-input_new > output {
+	display: inline-block;
+	width: 60px;
+	font-size: 18px;
+	text-align: right;
+	vertical-align: middle;
+}
+
+/* 별점 공통 레이어 typeB */
+.lpop_studyinfo_star .txt_area .star-input1 > .input,
+.lpop_studyinfo_star .txt_area .star-input1 > .input > input:checked + label {
+	display: inline-block;
+	vertical-align: middle;
+	background: url('//cdndata.milkt.co.kr/ele/app/images/mystudy/v2/grade_star.png') no-repeat;
+}
+.lpop_studyinfo_star .txt_area .star-input1 {
+	display: inline-block;
+	white-space: nowrap;
+}
+.lpop_studyinfo_star .txt_area .star-input1 > .input {
+	display: inline-block;
+	width: 280.5px;
+	background-size: 280.5px;
+	height: 46px;
+	white-space: nowrap;
+	overflow: hidden;
+	position: relative;
+	border: 0;
+}
+.lpop_studyinfo_star .txt_area .star-input1 > .input > input {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	opacity: 0;
+}
+.lpop_studyinfo_star .txt_area .star-input1 > .input > label {
+	width: 30px;
+	height: 0;
+	padding: 25px 0 21px 0;
+	overflow: hidden;
+	float: left;
+	cursor: pointer;
+	position: absolute;
+	top: 0;
+	left: 0;
+	font-size: 0;
+}
+.lpop_studyinfo_star .txt_area .star-input1 > .input > input:checked + label {
+	background-size: 280.5px;
+	background-position: 0 bottom;
+}
+.lpop_studyinfo_star .txt_area .star-input1 > .input > .p1 {
+	width: 58px;
+	z-index: 5;
+}
+.lpop_studyinfo_star .txt_area .star-input1 > .input > .p2 {
+	width: 116px;
+	z-index: 4;
+}
+.lpop_studyinfo_star .txt_area .star-input1 > .input > .p3 {
+	width: 174px;
+	z-index: 3;
+}
+.lpop_studyinfo_star .txt_area .star-input1 > .input > .p4 {
+	width: 232px;
+	z-index: 2;
+}
+.lpop_studyinfo_star .txt_area .star-input1 > .input > .p5 {
+	width: 280.5px;
+	z-index: 1;
+}
+
+/* 별점 공통 레이어 typeB new */
+.lpop_studyinfo_star .txt_area .star-input1_new > .input,
+.lpop_studyinfo_star .txt_area .star-input1_new > .input > input:checked + label {
+	display: inline-block;
+	vertical-align: middle;
+	background: url('//cdndata.milkt.co.kr/ele/app/images/mystudy/v2/grade_star.png') no-repeat;
+}
+.lpop_studyinfo_star .txt_area .star-input1_new {
+	display: inline-block;
+	white-space: nowrap;
+}
+.lpop_studyinfo_star .txt_area .star-input1_new > .input {
+	display: inline-block;
+	width: 280.5px;
+	background-size: 280.5px;
+	height: 46px;
+	white-space: nowrap;
+	overflow: hidden;
+	position: relative;
+	border: 0;
+}
+.lpop_studyinfo_star .txt_area .star-input1_new > .input > input {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	opacity: 0;
+}
+.lpop_studyinfo_star .txt_area .star-input1_new > .input > label {
+	width: 30px;
+	height: 0;
+	padding: 25px 0 21px 0;
+	overflow: hidden;
+	float: left;
+	cursor: pointer;
+	position: absolute;
+	top: 0;
+	left: 0;
+	font-size: 0;
+}
+.lpop_studyinfo_star .txt_area .star-input1_new > .input > input:checked + label {
+	background-size: 280.5px;
+	background-position: 0 bottom;
+}
+.lpop_studyinfo_star .txt_area .star-input1_new > .input > .p1 {
+	width: 58px;
+	z-index: 5;
+}
+.lpop_studyinfo_star .txt_area .star-input1_new > .input > .p2 {
+	width: 116px;
+	z-index: 4;
+}
+.lpop_studyinfo_star .txt_area .star-input1_new > .input > .p3 {
+	width: 174px;
+	z-index: 3;
+}
+.lpop_studyinfo_star .txt_area .star-input1_new > .input > .p4 {
+	width: 232px;
+	z-index: 2;
+}
+.lpop_studyinfo_star .txt_area .star-input1_new > .input > .p5 {
+	width: 280.5px;
+	z-index: 1;
+}
+
+/* 리스트 버튼 타입 A,B / 썸네일 F */
+.FiveStarWrap a.btnToggleStarA {
+	width: 158.5px !important;
+	display: inline-block;
+	vertical-align: middle;
+	height: 40px !important;
+	background: #fff !important ;
+	background-size: 30px 29px;
+	font-size: 18px;
+	text-indent: 0;
+	border: 1px solid #ff7200 !important;
+	color: #ff7200 !important;
+	line-height: 40px !important;
+	padding-left: 43px !important;
+	border-radius: 20px !important;
+	box-sizing: border-box !important;
+	font-weight: bold;
+	text-align: left !important;
+}
+.FiveStarWrap a.btnToggleStarA span {
+	display: inline-block !important;
+	width: 25.5px !important;
+	height: 36px !important;
+	background: url(//cdndata.milkt.co.kr/ele/app/images/mystudy/v2/big_star.png) no-repeat 50% 50% !important;
+	background-size: 25.5px 24.5px !important;
+	color: #fff !important;
+	margin-left: 5px !important;
+	font-size: 13px !important;
+	vertical-align: 2% !important;
+	text-align: center;
+	line-height: 41px !important;
+	letter-spacing: 0 !important;
+}
+.FiveStarWrap a.btnGradeStarA.on {
+	display: inline-block;
+	width: 158.5px !important;
+	height: 40px !important;
+	color: #ff7200 !important;
+	font-size: 18px;
+	border: 1px solid #ff7200 !important;
+	font-weight: bold;
+	background: #fff url(//cdndata.milkt.co.kr/ele/app/images/mystudy/v2/star_on.png) no-repeat 33px
+		50% !important;
+	background-size: 18.5px 17.5px !important;
+	padding-left: 59px !important;
+	text-align: left !important;
+	border-radius: 20px !important;
+	box-sizing: border-box !important;
+	line-height: 40px !important;
+}
+.FiveStarWrap a.btnGradeStarA {
+	display: inline-block;
+	width: 158.5px !important;
+	height: 40px !important;
+	color: #b3b3b3 !important;
+	font-size: 18px;
+	border: 1px solid #c5c5c5 !important;
+	font-weight: bold;
+	background: #fff url(//cdndata.milkt.co.kr/ele/app/images/mystudy/v2/star_off.png) no-repeat 33px
+		50% !important;
+	background-size: 18.5px 17.5px !important;
+	padding-left: 59px !important;
+	text-align: left !important;
+	border-radius: 20px !important;
+	box-sizing: border-box !important;
+	line-height: 40px !important;
+}
+
+/* 리스트 버튼 타입 C,H,I / 썸네일 J */
+.FiveStarWrap a.btnToggleStarC {
+	width: 130px !important;
+	display: inline-block;
+	vertical-align: middle;
+	height: 45px !important;
+	background: #fff !important ;
+	background-size: 30px 29px;
+	font-size: 18px;
+	text-indent: 0;
+	border: 1px solid #ff7200 !important;
+	color: #ff7200 !important;
+	line-height: 45px !important;
+	padding-left: 25px !important;
+	border-radius: 30px !important;
+	box-sizing: border-box !important;
+	font-weight: 400;
+	text-align: left !important;
+} /* font-weight: bold -> 400 - #81601 최고수준, 최강 TOT 개편 2022-04-07 */
+.FiveStarWrap a.btnToggleStarC span {
+	display: inline-block !important;
+	width: 25.5px !important;
+	height: 42px !important;
+	background: url(//cdndata.milkt.co.kr/ele/app/images/mystudy/v2/big_star.png) no-repeat 50% 50% !important;
+	background-size: 25.5px 24.5px !important;
+	color: #fff !important;
+	margin-left: 5px !important;
+	font-size: 13px !important;
+	vertical-align: 2% !important;
+	text-align: center;
+	line-height: 47px !important;
+	letter-spacing: 0 !important;
+}
+.FiveStarWrap a.btnGradeStarC.on {
+	display: inline-block;
+	width: 130px !important;
+	height: 45px !important;
+	color: #ff7200 !important;
+	font-size: 18px;
+	border: 1px solid #ff7200 !important;
+	font-weight: bold;
+	background: #fff url(//cdndata.milkt.co.kr/ele/app/images/mystudy/v2/star_on.png) no-repeat 21px
+		50% !important;
+	background-size: 18.5px 17.5px !important;
+	padding-left: 44px !important;
+	text-align: left !important;
+	border-radius: 30px !important;
+	box-sizing: border-box !important;
+	line-height: 45px !important;
+}
+.FiveStarWrap a.btnGradeStarC {
+	display: inline-block;
+	width: 130px !important;
+	height: 45px !important;
+	color: #b3b3b3 !important;
+	font-size: 18px;
+	border: 1px solid #c5c5c5 !important;
+	font-weight: bold;
+	background: #fff url(//cdndata.milkt.co.kr/ele/app/images/mystudy/v2/star_off.png) no-repeat 21px
+		50% !important;
+	background-size: 18.5px 17.5px !important;
+	padding-left: 44px !important;
+	text-align: left !important;
+	border-radius: 30px !important;
+	box-sizing: border-box !important;
+	line-height: 45px !important;
+}
+
+/* 리스트 버튼 타입  D,E */
+.FiveStarWrap a.btnToggleStarD {
+	width: 140px !important;
+	display: inline-block;
+	vertical-align: middle;
+	height: 45px !important;
+	background: #fff !important ;
+	background-size: 30px 29px;
+	font-size: 18px;
+	text-indent: 0;
+	border: 1px solid #ff7200 !important;
+	color: #ff7200 !important;
+	line-height: 45px !important;
+	padding-left: 30px !important;
+	border-radius: 30px !important;
+	box-sizing: border-box !important;
+	font-weight: bold;
+	text-align: left !important;
+}
+.FiveStarWrap a.btnToggleStarD span {
+	display: inline-block !important;
+	width: 25.5px !important;
+	height: 42px !important;
+	background: url(//cdndata.milkt.co.kr/ele/app/images/mystudy/v2/big_star.png) no-repeat 50% 50% !important;
+	background-size: 25.5px 24.5px !important;
+	color: #fff !important;
+	margin-left: 5px !important;
+	font-size: 13px !important;
+	vertical-align: 2% !important;
+	text-align: center;
+	line-height: 47px !important;
+	letter-spacing: 0 !important;
+}
+.FiveStarWrap a.btnGradeStarD.on {
+	display: inline-block;
+	width: 140px !important;
+	height: 45px !important;
+	color: #ff7200 !important;
+	font-size: 18px;
+	border: 1px solid #ff7200 !important;
+	font-weight: bold;
+	background: #fff url(//cdndata.milkt.co.kr/ele/app/images/mystudy/v2/star_on.png) no-repeat 24px
+		50% !important;
+	background-size: 18.5px 17.5px !important;
+	padding-left: 48px !important;
+	text-align: left !important;
+	border-radius: 30px !important;
+	box-sizing: border-box !important;
+	line-height: 45px !important;
+}
+.FiveStarWrap a.btnGradeStarD {
+	display: inline-block;
+	width: 140px !important;
+	height: 45px !important;
+	color: #b3b3b3 !important;
+	font-size: 18px;
+	border: 1px solid #c5c5c5 !important;
+	font-weight: bold;
+	background: #fff url(//cdndata.milkt.co.kr/ele/app/images/mystudy/v2/star_off.png) no-repeat 24px
+		50% !important;
+	background-size: 18.5px 17.5px !important;
+	padding-left: 48px !important;
+	text-align: left !important;
+	border-radius: 30px !important;
+	box-sizing: border-box !important;
+	line-height: 45px !important;
+}
+
+/* 리스트 버튼 타입  G */
+.FiveStarWrap a.btnToggleStarG {
+	width: 120px !important;
+	display: inline-block;
+	vertical-align: middle;
+	height: 45px !important;
+	background: #fff !important ;
+	background-size: 30px 29px;
+	font-size: 18px;
+	text-indent: 0;
+	border: 1px solid #ff7200 !important;
+	color: #ff7200 !important;
+	line-height: 45px !important;
+	padding-left: 20px !important;
+	border-radius: 30px !important;
+	box-sizing: border-box !important;
+	font-weight: bold;
+	text-align: left !important;
+}
+.FiveStarWrap a.btnToggleStarG span {
+	display: inline-block !important;
+	width: 25.5px !important;
+	height: 42px !important;
+	background: url(//cdndata.milkt.co.kr/ele/app/images/mystudy/v2/big_star.png) no-repeat 50% 50% !important;
+	background-size: 25.5px 24.5px !important;
+	color: #fff !important;
+	margin-left: 5px !important;
+	font-size: 13px !important;
+	vertical-align: 2% !important;
+	text-align: center;
+	line-height: 47px !important;
+	letter-spacing: 0 !important;
+}
+.FiveStarWrap a.btnGradeStarG.on {
+	display: inline-block;
+	width: 120px !important;
+	height: 45px !important;
+	color: #ff7200 !important;
+	font-size: 18px;
+	border: 1px solid #ff7200 !important;
+	font-weight: bold;
+	background: #fff url(//cdndata.milkt.co.kr/ele/app/images/mystudy/v2/star_on.png) no-repeat 15px
+		50% !important;
+	background-size: 18.5px 17.5px !important;
+	padding-left: 38px !important;
+	text-align: left !important;
+	border-radius: 30px !important;
+	box-sizing: border-box !important;
+	line-height: 45px !important;
+}
+.FiveStarWrap a.btnGradeStarG {
+	display: inline-block;
+	width: 120px !important;
+	height: 45px !important;
+	color: #b3b3b3 !important;
+	font-size: 18px;
+	border: 1px solid #c5c5c5 !important;
+	font-weight: bold;
+	background: #fff url(//cdndata.milkt.co.kr/ele/app/images/mystudy/v2/star_off.png) no-repeat 15px
+		50% !important;
+	background-size: 18.5px 17.5px !important;
+	padding-left: 38px !important;
+	text-align: left !important;
+	border-radius: 30px !important;
+	box-sizing: border-box !important;
+	line-height: 45px !important;
+}
+
+/* 썸네일 A,B,C,D(키즈)  */
+.FiveStarWrap a.btnToggleThumbA {
+	width: 130px !important;
+	display: inline-block;
+	vertical-align: middle;
+	height: 40px !important;
+	background: #f6e7d4 !important ;
+	background-size: 30px 29px;
+	font-size: 20px !important;
+	text-indent: 0;
+	border: 1px solid #ff7200 !important;
+	color: #ff7200 !important;
+	line-height: 38px !important;
+	padding-left: 25px !important;
+	border-radius: 30px !important;
+	box-sizing: border-box !important;
+	text-align: left !important;
+	font-family:
+		BM JUA,
+		'나눔고딕';
+}
+.FiveStarWrap a.btnToggleThumbA span {
+	display: inline-block !important;
+	width: 25.5px !important;
+	height: 38px !important;
+	background: url(//cdndata.milkt.co.kr/ele/app/images/mystudy/v2/big_star.png) no-repeat 0 40% !important;
+	background-size: 25.5px 24.5px !important;
+	color: #fff !important;
+	margin-left: 5px !important;
+	font-size: 13px !important;
+	vertical-align: 2% !important;
+	text-align: center;
+	letter-spacing: 0 !important;
+}
+.FiveStarWrap a.btnGradeThumbA.on {
+	display: inline-block;
+	width: 130px !important;
+	height: 40px !important;
+	color: #ff7200 !important;
+	font-size: 20px;
+	border: 1px solid #ff7200 !important;
+	background: url(//cdndata.milkt.co.kr/ele/app/images/mystudy/v2/star_on.png) no-repeat 21px 47% !important;
+	background-size: 18.5px 17.5px !important;
+	padding-left: 44px !important;
+	text-align: left !important;
+	border-radius: 30px !important;
+	box-sizing: border-box !important;
+	line-height: 39px !important;
+	font-family:
+		BM JUA,
+		'나눔고딕';
+}
+.FiveStarWrap a.btnGradeThumbA {
+	display: inline-block;
+	width: 130px !important;
+	height: 40px !important;
+	color: #d2c3b2 !important;
+	font-size: 20px;
+	border: 1px solid #d2c2b2 !important;
+	background: url(//cdndata.milkt.co.kr/ele/app/images/mystudy/v2/star_pink_off.png) no-repeat 21px
+		47% !important;
+	background-size: 18.5px 17.5px !important;
+	padding-left: 44px !important;
+	text-align: left !important;
+	border-radius: 30px !important;
+	box-sizing: border-box !important;
+	line-height: 39px !important;
+	font-family:
+		BM JUA,
+		'나눔고딕';
+}
+
+/* 썸네일 E/K/G/H/I - 140px */
+.FiveStarWrap a.btnToggleThumbG {
+	width: 140px !important;
+	display: inline-block;
+	vertical-align: middle;
+	height: 40px !important;
+	background: #fff !important ;
+	background-size: 30px 29px;
+	font-size: 18px;
+	text-indent: 0;
+	border: 1px solid #ff7200 !important;
+	color: #ff7200 !important;
+	line-height: 40px !important;
+	padding-left: 30px !important;
+	border-radius: 30px !important;
+	box-sizing: border-box !important;
+	font-weight: bold;
+	text-align: left !important;
+}
+.FiveStarWrap a.btnToggleThumbG span {
+	display: inline-block !important;
+	width: 25.5px !important;
+	height: 36px !important;
+	background: url(//cdndata.milkt.co.kr/ele/app/images/mystudy/v2/big_star.png) no-repeat 50% 50% !important;
+	background-size: 25.5px 24.5px !important;
+	color: #fff !important;
+	margin-left: 5px !important;
+	font-size: 13px !important;
+	vertical-align: 2% !important;
+	text-align: center;
+	line-height: 41px !important;
+	letter-spacing: 0 !important;
+}
+.FiveStarWrap a.btnGradeThumbG.on {
+	display: inline-block;
+	width: 140px !important;
+	height: 40px !important;
+	color: #ff7200 !important;
+	font-size: 18px;
+	border: 1px solid #ff7200 !important;
+	font-weight: bold;
+	background: #fff url(//cdndata.milkt.co.kr/ele/app/images/mystudy/v2/star_on.png) no-repeat 24px
+		50% !important;
+	background-size: 18.5px 17.5px !important;
+	padding-left: 48px !important;
+	text-align: left !important;
+	border-radius: 30px !important;
+	box-sizing: border-box !important;
+	line-height: 40px !important;
+}
+.FiveStarWrap a.btnGradeThumbG {
+	display: inline-block;
+	width: 140px !important;
+	height: 40px !important;
+	color: #b3b3b3 !important;
+	font-size: 18px;
+	border: 1px solid #c5c5c5 !important;
+	font-weight: bold;
+	background: #fff url(//cdndata.milkt.co.kr/ele/app/images/mystudy/v2/star_off.png) no-repeat 24px
+		50% !important;
+	background-size: 18.5px 17.5px !important;
+	padding-left: 48px !important;
+	text-align: left !important;
+	border-radius: 30px !important;
+	box-sizing: border-box !important;
+	line-height: 40px !important;
+}
+
+/* 썸네일 G/H/I -115px */
+.FiveStarWrap a.btnToggleThumbH {
+	width: 115px !important;
+	display: inline-block;
+	vertical-align: middle;
+	height: 33.5px !important;
+	background: #f6e7d4 !important ;
+	background-size: 30px 29px;
+	font-size: 18px;
+	text-indent: 0;
+	border: 1px solid #ff7200 !important;
+	color: #ff7200 !important;
+	line-height: 33.5px !important;
+	padding-left: 20px !important;
+	border-radius: 30px !important;
+	box-sizing: border-box !important;
+	font-weight: bold;
+	text-align: left !important;
+}
+.FiveStarWrap a.btnToggleThumbH span {
+	display: inline-block !important;
+	width: 25px !important;
+	height: 30px !important;
+	background: url(//cdndata.milkt.co.kr/ele/app/images/mystudy/v2/big_star.png) no-repeat 50% 50% !important;
+	background-size: 25px 24px !important;
+	color: #fff !important;
+	margin-left: 5px !important;
+	font-size: 13px !important;
+	vertical-align: 2% !important;
+	text-align: center;
+	line-height: 35px !important;
+	letter-spacing: 0 !important;
+}
+.FiveStarWrap a.btnGradeThumbH.on {
+	display: inline-block;
+	width: 115px !important;
+	height: 33.5px !important;
+	color: #ff7200 !important;
+	font-size: 17px;
+	border: 1px solid #ff7200 !important;
+	font-weight: bold;
+	background: #f6e7d4 url(//cdndata.milkt.co.kr/ele/app/images/mystudy/v2/star_on.png) no-repeat
+		14px 50% !important;
+	background-size: 18.5px 17.5px !important;
+	padding-left: 36px !important;
+	text-align: left !important;
+	border-radius: 30px !important;
+	box-sizing: border-box !important;
+	line-height: 33.5px !important;
+}
+.FiveStarWrap a.btnGradeThumbH {
+	display: inline-block;
+	width: 115px !important;
+	height: 33.5px !important;
+	color: #999 !important;
+	font-size: 17px;
+	border: 1px solid #c5c5c5 !important;
+	font-weight: bold;
+	background: #f6e7d4 url(//cdndata.milkt.co.kr/ele/app/images/mystudy/v2/star_pink01_off.png)
+		no-repeat 14px 50% !important;
+	background-size: 18.5px 17.5px !important;
+	padding-left: 36px !important;
+	text-align: left !important;
+	border-radius: 30px !important;
+	box-sizing: border-box !important;
+	line-height: 33.5px !important;
+}
+
+/* 썸네일 l */
+.FiveStarWrap a.btnToggleThumbL {
+	width: 130px !important;
+	display: inline-block;
+	vertical-align: middle;
+	background: #fff !important ;
+	background-size: 30px 29px;
+	font-size: 18px;
+	text-indent: 0;
+	border: 1px solid #c4002e !important;
+	color: #c4002e !important;
+	height: 40px !important;
+	line-height: 40px !important;
+	padding-left: 25px !important;
+	border-radius: 20px !important;
+	box-sizing: border-box !important;
+	font-weight: bold;
+	text-align: left !important;
+}
+.FiveStarWrap a.btnToggleThumbL span {
+	display: inline-block !important;
+	width: 25px !important;
+	height: 36px !important;
+	background: url(//cdndata.milkt.co.kr/ele/app/images/mystudy/v2/big_star_red.png) no-repeat 50%
+		50% !important;
+	background-size: 25px 24.5px !important;
+	color: #fff !important;
+	margin-left: 5px !important;
+	font-size: 13px !important;
+	vertical-align: 4% !important;
+	text-align: center;
+	line-height: 41px !important;
+	letter-spacing: 0 !important;
+}
+.FiveStarWrap a.btnGradeThumbL.on {
+	display: inline-block;
+	width: 130px !important;
+	height: 40px !important;
+	color: #c4002e !important;
+	font-size: 18px;
+	border: 1px solid #c4002e !important;
+	background: #fff url(//cdndata.milkt.co.kr/ele/app/images/mystudy/v2/star_red_on.png) no-repeat
+		20.5px 50% !important;
+	background-size: 18px 17px !important;
+	padding-left: 43px !important;
+	text-align: left !important;
+	border-radius: 20px !important;
+	box-sizing: border-box !important;
+	font-weight: bold;
+	line-height: 40px !important;
+}
+.FiveStarWrap a.btnGradeThumbL {
+	display: inline-block;
+	width: 130px !important;
+	height: 40px !important;
+	color: #b3b3b3 !important;
+	font-size: 18px;
+	border: 1px solid #c5c5c5 !important;
+	background: #fff url(//cdndata.milkt.co.kr/ele/app/images/mystudy/v2/star_red_off.png) no-repeat
+		20.5px 50% !important;
+	background-size: 18px 17px !important;
+	padding-left: 43px !important;
+	text-align: left !important;
+	border-radius: 20px !important;
+	box-sizing: border-box !important;
+	font-weight: bold;
+	line-height: 40px !important;
+}
+
+/* 썸네일 M,N */
+.FiveStarWrap a.btnToggleThumbM {
+	width: 150px !important;
+	display: inline-block;
+	vertical-align: middle;
+	background: #fff !important ;
+	background-size: 30px 29px;
+	font-size: 18px;
+	text-indent: 0;
+	border: 1px solid #c4002e !important;
+	color: #c4002e !important;
+	height: 40px !important;
+	line-height: 40px !important;
+	padding-left: 35px !important;
+	border-radius: 20px !important;
+	box-sizing: border-box !important;
+	font-weight: bold;
+	text-align: left !important;
+}
+.FiveStarWrap a.btnToggleThumbM span {
+	display: inline-block !important;
+	width: 25px !important;
+	height: 36px !important;
+	background: url(//cdndata.milkt.co.kr/ele/app/images/mystudy/v2/big_star_red.png) no-repeat 50%
+		50% !important;
+	background-size: 25px 24.5px !important;
+	color: #fff !important;
+	margin-left: 5px !important;
+	font-size: 13px !important;
+	vertical-align: 4% !important;
+	text-align: center;
+	line-height: 41px !important;
+	letter-spacing: 0 !important;
+}
+.FiveStarWrap a.btnGradeThumbM.on {
+	display: inline-block;
+	width: 150px !important;
+	height: 40px !important;
+	color: #c4002e !important;
+	font-size: 18px;
+	border: 1px solid #c4002e !important;
+	background: #fff url(//cdndata.milkt.co.kr/ele/app/images/mystudy/v2/star_red_on.png) no-repeat
+		28px 50% !important;
+	background-size: 18px 17px !important;
+	padding-left: 52px !important;
+	text-align: left !important;
+	border-radius: 20px !important;
+	box-sizing: border-box !important;
+	font-weight: bold;
+	line-height: 40px !important;
+}
+.FiveStarWrap a.btnGradeThumbM {
+	display: inline-block;
+	width: 150px !important;
+	height: 40px !important;
+	color: #b3b3b3 !important;
+	font-size: 18px;
+	border: 1px solid #c5c5c5 !important;
+	background: #fff url(//cdndata.milkt.co.kr/ele/app/images/mystudy/v2/star_red_off.png) no-repeat
+		28px 50% !important;
+	background-size: 18px 17px !important;
+	padding-left: 52px !important;
+	text-align: left !important;
+	border-radius: 20px !important;
+	box-sizing: border-box !important;
+	font-weight: bold;
+	line-height: 40px !important;
+}
+
+/* 특별학습 생활속실험  */
+.FiveStarWrap a.btnToggleThumbO {
+	width: 130px !important;
+	display: inline-block;
+	vertical-align: middle;
+	height: 40px !important;
+	background: #f6e7d4 !important ;
+	background-size: 30px 29px;
+	font-size: 20px !important;
+	text-indent: 0;
+	font-weight: bold;
+	border: 1px solid #ff7200 !important;
+	color: #ff7200 !important;
+	line-height: 38px !important;
+	padding-left: 25px !important;
+	border-radius: 30px !important;
+	box-sizing: border-box !important;
+	text-align: left !important;
+}
+.FiveStarWrap a.btnToggleThumbO span {
+	display: inline-block !important;
+	width: 25.5px !important;
+	height: 38px !important;
+	background: url(//cdndata.milkt.co.kr/ele/app/images/mystudy/v2/big_star.png) no-repeat 0 40% !important;
+	background-size: 25.5px 24.5px !important;
+	color: #fff !important;
+	margin-left: 5px !important;
+	font-size: 13px !important;
+	font-weight: bold;
+	vertical-align: 2% !important;
+	text-align: center;
+	letter-spacing: 0 !important;
+}
+.FiveStarWrap a.btnGradeThumbO.on {
+	display: inline-block;
+	width: 130px !important;
+	height: 40px !important;
+	color: #ff7200 !important;
+	font-size: 20px;
+	font-weight: bold;
+	border: 1px solid #ff7200 !important;
+	background: #f6e7d4 url(//cdndata.milkt.co.kr/ele/app/images/mystudy/v2/star_on.png) no-repeat
+		21px 47% !important;
+	background-size: 18.5px 17.5px !important;
+	padding-left: 44px !important;
+	text-align: left !important;
+	border-radius: 30px !important;
+	box-sizing: border-box !important;
+	line-height: 39px !important;
+}
+.FiveStarWrap a.btnGradeThumbO {
+	display: inline-block;
+	width: 130px !important;
+	height: 40px !important;
+	color: #d2c3b2 !important;
+	font-size: 20px;
+	font-weight: bold;
+	border: 1px solid #d2c2b2 !important;
+	background: #f6e7d4 url(//cdndata.milkt.co.kr/ele/app/images/mystudy/v2/star_pink_off.png)
+		no-repeat 21px 47% !important;
+	background-size: 18.5px 17.5px !important;
+	padding-left: 44px !important;
+	text-align: left !important;
+	border-radius: 30px !important;
+	box-sizing: border-box !important;
+	line-height: 39px !important;
+}
+.body_simwha.body_starwrap
+	.sub
+	.cont_area
+	.wrapper_simwha10.exp
+	ul.simwha10_list
+	.simwha10_list_wrap {
+	width: 740px;
+	height: 460px;
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
+	overflow-y: scroll;
+}
+.body_simwha.body_starwrap
+	.sub
+	.cont_area
+	.wrapper_simwha10.exp
+	ul.simwha10_list
+	.simwha10_list_wrap
+	.box_wrap {
+	position: relative;
+	float: left;
+	padding: 0;
+	margin: 0 30px 17px 0;
+	width: 212px;
+	height: 201px;
+	border: 1px solid #e3e3e3;
+	border-radius: 10px;
+	background: #fff;
+	overflow: hidden;
+}
+.body_simwha.body_starwrap .sub .cont_area .wrapper_simwha10.exp ul.simwha10_list > li.item03 {
+	border-bottom: 0;
+}
+
+/********************************************************
+1차 오픈 건
+**********************************************************/
+
+/* 수준별 국어 - 국어특강, 어휘력짱짱 */
+.body_korean.body_starwrap .sub .cont_area #wrapper > div > ul > li .btns .note_study_star {
+	margin: 0 0 0 532px;
+}
+.body_korean.body_starwrap .sub .cont_area #wrapper > div > ul > li .btns .note_study_star li a {
+	float: left;
+	width: 130px;
+	height: 45px;
+	line-height: 45px;
+	position: relative;
+	top: -24px;
+	margin-right: 0 !important;
+	margin-left: 7px !important;
+}
+.body_korean.body_starwrap
+	.sub
+	.cont_area
+	#wrapper
+	> div
+	> ul
+	> li
+	.btns
+	.note_study_star
+	li:first-child
+	a {
+	margin-left: 0 !important;
+}
+.body_korean.body_starwrap .sub .cont_area #wrapper > div > ul > li .btns .btn_ready {
+	width: 130px;
+	height: 45px;
+	line-height: 45px;
+}
+
+/* 수준별 국어 - 급수별한자  8급 */
+.body_korean.body_starwrap .sub .cont_area #wrapper ul.simwha04_list {
+	position: relative;
+}
+.body_korean.body_starwrap .sub .cont_area #wrapper ul.simwha04_list ul.step a {
+	height: 45px;
+	line-height: 46px;
+}
+.body_korean.body_starwrap .sub .cont_area #wrapper ul.simwha04_list ul.step > li.FiveStarWrap {
+	position: absolute;
+	top: 19px;
+	left: 320px;
+}
+
+/* 수준별 국어 - 급수별한자  4급 */
+.body_korean.body_starwrap .sub .cont_area #wrapper ul > li.item {
+	padding-left: 0 !important;
+}
+.body_korean.body_starwrap .sub .cont_area #wrapper ul.simwha04_list03 > li .btns a {
+	width: 140px;
+	height: 41px;
+	line-height: 44px;
+}
+.body_korean.body_starwrap .sub .cont_area #wrapper ul.simwha04_list03 > li .btns ul li {
+	margin-left: 10px;
+	width: 140px;
+}
+.body_korean.body_starwrap .sub .cont_area #wrapper ul.simwha04_list03 > li .btns ul li > span {
+	width: 140px;
+}
+
+/* 수준별 국어 - 생활한국어 */
+.body_korean.body_starwrap .sub .cont_area #wrapper > div > ul.simwha07_list > li .btns a {
+	position: absolute;
+	right: 140px;
+	width: 130px;
+	height: 45px;
+	line-height: 48px;
+}
+.body_korean.body_starwrap
+	.sub
+	.cont_area
+	#wrapper
+	> div
+	> ul.simwha07_list
+	> li
+	.btns
+	a.btnToggleStarC {
+	position: absolute;
+	top: -24px;
+	right: 0;
+}
+.body_korean.body_starwrap
+	.sub
+	.cont_area
+	#wrapper
+	> div
+	> ul.simwha07_list
+	> li
+	.btns
+	a.btnGradeStarC.on {
+	position: absolute;
+	top: -24px;
+	right: 0;
+}
+.body_korean.body_starwrap
+	.sub
+	.cont_area
+	#wrapper
+	> div
+	> ul.simwha07_list
+	> li
+	.btns
+	a.btnGradeStarC {
+	position: absolute;
+	top: -24px;
+	right: 0;
+}
+.body_korean.body_starwrap .sub .cont_area #wrapper ul.simwha07_list > li.item span.stit {
+	width: 375px;
+}
+.body_korean.body_starwrap .sub .cont_area #wrapper > div > ul.simwha07_list > li.tit + .item {
+	padding-bottom: 13px;
+}
+
+/* 수준별 영어 */
+.body_english.sub_page.body_starwrap .conbox .box .cont .rightcon .list_con ul li {
+	height: 338px;
+}
+.body_english.sub_page.body_starwrap .conbox .box .cont .rightcon .list_con ul li .FiveStarWrap {
+	text-align: center;
+}
+.body_english.sub_page.body_starwrap .conbox .box .cont .rightcon .list_con ul li a div {
+	margin-bottom: 5px !important;
+}
+
+/* 수준별 영어 - 탄탄 Grammar */
+.body_english.sub_page.body_starwrap .conbox .box .cont .rightcon .grammar .list_con ul li {
+	height: 323px;
+}
+
+/* 중국어 - 동화 */
+.body_simwha.body_starwrap .china_wrap.chapter_detail .chapter_list li {
+	padding: 24px 30px 44px;
+}
+.body_simwha.body_starwrap .china_wrap.chapter_detail .chapter_list li dl dd {
+	text-align: center;
+}
+.body_simwha.body_starwrap .china_wrap.chapter_detail .chapter_list li dl dd .date {
+	position: absolute;
+	top: 190px;
+	left: 100px;
+}
+.body_simwha.body_starwrap .china_wrap.chapter_detail .chapter_list li dl dd .FiveStarWrap {
+	margin-top: 7px;
+}
+.body_simwha.body_starwrap .china_wrap.chapter_detail .chapter_list li .expiry_date {
+	left: 30px;
+	bottom: 44px;
+}
+.body_simwha.body_starwrap .china_wrap.chapter_detail .chapter_list li dl dd .btn_cup {
+	border-width: 1px;
+}
+.body_simwha.body_starwrap .china_wrap.chapter_detail .chapter_list li dl dd .btn_restudy {
+	background: #ae7c65;
+	color: #fff;
+	border: none;
+	height: 40px;
+	line-height: 40px;
+}
+.body_simwha.body_starwrap .china_wrap.chapter_detail .chapter_list li dl dd .btn_study {
+	border: none;
+	height: 40px;
+	line-height: 40px;
+}
+
+/* 중국어 - 회화 */
+.body_simwha.body_starwrap .china_wrap .right_section .con_box ul li .btn_01,
+.body_simwha.body_starwrap .china_wrap .right_section .con_box ul li .btn_02,
+.body_simwha.body_starwrap .china_wrap .right_section .con_box ul li .btn_03 {
+	width: 150px;
+	height: 40px;
+}
+.body_simwha.body_starwrap .china_wrap .right_section .con_box ul li .btn_01 a,
+.body_simwha.body_starwrap .china_wrap .right_section .con_box ul li .btn_02 a {
+	width: 150px;
+	height: 40px;
+	padding-top: 12px;
+}
+.body_simwha.body_starwrap .china_wrap .right_section .con_box ul li .btn_03 a {
+	padding-top: 10px;
+}
+.body_simwha.body_starwrap .china_wrap .right_section .con_box ul li .btn_03 {
+	border-width: 1px;
+}
+.body_simwha.body_starwrap .china_wrap .right_section .con_box ul li .FiveStarWrap {
+	margin-top: 7px;
+}
+.body_simwha.body_starwrap .china_wrap .right_section .con_box ul li .date {
+	position: absolute;
+	left: 45px;
+	top: 240px;
+}
+.body_simwha.body_starwrap .china_wrap .right_section .con_box ul li .time {
+	background: url(//cdndata.milkt.co.kr/ele/app/images/simwha/china/bg_expirydate.png) left top
+		repeat-x;
+	position: absolute;
+	bottom: 218px;
+	left: 93px;
+	width: 155px;
+	height: 34px;
+	border-bottom-left-radius: 13px;
+	border-bottom-right-radius: 13px;
+	font-size: 12px;
+	color: #fff;
+	text-align: center;
+	line-height: 34px;
+	padding-left: 0;
+}
+.body_simwha.body_starwrap .china_wrap .right_section .con_box ul li .time .icon {
+	background: url(//cdndata.milkt.co.kr/ele/app/images/mystudy/v2/calendar.png) left 50% no-repeat;
+	background-size: 20px;
+	width: 20px;
+	height: 34px;
+	text-indent: -9999em;
+	display: inline-block;
+	margin-right: 2px;
+}
+.body_simwha.body_starwrap .china_wrap .right_section .con_box ul li .title {
+	height: 115px;
+}
+.body_simwha.body_starwrap .china_wrap .right_section .con_box ul li {
+	margin-bottom: 45px;
+}
+
+/* 중국어 - 발음 */
+.body_simwha.body_starwrap .china_wrap.pronounce .booklist_wrap .chapter_list li {
+	width: 370px;
+}
+.body_simwha.body_starwrap .china_wrap.pronounce .booklist_wrap .chapter_list li dl dd .btn_cup {
+	border-width: 1px;
+}
+.body_simwha.body_starwrap
+	.china_wrap.pronounce
+	.booklist_wrap
+	.chapter_list
+	li
+	dl
+	dd
+	.btn_restudy {
+	background: #ae7c65;
+	color: #fff;
+	border: none;
+	height: 40px;
+	line-height: 40px;
+}
+.body_simwha.body_starwrap .china_wrap.pronounce .booklist_wrap .chapter_list li dl dt p {
+	height: inherit;
+}
+.body_simwha.body_starwrap .china_wrap.pronounce .booklist_wrap .chapter_list li dl dd .date {
+	margin-top: 2px;
+	margin-bottom: 8px;
+}
+.body_simwha.body_starwrap
+	.china_wrap.pronounce
+	.booklist_wrap
+	.chapter_list
+	li
+	dl
+	dd
+	.FiveStarWrap {
+	margin-top: 5px;
+}
+
+/* 중국어 - 어휘 */
+.body_simwha.body_starwrap .china_wrap.vocabulary .booklist_wrap .chapter_list li {
+	width: 370px;
+}
+.body_simwha.body_starwrap .china_wrap.vocabulary .booklist_wrap .chapter_list li dl dd .btn_cup {
+	border-width: 1px;
+}
+.body_simwha.body_starwrap
+	.china_wrap.vocabulary
+	.booklist_wrap
+	.chapter_list
+	li
+	dl
+	dd
+	.btn_restudy {
+	background: #ae7c65;
+	color: #fff;
+	border: none;
+	height: 45px;
+	line-height: 45px;
+}
+.body_simwha.body_starwrap .china_wrap.vocabulary .booklist_wrap .chapter_list li dl dt p {
+	height: inherit;
+}
+.body_simwha.body_starwrap .china_wrap.vocabulary .booklist_wrap .chapter_list li dl dd .date {
+	margin-top: 2px;
+	margin-bottom: 8px;
+}
+.body_simwha.body_starwrap
+	.china_wrap.vocabulary
+	.booklist_wrap
+	.chapter_list
+	li
+	dl
+	dd
+	.FiveStarWrap {
+	margin-top: 5px;
+}
+
+/* 특별학습1관 - 창의적 체험활동(추천활동)  */
+.body_simwha.body_starwrap
+	.sub.creative03
+	.cont_area
+	.rightcon
+	.speacial_slide
+	ul
+	li
+	.slideItem_list
+	.btn_moreView
+	a {
+	border-width: 1px;
+	width: 140px;
+	height: 40px;
+	line-height: 38px;
+	box-sizing: border-box;
+}
+.body_simwha.body_starwrap
+	.sub.creative03
+	.cont_area
+	.rightcon
+	.speacial_slide
+	ul
+	li
+	.slideItem_list
+	.FiveStarWrap {
+	margin-top: 5px;
+	text-align: center;
+}
+.body_simwha.body_starwrap
+	.sub.creative03
+	.cont_area
+	.rightcon
+	.recommend_vod
+	.month_recom
+	.recom_txtarea
+	.FiveStarWrap {
+	position: absolute;
+	top: 71px;
+	right: 140px;
+}
+.body_simwha.body_starwrap .sub.creative03 .cont_area .rightcon .recommend_vod .vod_cont dl {
+	height: 186px;
+}
+.body_simwha.body_starwrap .sub.creative03 .cont_area .rightcon .recommend_vod .vodarea_slide {
+	overflow: visible;
+}
+.body_simwha.body_starwrap .sub.creative03 .cont_area .rightcon .recommend_vod .FiveStarWrap {
+	margin-left: 30px;
+}
+
+/* 특별학습1관 - 창의적 체험활동(그 외)  */
+.body_simwha.body_starwrap .sub.creative03 .cont_area .rightcon .creat_vodList ul li {
+	height: 260px;
+}
+.body_simwha.body_starwrap .sub.creative03 .cont_area .rightcon .creat_vodList dl dd.date {
+	margin-top: 0;
+}
+.body_simwha.body_starwrap .sub.creative03 .cont_area .rightcon .creat_vodList ul li .FiveStarWrap {
+	padding-top: 8px;
+	text-align: center;
+}
+.body_simwha.body_starwrap .sub.creative03 .cont_area .rightcon .recommend_vod h4 {
+	margin-top: 25px;
+}
+.body_simwha.body_starwrap
+	.sub.creative03
+	.cont_area
+	.rightcon
+	.speacial_slide
+	ul
+	li
+	.slideItem_list {
+	margin-bottom: 36px;
+}
+
+/* 특별학습1관 - 사회/역사 - 교과서 배경지식 */
+.body_simwha.body_starwrap .sub .cont_area .wrapper_simwha10 ul.simwha10_list .simwha10_list_wrap {
+	width: 693px;
+	padding: 0;
+	margin: 0;
+}
+.body_simwha.body_starwrap
+	.sub
+	.cont_area
+	.wrapper_simwha10
+	ul.simwha10_list
+	.simwha10_list_wrap
+	> div {
+	float: left;
+}
+.body_simwha.body_starwrap
+	.sub
+	.cont_area
+	.wrapper_simwha10
+	ul.simwha10_list
+	.simwha10_list_wrap:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+.body_simwha.body_starwrap
+	.sub
+	.cont_area
+	.wrapper_simwha10
+	ul.simwha10_list
+	.simwha10_list_wrap
+	.box_wrap {
+	position: relative;
+	float: left;
+	padding: 0;
+	margin: 0 17px 17px 0;
+	width: 212px;
+	height: 201px;
+	border: 1px solid #e3e3e3;
+	border-radius: 10px;
+	background: #fff;
+	overflow: hidden;
+}
+.body_simwha.body_starwrap
+	.sub
+	.cont_area
+	.wrapper_simwha10
+	ul.simwha10_list
+	.simwha10_list_wrap
+	.box_wrap
+	a.play_link {
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin: 0;
+	padding: 0;
+	width: 212px;
+	height: 116px;
+	text-indent: -9999px;
+	background: url(//cdndata.milkt.co.kr/ele/app/images/simwha/btn_play.png) no-repeat 0 0;
+	background-size: 212px;
+}
+.body_simwha.body_starwrap
+	.sub
+	.cont_area
+	.wrapper_simwha10
+	ul.simwha10_list
+	.simwha10_list_wrap
+	.box_wrap
+	> img {
+	display: block;
+	width: 212px;
+	height: 116px;
+}
+.body_simwha.body_starwrap
+	.sub
+	.cont_area
+	.wrapper_simwha10
+	ul.simwha10_list
+	.simwha10_list_wrap
+	.box_wrap
+	.txt {
+	margin: 10px 7px 0px !important;
+	line-height: 1.3;
+	height: 42px;
+	overflow: hidden;
+	letter-spacing: 0;
+	font-size: 16px;
+	color: #323131;
+	font-weight: bold;
+	word-break: break-all;
+}
+.body_simwha.body_starwrap
+	.sub
+	.cont_area
+	.wrapper_simwha10
+	ul.simwha10_list
+	.simwha10_list_wrap
+	.box_wrap
+	.date {
+	color: #323131;
+	font-size: 15px;
+	margin: 0 7px;
+}
+.body_simwha.body_starwrap
+	.sub
+	.cont_area
+	.wrapper_simwha10
+	ul.simwha10_list
+	.simwha10_list_wrap
+	.box_wrap
+	.date
+	em {
+	display: inline-block;
+	min-width: 50px;
+	text-align: center;
+}
+.body_simwha.body_starwrap
+	.sub
+	.cont_area
+	.wrapper_simwha10
+	ul.simwha10_list
+	.simwha10_list_wrap
+	.box_wrap
+	.txt.type02 {
+	margin: 16px 16px 0px !important;
+	line-height: 1.3;
+	height: 42px;
+	overflow: hidden;
+	letter-spacing: 0;
+	font-size: 18px;
+	color: #000;
+	font-weight: normal;
+	word-break: break-all;
+}
+
+.body_simwha.body_starwrap
+	.sub
+	.cont_area
+	.wrapper_simwha10
+	ul.simwha10_list
+	.simwha10_list_wrap
+	.box_wrap.step01 {
+	width: 147px;
+	padding: 0 0 0 11px;
+}
+.body_simwha.body_starwrap
+	.sub
+	.cont_area
+	.wrapper_simwha10
+	ul.simwha10_list
+	.simwha10_list_wrap
+	.box_wrap.step02 {
+	width: 492px;
+	padding: 0 0 0 12px;
+}
+.body_simwha.body_starwrap
+	.sub
+	.cont_area
+	.wrapper_simwha10
+	ul.simwha10_list
+	.simwha10_list_wrap
+	.FiveStarWrap {
+	margin-left: 37px;
+	margin-bottom: 40px;
+}
+
+/* 특별학습1관 - 사회/역사 - 스토리텔링 한국사 */
+.body_simwha.body_starwrap .sub .cont_area .w500 {
+	left: 500px !important;
+	width: 754px !important;
+}
+.body_simwha.body_starwrap .sub .cont_area .w500 > div > ul {
+	padding-left: 35px !important;
+}
+.body_simwha.body_starwrap .sub .cont_area .w500 > div > ul.simwha03_list > li.item {
+	width: 730px !important;
+}
+.body_simwha.body_starwrap .sub .cont_area #wrapper ul.simwha03_list > li.item span.stit {
+	width: 311px;
+}
+.body_simwha.body_starwrap .sub .cont_area #wrapper > div > ul > li.item {
+	padding-left: 0;
+}
+.body_simwha.body_starwrap .sub .cont_area #wrapper > div > ul > li.item .note_study_star {
+	margin: 0 0 0 315px;
+}
+.body_simwha.body_starwrap .sub .cont_area #wrapper > div > ul > li.item .note_study_star li a {
+	float: left;
+	width: 130px;
+	height: 45px;
+	line-height: 45px;
+	position: relative;
+	top: -24px;
+	margin-right: 0 !important;
+	margin-left: 7px !important;
+}
+.body_simwha.body_starwrap
+	.sub
+	.cont_area
+	#wrapper
+	> div
+	> ul
+	> li.item
+	.note_study_star
+	li:first-child
+	a {
+	margin-left: 0 !important;
+}
+.body_simwha.body_starwrap .sub .cont_area #wrapper > div > ul > li.item .btn_ready {
+	width: 130px;
+	height: 45px;
+	line-height: 45px;
+}
+
+/* 특별학습1관 - 사회/역사 - 교과서 밖 한국사 */
+.body_simwha.body_starwrap .sub .cont_area #wrapper > div > ul.thumbList > li {
+	padding-bottom: 55px;
+}
+.body_simwha.body_starwrap .sub .cont_area #wrapper > div > ul > li.item dl dt {
+	text-align: center;
+}
+.body_simwha.body_starwrap .sub .cont_area #wrapper > div > ul > li.item dl dt span.date {
+	float: none;
+	position: inherit;
+}
+.body_simwha.body_starwrap .sub .cont_area #wrapper > div > ul.thumbList > li .btns a {
+	float: left;
+	margin-left: 10px !important;
+	height: 45px;
+	line-height: 45px;
+	width: 130px;
+}
+.body_simwha.body_starwrap .sub .cont_area #wrapper > div > ul.thumbList.simwha03_list .btn_ready {
+	margin-left: 0 !important;
+}
+.body_simwha.body_starwrap .sub .cont_area #wrapper > div > ul.thumbList.simwha03_list .btn_study {
+	margin-left: 0 !important;
+}
+.body_simwha.body_starwrap
+	.sub
+	.cont_area
+	#wrapper
+	> div
+	> ul.thumbList.simwha03_list
+	.btn_restudy {
+	margin-left: 0 !important;
+}
+
+/* 특별학습1관 - 음악 미술 체육 */
+.body_simwha.body_starwrap .sub .cont_area .wrapper_simwha16 ul.simwha16_list li.item .btns li a {
+	width: 140px;
+	height: 38px;
+	box-sizing: border-box;
+}
+.body_simwha.body_starwrap
+	.sub
+	.cont_area
+	.wrapper_simwha16
+	ul.simwha16_list
+	li.item
+	.btns
+	li
+	a
+	span {
+	background: none;
+	padding-left: 0 !important;
+	line-height: 40px;
+}
+.body_simwha.body_starwrap
+	.sub
+	.cont_area
+	.wrapper_simwha16
+	ul.simwha16_list
+	li.item
+	.btns
+	li
+	.btnGradeThumbG {
+	position: absolute;
+	top: 0;
+}
+.body_simwha.body_starwrap
+	.sub
+	.cont_area
+	.wrapper_simwha16
+	ul.simwha16_list
+	li.item
+	.btns
+	li
+	.btnGradeThumbG.on {
+	position: absolute;
+	top: 0;
+}
+.body_simwha.body_starwrap
+	.sub
+	.cont_area
+	.wrapper_simwha16
+	ul.simwha16_list
+	li.item
+	.btns
+	li
+	.btnToggleThumbG {
+	position: absolute;
+	top: 0;
+}
+.body_simwha.body_starwrap
+	.sub
+	.cont_area
+	.wrapper_simwha16
+	ul.simwha16_list
+	li.item
+	.btns
+	li
+	.date {
+	padding-left: 13px;
+}
+
+/* 특별학습2관 디지털 체험과학 - 교과서 실험 */
+.body_simwha.body_starwrap .sub .cont_area #wrapper > div > ul > li.item .note_study_star02 {
+	margin: 0 0 0 370px;
+} /* 버튼 2개일때 */
+.body_simwha.body_starwrap .sub .cont_area #wrapper > div > ul > li.item .note_study_star02 li a {
+	float: left;
+	width: 130px;
+	height: 45px;
+	line-height: 45px;
+	position: relative;
+	top: -24px;
+	margin-right: 0 !important;
+	margin-left: 14px !important;
+}
+.body_simwha.body_starwrap
+	.sub
+	.cont_area
+	#wrapper
+	> div
+	> ul
+	> li.item
+	.btns
+	.note_study_star02
+	li:first-child
+	a {
+	margin-left: 0 !important;
+}
+.body_simwha.body_starwrap
+	.sub
+	.cont_area
+	#wrapper
+	> div
+	> ul
+	> li.item
+	.btns
+	.note_study_star02
+	a.btn_restudy {
+	width: 140px !important;
+	height: 45px;
+	line-height: 45px;
+	right: 0;
+}
+.body_simwha.body_starwrap
+	.sub
+	.cont_area
+	#wrapper
+	> div
+	> ul
+	> li.item
+	.btns
+	.note_study_star02
+	a.btn_study {
+	width: 140px !important;
+	height: 45px;
+	line-height: 45px;
+}
+.body_simwha.body_starwrap
+	.sub
+	.cont_area
+	#wrapper
+	> div
+	> ul
+	> li.item
+	.btns
+	.note_study_star02
+	a.btn_ready {
+	width: 140px !important;
+	height: 45px;
+	line-height: 45px;
+}
+.body_simwha.body_starwrap .sub .cont_area #wrapper > div > ul > li.item span.stit {
+	display: block;
+	width: 332px;
+	min-height: 36px;
+	color: #626262;
+	font-size: 22px;
+	line-height: 1.2;
+	padding: 0;
+	word-break: break-all;
+}
+.body_simwha.body_starwrap .sub .cont_area #wrapper > div > ul > li.item span.stit02 {
+	display: block;
+	width: 332px;
+	min-height: 36px;
+	color: #626262;
+	font-size: 22px;
+	line-height: 1.2;
+	padding: 0;
+	word-break: break-all;
+	margin: -8px 0 0 0;
+	letter-spacing: -1px;
+}
+
+/* 특별학습2관 디지털 체험과학 - 생활 속 실험 */
+.body_simwha.body_starwrap .sub .cont_area #wrapper > div > ul.simwha1703 > li.item .btns {
+	left: 262px;
+}
+.body_simwha.body_starwrap .sub .cont_area #wrapper > div > ul.simwha1703 > li.item .btns li > a {
+	display: block;
+	padding: 0;
+	margin: 0 6px;
+	width: 140px;
+	height: 40px;
+}
+.body_simwha.body_starwrap .sub .cont_area #wrapper > div > ul.simwha1703 > li.item span.stit {
+	position: absolute;
+	top: 30px;
+	left: 247px;
+	width: 290px;
+	height: 60px;
+	overflow: hidden;
+	color: #323131;
+	font-size: 25px;
+	font-weight: bold;
+	text-indent: -20px;
+	padding: 0 0 0 20px;
+}
+.body_simwha.body_starwrap
+	.sub
+	.cont_area
+	#wrapper
+	> div
+	> ul.simwha1703
+	> li.item
+	.btns
+	li
+	> a
+	> span {
+	background: none;
+}
+.body_simwha.body_starwrap
+	.sub
+	.cont_area
+	#wrapper
+	> div
+	> ul.simwha1703
+	> li.item
+	.btns
+	li
+	> a.btn_view
+	> span {
+	padding-left: 0;
+	line-height: 42px;
+}
+.body_simwha.body_starwrap
+	.sub
+	.cont_area
+	#wrapper
+	> div
+	> ul.simwha1703
+	> li.item
+	.btns
+	li
+	> a.btn_restudy {
+	background: #9d999b !important;
+	padding: 0 !important;
+	margin: 0 6px !important;
+	float: none;
+	top: 0;
+	position: relative;
+	top: 0;
+	left: 0;
+	right: 0 !important;
+	border: 0px !important;
+}
+.body_simwha.body_starwrap
+	.sub
+	.cont_area
+	#wrapper
+	> div
+	> ul.simwha1703
+	> li.item
+	.btns
+	li
+	> a.btn_ready {
+	border: 1px solid #d3d3d3;
+	width: 138px !important;
+	height: 38px !important;
+	position: relative;
+	right: 0 !important;
+	color: #a1a1a1 !important;
+}
+.body_simwha.body_starwrap
+	.sub
+	.cont_area
+	#wrapper
+	> div
+	> ul.simwha1703
+	> li.item
+	.btns
+	li
+	> a.btn_view {
+	border: 0;
+}
+.body_simwha.body_starwrap
+	.sub
+	.cont_area
+	#wrapper
+	> div
+	> ul.simwha1703
+	> li.item
+	.btns
+	li
+	> .date {
+	padding-left: 15px;
+}
+.body_simwha.body_starwrap .sub .cont_area #wrapper > div > ul.simwha1703 > li.item span.stit {
+	width: 300px !important;
+}
+.body_simwha.body_starwrap
+	.sub
+	.cont_area
+	#wrapper
+	> div
+	> ul.simwha1703
+	> li
+	.btns
+	a.btnGradeThumbG {
+	top: 0;
+	right: 25px;
+	position: absolute;
+}
+.body_simwha.body_starwrap
+	.sub
+	.cont_area
+	#wrapper
+	> div
+	> ul.simwha1703
+	> li
+	.btns
+	a.btnToggleThumbG {
+	top: 0;
+	right: 25px;
+	position: absolute;
+}
+
+/* 특별학습2관 디지털 체험과학 - AI 실험 톡톡 */
+.body_simwha.body_starwrap
+	.sub
+	.cont_area
+	.wrapper_simwha10
+	ul.simwha10_list
+	.simwha10_list_wrap
+	.h228
+	.box_wrap
+	.txt_sub {
+	color: #323131;
+	font-size: 15px;
+	margin: 0 7px;
+	text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	width: 195px;
+	padding: 3px 0;
+	letter-spacing: -1px;
+}
+.body_simwha.body_starwrap
+	.sub
+	.cont_area
+	.wrapper_simwha10
+	ul.simwha10_list
+	.simwha10_list_wrap
+	.h228
+	.box_wrap {
+	height: 228px;
+}
+.body_simwha.body_starwrap
+	.sub
+	.cont_area
+	.wrapper_simwha10
+	ul.simwha10_list
+	.simwha10_list_wrap
+	.h228
+	.box_wrap
+	.date {
+	color: #999;
+	font-size: 12px;
+	margin: 0 7px;
+}
+.body_simwha.body_starwrap
+	.sub
+	.cont_area
+	.wrapper_simwha10
+	ul.simwha10_list
+	.simwha10_list_wrap
+	.h228
+	.box_wrap
+	.date.type02 {
+	color: #999;
+	font-size: 12px;
+	margin: 0 16px;
+}
+
+/********************************************************
+2차 오픈 건
+**********************************************************/
+
+/* 실력평가 - 평가보기 */
+.body_examstudy.body_starwrap .cont_area .rightcon .lect_list ul li dl dt {
+	width: 475px;
+}
+.body_examstudy.body_starwrap .cont_area .rightcon .lect_list ul li dl dd {
+	margin-left: 65px;
+}
+.body_examstudy.body_starwrap .cont_area .rightcon .lect_list .FiveStarWrap {
+	float: right;
+}
+
+/* 키즈 - 이달의 추천 */
+.kids.body_starwrap .movCont .contents .FiveStarWrap a {
+	height: 45px !important;
+	line-height: 45px !important;
+}
+.kids.body_starwrap .movCont .contents .rightcon ul li .FiveStarWrap {
+	margin-top: 10px;
+	height: 45px !important;
+	text-align: center;
+}
+.kids.body_starwrap .movCont .contents .rightcon .speacialList ul li .item .FiveStarWrap {
+	margin-top: 5px;
+	text-align: center;
+}
+
+/* 키즈 - 톡톡상상극장 외 */
+.movCont .contents .rightcon .vodList dl {
+	margin-bottom: 10px;
+}
+.movCont .contents .rightcon .vodList li {
+	margin-bottom: 35px;
+	text-align: center;
+}
+
+/* 키즈 - 학교 공부 맛보기 */
+.kids.body_starwrap .cont_area #wrapper ul.lect_list > li .btns ul.type02 {
+	width: 540px;
+	padding-left: 3px;
+}
+.kids.body_starwrap .cont_area #wrapper ul.lect_list > li .btns ul.type02 li {
+	margin: 0 12px;
+}
+.kids.body_starwrap .cont_area #wrapper ul.lect_list > li .btns ul.type02 li:first-child {
+	margin-left: 0;
+}
+.kids.body_starwrap .cont_area #wrapper ul.lect_list > li .btns a {
+	width: 158.5px;
+	height: 40px;
+	line-height: 40px;
+}
+
+/* 키즈 - 매일보는 동화 */
+.kids.body_starwrap .book_list ul li {
+	text-align: center;
+	height: 320px;
+}
+.kids.body_starwrap .book_list ul li dl dd {
+	margin-bottom: 5px;
+}
+
+/* 키즈 - 영어,수학,한글 */
+.kids.body_starwrap .play_cont .thumb_list li {
+	height: 280px;
+}
+.kids.body_starwrap .play_cont .thumb_list li dl dd {
+	margin-bottom: 5px;
+}
+.kids.body_starwrap .play_cont .thumb_list .FiveStarWrap {
+	margin: 0 auto;
+	text-align: center;
+}
+
+/* 수준별 수학 - 재미 수학 - 스토리텔링 개념 */
+.body_hbmath.body_starwrap .cont_area .hbmath01 #wrapper > div > ul > li .btns {
+	width: 100%;
+	margin: 0;
+}
+.body_hbmath.body_starwrap .cont_area .hbmath01 #wrapper > div > ul > li.item span.stit {
+	margin-left: 0;
+}
+.body_hbmath.body_starwrap .cont_area .hbmath01 #wrapper > div > ul > li.item .note_study_star {
+	float: right;
+	width: 275px;
+}
+.body_hbmath.body_starwrap
+	.cont_area
+	.hbmath01
+	#wrapper
+	> div
+	> ul
+	> li.item
+	.note_study_star
+	li
+	a {
+	float: left;
+	width: 128px;
+	height: 43px;
+	line-height: 45px;
+	position: relative;
+	top: -24px;
+	margin-right: 0 !important;
+	margin-left: 14px !important;
+}
+.body_hbmath.body_starwrap
+	.cont_area
+	.hbmath01
+	#wrapper
+	> div
+	> ul
+	> li.item
+	.note_study_star
+	li:first-child
+	a {
+	margin-left: 0 !important;
+}
+
+/* 수준별 수학 - 교과수준수학, 영재 수학 & 교과 수준 수학 - 개념이해, 기본향상, 실력완성, 최고수준 */
+.body_hbmath.body_starwrap .cont_area .hbmath0501 #wrapper > div > ul > li .btns {
+	width: 100%;
+	margin: 0;
+}
+.body_hbmath.body_starwrap .cont_area .hbmath0501 #wrapper > div > ul > li.item span.stit {
+	margin-left: 0;
+	width: 408px !important;
+}
+.body_hbmath.body_starwrap .cont_area .hbmath0501 #wrapper > div > ul > li.item .note_study_star {
+	float: right;
+	width: 275px;
+}
+.body_hbmath.body_starwrap
+	.cont_area
+	.hbmath0501
+	#wrapper
+	> div
+	> ul
+	> li.item
+	.note_study_star
+	li
+	a {
+	float: left;
+	width: 128px;
+	height: 43px;
+	line-height: 45px;
+	position: relative;
+	top: -24px;
+	margin-right: 0 !important;
+	margin-left: 14px !important;
+}
+.body_hbmath.body_starwrap
+	.cont_area
+	.hbmath0501
+	#wrapper
+	> div
+	> ul
+	> li.item
+	.note_study_star
+	li:first-child
+	a {
+	margin-left: 0 !important;
+}
+
+/* 수준별 수학 - 최강 TOT 개편 #81601 2022-04-07  */
+.body_hbmath.body_starwrap .cont_area .mathTot .rightcon .studyListWrap > div > ul > li .btns {
+	width: 100%;
+	margin: 0;
+}
+.body_hbmath.body_starwrap
+	.cont_area
+	.mathTot
+	.rightcon
+	.studyListWrap
+	> div
+	> ul
+	> li.item
+	span.stit {
+	margin-left: 0;
+	width: 408px !important;
+}
+.body_hbmath.body_starwrap
+	.cont_area
+	.mathTot
+	.rightcon
+	.studyListWrap
+	> div
+	> ul
+	> li.item
+	.note_study_star {
+	float: right;
+	width: 275px;
+	margin-top: -5px;
+}
+.body_hbmath.body_starwrap
+	.cont_area
+	.mathTot
+	.rightcon
+	.studyListWrap
+	> div
+	> ul
+	> li.item
+	.note_study_star
+	li
+	a {
+	float: left;
+	width: 128px !important;
+	height: 50px !important;
+	line-height: 49px !important;
+	position: relative;
+	top: -24px;
+	margin-right: 0 !important;
+	margin-left: 14px !important;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.body_hbmath.body_starwrap
+	.cont_area
+	.mathTot
+	.rightcon
+	.studyListWrap
+	> div
+	> ul
+	> li.item
+	.note_study_star
+	li:first-child
+	a {
+	margin-left: 0 !important;
+}
+
+/* 수준별 수학 - 최고수준수학  */
+/*.body_hbmath.body_starwrap .cont_area .hbmath0503 #wrapper>div>ul>li .btns {width:100%;margin:0;}
+.body_hbmath.body_starwrap .cont_area .hbmath0503 #wrapper>div>ul>li.item span.stit{margin-left:0;width:408px !important}
+.body_hbmath.body_starwrap .cont_area .hbmath0503 #wrapper>div>ul>li.item .note_study_star {float:right;width:275px;}
+.body_hbmath.body_starwrap .cont_area .hbmath0503 #wrapper>div>ul>li.item .note_study_star li a{float:left;width:128px;height:43px;line-height:45px;position:relative;top:-24px;margin-right:0 !important;margin-left:14px !important}
+.body_hbmath.body_starwrap .cont_area .hbmath0503 #wrapper>div>ul>li.item .note_study_star li:first-child a{margin-left:0 !important;}*/
+
+/* 수준별 수학 - 최고수준수학 개편 #81601 2022-04-07 */
+.body_hbmath.body_starwrap .cont_area .topClass .rightcon .studyListWrap > div > ul > li .btns {
+	width: 100%;
+	margin: 0;
+}
+.body_hbmath.body_starwrap
+	.cont_area
+	.topClass
+	.rightcon
+	.studyListWrap
+	> div
+	> ul
+	> li.item
+	span.stit {
+	margin-left: 0;
+	width: 408px !important;
+}
+.body_hbmath.body_starwrap
+	.cont_area
+	.topClass
+	.rightcon
+	.studyListWrap
+	> div
+	> ul
+	> li.item
+	.note_study_star {
+	float: right;
+	width: 275px;
+	margin-top: -5px;
+}
+.body_hbmath.body_starwrap
+	.cont_area
+	.topClass
+	.rightcon
+	.studyListWrap
+	> div
+	> ul
+	> li.item
+	.note_study_star
+	li
+	a {
+	float: left;
+	width: 128px !important;
+	height: 50px !important;
+	line-height: 49px !important;
+	position: relative;
+	top: -24px;
+	margin-right: 0 !important;
+	margin-left: 14px !important;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.body_hbmath.body_starwrap
+	.cont_area
+	.topClass
+	.rightcon
+	.studyListWrap
+	> div
+	> ul
+	> li.item
+	.note_study_star
+	li:first-child
+	a {
+	margin-left: 0 !important;
+}
+
+/* 수준별 수학 - 영역별 수학 - 단원별 보충 학습 */
+.body_hbmath.body_starwrap .cont_area .hbmath0202 #wrapper > div > ul > li.item {
+	height: 123px;
+}
+.body_hbmath.body_starwrap .cont_area .hbmath0202 #wrapper > div > ul > li.item span.stit {
+	width: 100%;
+}
+.body_hbmath.body_starwrap .cont_area .hbmath0202 #wrapper > div > ul > li .btns {
+	width: 95%;
+	top: 65px;
+	left: 17px;
+}
+.body_hbmath.body_starwrap .cont_area .hbmath0202 #wrapper > div > ul > li .btns a {
+	height: 38px;
+	line-height: 40px;
+}
+
+/* 수준별 수학 - 영역별 수학 - 영역별 집중 학습 */
+.body_hbmath.body_starwrap .cont_area .hbmath02 #wrapper > div > ul > li .btns {
+	width: 100%;
+	margin: 0;
+}
+.body_hbmath.body_starwrap .cont_area .hbmath02 #wrapper > div > ul > li.item span.stit {
+	width: 408px;
+	margin-left: 0;
+}
+.body_hbmath.body_starwrap .cont_area .hbmath02 #wrapper > div > ul > li.item .note_study_star {
+	float: right;
+	width: 293px;
+}
+.body_hbmath.body_starwrap
+	.cont_area
+	.hbmath02
+	#wrapper
+	> div
+	> ul
+	> li.item
+	.note_study_star
+	li
+	a {
+	float: left;
+	height: 43px;
+	line-height: 43px !important;
+	position: relative;
+	top: -24px;
+	margin-right: 0 !important;
+	margin-left: 14px !important;
+}
+.body_hbmath.body_starwrap
+	.cont_area
+	.hbmath02
+	#wrapper
+	> div
+	> ul
+	> li.item
+	.note_study_star
+	li:first-child
+	a {
+	margin-left: 0 !important;
+}
+
+/* 베스트셀러 수학관 - 짤강수학  */
+.body_hbmath.body_starwrap .cont_area .hbmath0401 #wrapper > div > ul > li .btns {
+	width: 100%;
+	margin: 0;
+}
+.body_hbmath.body_starwrap
+	.cont_area
+	.hbmath0401
+	#wrapper
+	> div
+	> ul
+	> li
+	.jjal_btns_box
+	p:first-child {
+	margin-left: 0 !important;
+}
+.body_hbmath.body_starwrap
+	.cont_area
+	.hbmath0401
+	#wrapper
+	> div
+	> ul
+	> li
+	.jjal_btns_box
+	p.btn_jjal
+	a {
+	height: 45px;
+	line-height: 45px;
+}
+.body_hbmath.body_starwrap .cont_area .hbmath0401 #wrapper > div > ul > li.item span.stit {
+	margin-left: 0;
+	width: 332px !important;
+}
+.body_hbmath.body_starwrap .cont_area .hbmath0401 #wrapper > div > ul > li .jjal_btns_box {
+	width: 370px;
+	float: right;
+}
+
+/* 베스트셀러 수학관 - 우등생 해법수학, 응용해결의 법칙 */
+.body_hbmath.body_starwrap .cont_area .hbmath0402 #wrapper > div > ul > li .btns {
+	width: 100%;
+	margin: 0;
+}
+.body_hbmath.body_starwrap .cont_area .hbmath0402 #wrapper > div > ul > li.item span.stit {
+	width: 408px !important;
+	margin-left: 0;
+}
+.body_hbmath.body_starwrap .cont_area .hbmath0402 #wrapper > div > ul > li.item .note_study_star {
+	float: right;
+	width: 275px;
+}
+.body_hbmath.body_starwrap
+	.cont_area
+	.hbmath0402
+	#wrapper
+	> div
+	> ul
+	> li.item
+	.note_study_star
+	li
+	a {
+	float: left;
+	width: 128px;
+	height: 43px;
+	line-height: 45px;
+	position: relative;
+	top: -24px;
+	margin-right: 0 !important;
+	margin-left: 14px !important;
+}
+.body_hbmath.body_starwrap
+	.cont_area
+	.hbmath0402
+	#wrapper
+	> div
+	> ul
+	> li.item
+	.note_study_star
+	li:first-child
+	a {
+	margin-left: 0 !important;
+}
+
+/* 베스트셀러 수학관 - 수학 전략 - #82239 신규 추가 2022-04-11  */
+.body_hbmath.body_starwrap .cont_area .strategy .rightcon .studyListWrap > div > ul > li .btns {
+	width: 100%;
+	margin: 0;
+}
+.body_hbmath.body_starwrap
+	.cont_area
+	.strategy
+	.rightcon
+	.studyListWrap
+	> div
+	> ul
+	> li.item
+	span.stit {
+	width: 408px !important;
+	margin-left: 0;
+}
+.body_hbmath.body_starwrap
+	.cont_area
+	.strategy
+	.rightcon
+	.studyListWrap
+	> div
+	> ul
+	> li.item
+	.note_study_star {
+	float: right;
+	width: 275px;
+	margin-top: -5px;
+}
+.body_hbmath.body_starwrap
+	.cont_area
+	.strategy
+	.rightcon
+	.studyListWrap
+	> div
+	> ul
+	> li.item
+	.note_study_star
+	li
+	a {
+	float: left;
+	width: 128px !important;
+	height: 50px !important;
+	line-height: 52px !important;
+	position: relative;
+	top: -24px;
+	margin-right: 0 !important;
+	margin-left: 14px !important;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.body_hbmath.body_starwrap
+	.cont_area
+	.strategy
+	.rightcon
+	.studyListWrap
+	> div
+	> ul
+	> li.item
+	.note_study_star
+	li:first-child
+	a {
+	margin-left: 0 !important;
+}
+
+/* 과목별학교공부 (나의학습방)- 국어 */
+.body_mystudy.body_starwrap .sub .cont_area #wrapper ul.lect_list > li .btns ul.type02 {
+	padding: 0;
+}
+.body_mystudy.body_starwrap .sub .cont_area #wrapper ul.lect_list > li .btns ul li {
+	margin-left: 25px !important;
+}
+.body_mystudy.body_starwrap .sub .cont_area #wrapper ul.lect_list > li .btns ul li:first-child {
+	margin: 0 !important;
+}
+.body_mystudy.body_starwrap .sub .cont_area #wrapper ul.lect_list > li .btns a {
+	height: 40px;
+}
+
+/* 과목별학교공부 (나의학습방)-안전한 생활 */
+.body_mystudy.body_starwrap .sub .cont_area .safety_list #wrapper {
+	left: 52px;
+}
+.body_mystudy.body_starwrap .sub .cont_area #wrapper > div > ul.safety > li.item .btns {
+	left: 250px;
+	width: 327px;
+	text-align: left;
+}
+.body_mystudy.body_starwrap .sub .cont_area #wrapper > div > ul.safety > li.item .btns li > a {
+	display: block;
+	padding: 0;
+	margin: 0 6px;
+	width: 140px;
+	height: 40px;
+}
+.body_mystudy.body_starwrap .sub .cont_area #wrapper > div > ul.safety > li.item span.stit {
+	left: 230px;
+	width: 310px;
+	height: 60px;
+	overflow: hidden;
+	color: #323131;
+	font-size: 25px;
+	font-weight: bold;
+	text-indent: -20px;
+	padding: 0 0 0 20px;
+	line-height: 1.2;
+}
+.body_mystudy.body_starwrap
+	.sub
+	.cont_area
+	#wrapper
+	> div
+	> ul.safety
+	> li.item
+	.btns
+	li
+	> a
+	> span {
+	background: none;
+}
+.body_mystudy.body_starwrap
+	.sub
+	.cont_area
+	#wrapper
+	> div
+	> ul.safety
+	> li.item
+	.btns
+	li
+	> a.btn_view
+	> span {
+	padding-left: 0;
+	line-height: 42px;
+}
+.body_mystudy.body_starwrap
+	.sub
+	.cont_area
+	#wrapper
+	> div
+	> ul.safety
+	> li.item
+	.btns
+	li
+	> a.btn_restudy {
+	background: #9d999b !important;
+	padding: 0 !important;
+	margin: 0 6px !important;
+	float: none;
+	top: 0;
+	position: relative;
+	top: 0;
+	left: 0;
+	right: 0 !important;
+	border: 0px !important;
+}
+.body_mystudy.body_starwrap
+	.sub
+	.cont_area
+	#wrapper
+	> div
+	> ul.safety
+	> li.item
+	.btns
+	li
+	> a.btn_ready {
+	border: 1px solid #d3d3d3;
+	width: 138px !important;
+	height: 38px !important;
+	position: relative;
+	right: 0 !important;
+	color: #a1a1a1 !important;
+}
+.body_mystudy.body_starwrap
+	.sub
+	.cont_area
+	#wrapper
+	> div
+	> ul.safety
+	> li.item
+	.btns
+	li
+	> a.btn_view {
+	border: 0;
+}
+.body_mystudy.body_starwrap .sub .cont_area #wrapper > div > ul.safety > li.item .btns li > .date {
+	padding-left: 15px;
+}
+.body_mystudy.body_starwrap .sub .cont_area #wrapper > div > ul.safety > li .btns a.btnGradeThumbG {
+	top: 0;
+	right: 25px;
+	position: absolute;
+}
+.body_mystudy.body_starwrap
+	.sub
+	.cont_area
+	#wrapper
+	> div
+	> ul.safety
+	> li
+	.btns
+	a.btnToggleThumbG {
+	top: 0;
+	right: 25px;
+	position: absolute;
+}
+
+/* 과목별학교공부 (나의학습방)- 도덕 */
+.body_mystudy.body_starwrap .sub .cont_area #wrapper > div > ul.ethics > li.item .btns {
+	width: 327px;
+	top: 125px;
+	left: 250px;
+	text-align: left;
+}
+.body_mystudy.body_starwrap .sub .cont_area #wrapper > div > ul.ethics > li.item .btns li > a {
+	display: block;
+	padding: 0;
+	margin: 0 6px;
+	width: 140px;
+	height: 40px;
+}
+.body_mystudy.body_starwrap
+	.sub
+	.cont_area
+	#wrapper
+	> div
+	> ul.ethics
+	> li.item
+	.btns
+	li
+	> a
+	> span {
+	background: none;
+}
+.body_mystudy.body_starwrap
+	.sub
+	.cont_area
+	#wrapper
+	> div
+	> ul.ethics
+	> li.item
+	.btns
+	li
+	> a.btn_view
+	> span {
+	padding-left: 0;
+	line-height: 42px;
+}
+.body_mystudy.body_starwrap
+	.sub
+	.cont_area
+	#wrapper
+	> div
+	> ul.ethics
+	> li.item
+	.btns
+	li
+	> a.btn_restudy {
+	background: #9d999b !important;
+	padding: 0 !important;
+	margin: 0 6px !important;
+	float: none;
+	top: 0;
+	position: relative;
+	top: 0;
+	left: 0;
+	right: 0 !important;
+	border: 0px !important;
+}
+.body_mystudy.body_starwrap
+	.sub
+	.cont_area
+	#wrapper
+	> div
+	> ul.ethics
+	> li.item
+	.btns
+	li
+	> a.btn_ready {
+	border: 1px solid #d3d3d3;
+	width: 138px !important;
+	height: 38px !important;
+	position: relative;
+	right: 0 !important;
+	color: #a1a1a1 !important;
+}
+.body_mystudy.body_starwrap
+	.sub
+	.cont_area
+	#wrapper
+	> div
+	> ul.ethics
+	> li.item
+	.btns
+	li
+	> a.btn_view {
+	border: 0;
+}
+.body_mystudy.body_starwrap .sub .cont_area #wrapper > div > ul.ethics > li.item .btns li > .date {
+	padding-left: 15px;
+}
+.body_mystudy.body_starwrap .sub .cont_area #wrapper > div > ul.ethics > li .btns a.btnGradeThumbG {
+	top: 0;
+	right: 25px;
+	position: absolute;
+}
+.body_mystudy.body_starwrap
+	.sub
+	.cont_area
+	#wrapper
+	> div
+	> ul.ethics
+	> li
+	.btns
+	a.btnToggleThumbG {
+	top: 0;
+	right: 25px;
+	position: absolute;
+}
+
+/* 과목별학교공부 (나의학습방)-독서논술(3,4학년) */
+.body_mystudy.body_starwrap .sub .cont_area #wrapper ul.lect_list > li .btns ul.type02 {
+	width: 530px;
+}
+.body_mystudy.body_starwrap .sub .cont_area #wrapper ul.lect_list > li .btns ul.type02 li {
+	width: 160px;
+	margin: 0;
+}
+
+/********************************************************
+추가 요청 건
+**********************************************************/
+
+/* 특별학습2관 - 수학 3D도형 학습 */
+.body_simwha.body_starwrap .sub .cont_area ul.simwha17_5_list .simwha17_5_list_wrap {
+	width: 702px;
+	padding: 0;
+	margin: 0;
+}
+.body_simwha.body_starwrap .sub .cont_area ul.simwha17_5_list:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+.body_simwha.body_starwrap .sub .cont_area ul.simwha17_5_list .box_wrap a.play_link {
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin: 0;
+	padding: 0;
+	width: 212px;
+	height: 116px;
+	text-indent: -9999px;
+	background: url(//cdndata.milkt.co.kr/ele/app/images/simwha/btn_play.png) no-repeat 0 0;
+	background-size: 212px;
+}
+.body_simwha.body_starwrap .sub .cont_area ul.simwha17_5_list .box_wrap > img {
+	display: block;
+	width: 212px;
+	height: 116px;
+}
+.body_simwha.body_starwrap .sub .cont_area ul.simwha17_5_list .box_wrap .txt {
+	margin: 10px 7px 0px !important;
+	line-height: 1.3;
+	height: 42px;
+	overflow: hidden;
+	letter-spacing: 0;
+	font-size: 16px;
+	color: #323131;
+	font-weight: bold;
+	word-break: break-all;
+}
+.body_simwha.body_starwrap .sub .cont_area ul.simwha17_5_list .box_wrap .date {
+	color: #323131;
+	font-size: 15px;
+	margin: 0 7px;
+}
+.body_simwha.body_starwrap .sub .cont_area ul.simwha17_5_list .box_wrap .date em {
+	display: inline-block;
+	min-width: 50px;
+	text-align: center;
+}
+.body_simwha.body_starwrap .sub .cont_area ul.simwha17_5_list .box_wrap.step01 {
+	width: 147px;
+	padding: 0 0 0 11px;
+}
+.body_simwha.body_starwrap .sub .cont_area ul.simwha17_5_list .box_wrap.step02 {
+	width: 492px;
+	padding: 0 0 0 12px;
+}
+.body_simwha.body_starwrap .sub .cont_area ul.simwha17_5_list .FiveStarWrap {
+	margin-left: 37px;
+	margin-bottom: 40px;
+}
+.body_simwha.body_starwrap .sub .cont_area ul.simwha17_5_list .h228 {
+	position: relative;
+	float: left;
+	padding: 0;
+	margin-right: 30px;
+	width: 212px;
+	background: #fff;
+	overflow: hidden;
+	box-sizing: border-box;
+}
+.body_simwha.body_starwrap .sub .cont_area ul.simwha17_5_list .h228 .box_wrap {
+	height: 228px;
+	border: 1px solid #e3e3e3;
+	border-radius: 10px;
+	margin-bottom: 17px;
+	overflow: hidden;
+}
+.body_simwha.body_starwrap .sub .cont_area ul.simwha17_5_list .h228 .box_wrap .txt_sub {
+	color: #323131;
+	font-size: 15px;
+	margin: 0 7px;
+	text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	width: 195px;
+	padding: 3px 0;
+	letter-spacing: -1px;
+}
+.body_simwha.body_starwrap .sub .cont_area ul.simwha17_5_list .h228 .box_wrap .date {
+	color: #999;
+	font-size: 12px;
+	margin: 0 7px;
+}
+.body_simwha.body_starwrap .sub .cont_area ul.simwha17_5_list .h228:nth-child(3n) {
+	margin-right: 0;
+}
+
+/* 특별학습2관 - 학습리스트 공통영역 */
+.body_simwha.body_starwrap .sub .cont_area ul.simwha_list .simwha_list_wrap {
+	width: 702px;
+	padding: 0;
+	margin: 0;
+}
+.body_simwha.body_starwrap .sub .cont_area ul.simwha_list:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+.body_simwha.body_starwrap .sub .cont_area ul.simwha_list .box_wrap a.play_link {
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin: 0;
+	padding: 0;
+	width: 212px;
+	height: 116px;
+	text-indent: -9999px;
+	background: url(//cdndata.milkt.co.kr/ele/app/images/simwha/btn_play.png) no-repeat 0 0;
+	background-size: 212px;
+}
+.body_simwha.body_starwrap .sub .cont_area ul.simwha_list .box_wrap > img {
+	display: block;
+	width: 212px;
+	height: 116px;
+}
+.body_simwha.body_starwrap .sub .cont_area ul.simwha_list .box_wrap .txt {
+	margin: 10px 7px 0px !important;
+	line-height: 1.3;
+	height: 42px;
+	overflow: hidden;
+	letter-spacing: 0;
+	font-size: 16px;
+	color: #323131;
+	font-weight: bold;
+	word-break: break-all;
+}
+.body_simwha.body_starwrap .sub .cont_area ul.simwha_list .box_wrap .date {
+	color: #323131;
+	font-size: 15px;
+	margin: 0 7px;
+}
+.body_simwha.body_starwrap .sub .cont_area ul.simwha_list .box_wrap .date em {
+	display: inline-block;
+	min-width: 50px;
+	text-align: center;
+}
+.body_simwha.body_starwrap .sub .cont_area ul.simwha_list .box_wrap.step01 {
+	width: 147px;
+	padding: 0 0 0 11px;
+}
+.body_simwha.body_starwrap .sub .cont_area ul.simwha_list .box_wrap.step02 {
+	width: 492px;
+	padding: 0 0 0 12px;
+}
+.body_simwha.body_starwrap .sub .cont_area ul.simwha_list .FiveStarWrap {
+	margin-left: 37px;
+	margin-bottom: 40px;
+}
+.body_simwha.body_starwrap .sub .cont_area ul.simwha_list .h228 {
+	position: relative;
+	float: left;
+	padding: 0;
+	margin-right: 30px;
+	width: 212px;
+	background: #fff;
+	overflow: hidden;
+	box-sizing: border-box;
+}
+.body_simwha.body_starwrap .sub .cont_area ul.simwha_list .h228 .box_wrap {
+	height: 228px;
+	border: 1px solid #e3e3e3;
+	border-radius: 10px;
+	margin-bottom: 17px;
+	overflow: hidden;
+}
+.body_simwha.body_starwrap .sub .cont_area ul.simwha_list .h228 .box_wrap .txt_sub {
+	color: #323131;
+	font-size: 15px;
+	margin: 0 7px;
+	text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	width: 195px;
+	padding: 3px 0;
+	letter-spacing: -1px;
+}
+.body_simwha.body_starwrap .sub .cont_area ul.simwha_list .h228 .box_wrap .date {
+	color: #999;
+	font-size: 12px;
+	margin: 0 7px;
+}
+.body_simwha.body_starwrap .sub .cont_area ul.simwha_list .h228:nth-child(3n) {
+	margin-right: 0;
+}
+
+/* 과목별학교공부 - AI 수학 */
+.body_mystudy.body_starwrap .sub .right_cont .cont_list li .list_box {
+	height: 260px;
+	box-sizing: border-box;
+}
+.body_mystudy.body_starwrap .sub .right_cont .cont_list li .list_box dl dt p {
+	margin-top: 26px;
+}
+.body_mystudy.body_starwrap .sub .right_cont .cont_list li .list_box dl dt span {
+	margin-top: 8px;
+	min-height: 17px;
+}
+.body_mystudy.body_starwrap .sub .right_cont .cont_list li.report .list_box {
+	width: 250px;
+	height: 260px;
+	background: url(//cdndata.milkt.co.kr/ele/app/images/mystudy/aimath/bg_report_v2.png) left top
+		no-repeat;
+	background-size: 250px;
+	margin: 31px auto 0 auto;
+	position: relative;
+	border: 0;
+}
+.body_mystudy.body_starwrap .sub .right_cont .cont_list li.report .list_box dl dt p.txt_report {
+	padding-top: 70px;
+}
+.body_mystudy.body_starwrap .sub .right_cont .cont_list li.report .list_box dl dd {
+	margin-top: 25px;
+}
+.body_mystudy.body_starwrap .sub .right_cont .cont_list li .list_box dl dd {
+	margin-top: 17px;
+}
+.body_mystudy.body_starwrap .sub .right_cont .cont_list li .list_box dl dd span {
+	color: #e5c7a0;
+	margin-top: 8px;
+}
+.body_mystudy.body_starwrap
+	.sub
+	.right_cont
+	.cont_list
+	li
+	.list_box
+	dl
+	dd
+	.FiveStarWrap
+	a.btnToggleStarC {
+	margin-top: 5px;
+	background: #fffbf5 !important;
+}
+.body_mystudy.body_starwrap
+	.sub
+	.right_cont
+	.cont_list
+	li
+	.list_box
+	dl
+	dd
+	.FiveStarWrap
+	a.btnToggleStarC
+	span {
+	margin: 0;
+}
+.body_mystudy.body_starwrap
+	.sub
+	.right_cont
+	.cont_list
+	li
+	.list_box
+	dl
+	dd
+	.FiveStarWrap
+	a.btnGradeStarC {
+	margin-top: 6px;
+	background: #fffbf5 url(//cdndata.milkt.co.kr/ele/app/images/mystudy/v2/star_ai_off.png) no-repeat
+		21px 50% !important;
+	background-size: 18.5px 17.5px !important;
+	color: #e5c7a0 !important;
+	border-color: #e5c7a0 !important;
+}
+.body_mystudy.body_starwrap
+	.sub
+	.right_cont
+	.cont_list
+	li
+	.list_box
+	dl
+	dd
+	.FiveStarWrap
+	a.btnGradeStarC.on {
+	margin-top: 6px;
+	background: #fffbf5 url(//cdndata.milkt.co.kr/ele/app/images/mystudy/v2/star_on.png) no-repeat
+		21px 50% !important;
+	background-size: 18.5px 17.5px !important;
+	color: #ff7200 !important;
+	border-color: #ff7200 !important;
+}
+.body_mystudy.body_starwrap .sub .right_cont .cont_list li.last_question .list_box dl dt p {
+	margin-top: 55px;
+}
+.body_mystudy.body_starwrap .sub .right_cont .cont_list li.last_question .list_box dl dd {
+	margin-top: 30px;
+}
+
+/* 별점 레이어 팝업 new (2020.11.12) */
+.lpop_studyinfo_star .txt_area.star_new {
+	width: 700px;
+	height: 460px;
+	margin-top: -230px;
+	margin-left: -350px;
+	overflow: hidden;
+}
+.lpop_studyinfo_star .txt_area.star_new .cont {
+	margin-top: 0;
+	padding-top: 40px;
+	box-sizing: border-box;
+}
+.lpop_studyinfo_star .txt_area.star_new .startxt {
+	font-size: 30px;
+	line-height: 36px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
+	margin-bottom: 44px;
+	white-space: normal;
+}
+.lpop_studyinfo_star .txt_area.star_new .starboxwrap {
+	width: 100%;
+	height: 125px;
+	margin: 0;
+	position: absolute;
+	bottom: 0;
+	padding: 40px 0;
+	box-sizing: border-box;
+}
+.lpop_studyinfo_star .txt_area.star_new:after {
+	display: none;
+}
+.lpop_studyinfo_star .txt_area.star_new .startit {
+	width: 203px;
+	font-size: 18px;
+	margin: 0;
+	text-decoration: underline;
+	text-underline-position: under;
+	border: none;
+	line-height: 45px;
+	vertical-align: middle;
+}
+.lpop_studyinfo_star .txt_area.star_new .startit.deactivation {
+	color: #444;
+}
+.lpop_studyinfo_star .txt_area.star_new .scoreWrap {
+	width: 100%;
+}
+.lpop_studyinfo_star .txt_area.star_new .scoreWrap .averageScore {
+	width: 212px;
+	float: left;
+	text-align: center;
+	padding-top: 104px;
+	margin-top: -9px;
+	background: url('//cdndata.milkt.co.kr/ele/app/images/mystudy/v2/star_char_v2.png') no-repeat 30px
+		top;
+	background-size: 145px;
+	padding-left: 5px;
+	box-sizing: border-box;
+}
+.lpop_studyinfo_star .txt_area.star_new .scoreWrap .averageScore h1 {
+	font-size: 27px;
+	color: #333;
+	line-height: 57px;
+}
+.lpop_studyinfo_star .txt_area.star_new .scoreWrap .averageScore h1 strong {
+	font-size: 40px;
+	color: #0091f7;
+	font-weight: bold;
+	letter-spacing: -1px;
+}
+.lpop_studyinfo_star .txt_area.star_new .scoreWrap .averageScore p {
+	font-size: 16px;
+	color: #333;
+}
+.lpop_studyinfo_star .txt_area.star_new .scoreWrap .stepScore {
+	float: left;
+}
+.lpop_studyinfo_star .txt_area.star_new .scoreWrap .stepScore li {
+	height: 36px;
+}
+.lpop_studyinfo_star .txt_area.star_new .scoreWrap .stepScore li h1 {
+	width: 26px;
+	float: left;
+	font-size: 18px;
+	margin-right: 14px;
+	color: #333;
+	letter-spacing: -1px;
+	line-height: 36px;
+}
+.lpop_studyinfo_star .txt_area.star_new .scoreWrap .stepScore li .barGraph {
+	width: 340px;
+	height: 9px;
+	float: left;
+	background: #d7d7d7;
+	margin: 13px 0;
+	position: relative;
+}
+.lpop_studyinfo_star .txt_area.star_new .scoreWrap .stepScore li .barGraph span {
+	height: 100%;
+	background: #0091f7;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+.lpop_studyinfo_star .txt_area.star_new .scoreWrap .stepScore li p {
+	width: 75px;
+	float: left;
+	text-align: right;
+	font-size: 18px;
+	color: #333;
+	font-weight: bold;
+	line-height: 36px;
+}
+.lpop_studyinfo_star .txt_area.star_new .star-input_new {
+	margin-right: 25px;
+	margin-left: -5px;
+}
+.lpop_studyinfo_star .txt_area.star_new .star-input1_new {
+	margin-right: 25px;
+	margin-left: -5px;
+}
+.lpop_studyinfo_star .txt_area.star_new .btn {
+	width: 140px;
+	height: 45px;
+	display: inline-block;
+	border-radius: 23px;
+	background: #ff7200;
+	color: #fff;
+	text-align: center;
+	font-size: 20px;
+	font-weight: bold;
+	line-height: 45px;
+	vertical-align: middle;
+}
+.lpop_studyinfo_star .txt_area.star_new .btn.deactivation {
+	background: #888;
+}
+
+/* 리스트 버튼 타입 A,B / 썸네일 F */
+.star_wrapper .FiveStarWrap a.btnToggleStarA {
+	text-align: center !important;
+	padding-left: 10px !important;
+}
+.star_wrapper .FiveStarWrap a.btnToggleStarA span {
+	vertical-align: -10% !important;
+	height: 24.5px !important;
+	background: #fff url(//cdndata.milkt.co.kr/ele/app/images/mystudy/v2/star_on.png) no-repeat 50%
+		50% !important;
+	background-size: 18.5px 17.5px !important;
+}
+.star_wrapper .FiveStarWrap a.btnGradeStarA.on {
+	background-position: 60% 50% !important;
+	padding-left: 55px !important;
+}
+.star_wrapper .FiveStarWrap a.btnGradeStarA {
+}
+
+/* 리스트 버튼 타입 C,H,I / 썸네일 J */
+.star_wrapper .FiveStarWrap a.btnToggleStarC {
+	text-align: center !important;
+	padding-left: 10px !important;
+	line-height: 47px !important;
+}
+.star_wrapper .FiveStarWrap a.btnToggleStarC span {
+	vertical-align: -9% !important;
+	height: 24.5px !important;
+	background: #fff url(//cdndata.milkt.co.kr/ele/app/images/mystudy/v2/star_on.png) no-repeat 50%
+		50% !important;
+	background-size: 18.5px 17.5px !important;
+}
+.star_wrapper .FiveStarWrap a.btnGradeStarC.on {
+	background-position: 60% 50% !important;
+	padding-left: 43px !important;
+}
+.star_wrapper .FiveStarWrap a.btnGradeStarC {
+}
+
+/* 리스트 버튼 타입  D,E */
+.star_wrapper .FiveStarWrap a.btnToggleStarD {
+	text-align: center !important;
+	padding-left: 10px !important;
+	line-height: 47px !important;
+}
+.star_wrapper .FiveStarWrap a.btnToggleStarD span {
+	vertical-align: -9% !important;
+	height: 24.5px !important;
+	background: #fff url(//cdndata.milkt.co.kr/ele/app/images/mystudy/v2/star_on.png) no-repeat 50%
+		50% !important;
+	background-size: 18.5px 17.5px !important;
+}
+.star_wrapper .FiveStarWrap a.btnGradeStarD.on {
+	background-position: 60% 50% !important;
+	padding-left: 47px !important;
+}
+.star_wrapper .FiveStarWrap a.btnGradeStarD {
+}
+
+/* 리스트 버튼 타입  G */
+.star_wrapper .FiveStarWrap a.btnToggleStarG {
+	text-align: center !important;
+	padding-left: 10px !important;
+}
+.star_wrapper .FiveStarWrap a.btnToggleStarG span {
+	vertical-align: -9% !important;
+	height: 24.5px !important;
+	background: #fff url(//cdndata.milkt.co.kr/ele/app/images/mystudy/v2/star_on.png) no-repeat 50%
+		50% !important;
+	background-size: 18.5px 17.5px !important;
+}
+.star_wrapper .FiveStarWrap a.btnGradeStarG.on {
+	background-position: 60% 50% !important;
+	padding-left: 37px !important;
+}
+.star_wrapper .FiveStarWrap a.btnGradeStarG {
+}
+
+/* 썸네일 A,B,C,D(키즈)  */
+.star_wrapper .FiveStarWrap a.btnToggleThumbA {
+	text-align: center !important;
+	padding-left: 10px !important;
+	line-height: 38px !important;
+}
+.star_wrapper .FiveStarWrap a.btnToggleThumbA span {
+	vertical-align: -17% !important;
+	height: 24.5px !important;
+	background: url(//cdndata.milkt.co.kr/ele/app/images/mystudy/v2/star_on.png) no-repeat 50% 50% !important;
+	background-size: 18.5px 17.5px !important;
+}
+.star_wrapper .FiveStarWrap a.btnGradeThumbA.on {
+	background-position: 60% 50% !important;
+	padding-left: 42px !important;
+}
+.star_wrapper .FiveStarWrap a.btnGradeThumbA {
+}
+
+/* 썸네일 E/K/G/H/I - 140px */
+.star_wrapper .FiveStarWrap a.btnToggleThumbG {
+	text-align: center !important;
+	padding-left: 10px !important;
+}
+.star_wrapper .FiveStarWrap a.btnToggleThumbG span {
+	vertical-align: -10% !important;
+	height: 24.5px !important;
+	background: #fff url(//cdndata.milkt.co.kr/ele/app/images/mystudy/v2/star_on.png) no-repeat 50%
+		50% !important;
+	background-size: 18.5px 17.5px !important;
+}
+.star_wrapper .FiveStarWrap a.btnGradeThumbG.on {
+	background-position: 60% 50% !important;
+	padding-left: 47px !important;
+}
+.star_wrapper .FiveStarWrap a.btnGradeThumbG {
+}
+
+/* 썸네일 G/H/I -115px */
+.star_wrapper .FiveStarWrap a.btnToggleThumbH {
+	text-align: center !important;
+	padding-left: 10px !important;
+	line-height: 36px !important;
+}
+.star_wrapper .FiveStarWrap a.btnToggleThumbH span {
+	vertical-align: -12% !important;
+	height: 24.5px !important;
+	background: #f6e7d4 url(//cdndata.milkt.co.kr/ele/app/images/mystudy/v2/star_on.png) no-repeat 50%
+		50% !important;
+	background-size: 18.5px 17.5px !important;
+}
+.star_wrapper .FiveStarWrap a.btnGradeThumbH.on {
+	background-position: 60% 50% !important;
+	padding-left: 35px !important;
+}
+.star_wrapper .FiveStarWrap a.btnGradeThumbH {
+}
+
+/* 썸네일 l */
+.star_wrapper .FiveStarWrap a.btnToggleThumbL {
+	text-align: center !important;
+	padding-left: 10px !important;
+	line-height: 43px !important;
+}
+.star_wrapper .FiveStarWrap a.btnToggleThumbL span {
+	vertical-align: -10% !important;
+	height: 24.5px !important;
+	background: #fff url(//cdndata.milkt.co.kr/ele/app/images/mystudy/v2/star_red_on.png) no-repeat
+		50% 50% !important;
+	background-size: 18px 17px !important;
+}
+.star_wrapper .FiveStarWrap a.btnGradeThumbL.on {
+	background-position: 60% 50% !important;
+	padding-left: 42px !important;
+}
+.star_wrapper .FiveStarWrap a.btnGradeThumbL {
+}
+
+/* 썸네일 M,N */
+.star_wrapper .FiveStarWrap a.btnToggleThumbM {
+	text-align: center !important;
+	padding-left: 10px !important;
+	line-height: 43px !important;
+}
+.star_wrapper .FiveStarWrap a.btnToggleThumbM span {
+	vertical-align: -10% !important;
+	height: 24.5px !important;
+	background: #fff url(//cdndata.milkt.co.kr/ele/app/images/mystudy/v2/star_red_on.png) no-repeat
+		50% 50% !important;
+	background-size: 18px 17px !important;
+}
+.star_wrapper .FiveStarWrap a.btnGradeThumbM.on {
+	background-position: 60% 50% !important;
+	padding-left: 52px !important;
+}
+.star_wrapper .FiveStarWrap a.btnGradeThumbM {
+}
+
+/* 썸네일 O - 130px */
+.star_wrapper .FiveStarWrap a.btnToggleThumbO {
+	text-align: center !important;
+	padding-left: 10px !important;
+}
+.star_wrapper .FiveStarWrap a.btnToggleThumbO span {
+	vertical-align: -10% !important;
+	height: 24.5px !important;
+	background: #f6e7d4 url(//cdndata.milkt.co.kr/ele/app/images/mystudy/v2/star_on.png) no-repeat 50%
+		50% !important;
+	background-size: 18.5px 17.5px !important;
+}
+.star_wrapper .FiveStarWrap a.btnGradeThumbO.on {
+	background-position: 60% 50% !important;
+	padding-left: 43px !important;
+}
+.star_wrapper .FiveStarWrap a.btnGradeThumbO {
+}
+
+/* AI 학습관 */
+.body_mystudy.body_starwrap.star_wrapper
+	.sub
+	.right_cont
+	.cont_list
+	li
+	.list_box
+	dl
+	dd
+	.FiveStarWrap
+	a.btnGradeStarC.on {
+	background-position: 60% 50% !important;
+	padding-left: 43px !important;
+}
+.body_mystudy.body_starwrap.star_wrapper
+	.sub
+	.right_cont
+	.cont_list
+	li
+	.list_box
+	dl
+	dd
+	.FiveStarWrap
+	a.btnToggleStarC {
+	text-align: center !important;
+	padding-left: 10px !important;
+	line-height: 47px !important;
+}
+.body_mystudy.body_starwrap.star_wrapper
+	.sub
+	.right_cont
+	.cont_list
+	li
+	.list_box
+	dl
+	dd
+	.FiveStarWrap
+	a.btnToggleStarC
+	span {
+	vertical-align: -9% !important;
+	height: 24.5px !important;
+	background: #fff url(//cdndata.milkt.co.kr/ele/app/images/mystudy/v2/star_on.png) no-repeat 50%
+		50% !important;
+	background-size: 18.5px 17.5px !important;
+}
+
+/* 엔트리 코딩 */
+.star_wrapper .FiveStarWrap a.btnToggleStarE {
+	text-align: center !important;
+	padding-left: 10px !important;
+}
+.star_wrapper .FiveStarWrap a.btnToggleStarE span {
+	vertical-align: -12% !important;
+	height: 24.5px !important;
+	background: url(//cdndata.milkt.co.kr/ele/app/images/mystudy/v2/star_on02.png) no-repeat 50% 47% !important;
+	background-size: 19px 18px !important;
+}
+.star_wrapper .FiveStarWrap a.btnGradeStarE.on {
+	background-position: 60% 50% !important;
+	padding-left: 33px !important;
+}
+.star_wrapper .FiveStarWrap a.btnGradeStarE {
+}
+
+/* AI 스피킹 */
+.star_wrapper .section_contents ul li .FiveStarWrap a.btnToggleThumbM {
+	text-align: center !important;
+	padding-left: 10px !important;
+	line-height: 43px !important;
+}
+.star_wrapper .section_contents ul li .FiveStarWrap a.btnToggleThumbM span {
+	vertical-align: -10% !important;
+	height: 24.5px !important;
+	background: #fff url(//cdndata.milkt.co.kr/ele/app/images/mystudy/v2/star_blue_on.png) no-repeat
+		50% 50% !important;
+	background-size: 18px 17px !important;
+}
+.star_wrapper .section_contents ul li .FiveStarWrap a.btnGradeThumbM.on {
+	background-position: 60% 50% !important;
+	padding-left: 52px !important;
+}

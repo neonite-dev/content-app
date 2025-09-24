@@ -1,0 +1,2243 @@
+.body_aiSubject,
+.body_aiSubject * {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	letter-spacing: -0.05em;
+}
+.body_aiSubject button {
+	overflow: visible;
+	padding: 0;
+	border: none;
+	border-radius: 0;
+	background: inherit;
+	box-shadow: none;
+	cursor: pointer;
+}
+.body_aiSubject .lpop_relatedstudy_v2,
+.body_aiSubject .lpop_relatedstudy_v2 * {
+	-webkit-box-sizing: content-box;
+	box-sizing: content-box;
+} /** 관련 학습 팝업 예외 */
+/*.body_aiSubject .lpopStudyinfo,
+.body_aiSubject .lpopStudyinfo *{-webkit-box-sizing:content-box;box-sizing:content-box;letter-spacing:0}*/ /** 학습 안내 팝업 예외 */
+.body_aiSubject #wrap {
+	min-height: 725px;
+}
+.hideTxt {
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+	width: 1px;
+	height: 1px;
+	border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+}
+
+header {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+}
+header .mainTit {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-align-items: center;
+	align-items: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	width: 310px;
+	height: 140px;
+	color: #e7deff;
+	font-size: 30px;
+	font-weight: 300;
+	background: url(//cdndata.milkt.co.kr/ele/app/images/mystudy/aiSubject/mainTitBg.jpg) no-repeat;
+	background-size: 100%;
+	flex-shrink: 0;
+}
+header.type2 .mainTit {
+	height: 80px;
+}
+header .lnb {
+	width: 100%;
+}
+header .lnb .top {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-align-items: center;
+	align-items: center;
+	height: 80px;
+	min-height: 80px;
+	padding: 0 30px;
+	background: url(//cdndata.milkt.co.kr/ele/app/images/mystudy/aiSubject/lnb_bg.jpg) no-repeat;
+	background-size: 100%;
+}
+header .lnb .top .session {
+	align-self: center;
+	width: 110px;
+	height: 40px;
+}
+header .lnb .bottom {
+	position: relative;
+	height: 60px;
+	background: #f4f0fe;
+}
+header .lnb .sbHolder {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-align-items: center;
+	align-items: center;
+	width: 110px;
+	height: 40px;
+	border-radius: 20px;
+	border: none;
+	background: #b662fe;
+	font-weight: 100;
+}
+header .lnb .sbSelector:link,
+header .lnb .sbSelector:visited,
+header .lnb .sbSelector:hover {
+	color: #fff !important;
+}
+header .lnb .sbSelector {
+	height: 100%;
+	line-height: 40px;
+	font-size: 20px;
+	text-indent: 15px;
+	z-index: 11;
+}
+header .lnb .sbToggle {
+	background: url(//cdndata.milkt.co.kr/ele/app/images/mystudy/aiSubject/select_arr.png) no-repeat;
+	background-size: 100%;
+	height: 8px;
+	width: 14px;
+	right: 15px;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+	z-index: 12;
+}
+header .lnb .sbOptions {
+	width: 100%;
+	background: #b45ffc;
+	border: none;
+	border-radius: 20px;
+	font-weight: 100;
+	font-size: 20px;
+	top: 0 !important;
+	left: 0 !important;
+	padding: 55px 0 15px;
+}
+header .lnb .sbOptions::before {
+	content: '';
+	width: calc(100% - 30px);
+	height: 1px;
+	background: #9f48e9;
+	display: block;
+	position: absolute;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	transform: translateX(-50%);
+	top: 40px;
+}
+header .lnb .sbOptions li:not(:last-child) {
+	margin-bottom: 15px;
+}
+header .lnb .sbOptions a {
+	padding: 0 15px;
+	line-height: 1;
+}
+header .lnb .sbOptions a.sbFocus {
+	background: none;
+}
+header .lnb .sbOptions a:link,
+header .lnb .sbToggleOpen {
+	background-position-y: -8px;
+}
+header .sbOptions a:link,
+header .sbOptions a:visited {
+	color: #fff;
+}
+header .lnb .depth1 {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-justify-content: space-between;
+	justify-content: space-between;
+	margin-left: 30px;
+	width: 100%;
+}
+header .lnb .depth1 > li {
+	position: relative;
+	align-self: center;
+}
+header .lnb .depth1 > li > a {
+	color: #cfb6ff;
+	font-size: 23px;
+	position: relative;
+	height: 80px;
+	line-height: 80px;
+	display: block;
+}
+header .lnb .depth1 > li.on a {
+	color: #fff;
+	font-weight: 900;
+}
+header .lnb .depth1 > li.on a::after {
+	content: '';
+	position: absolute;
+	left: 50%;
+	bottom: -20px;
+	display: block;
+	width: 23px;
+	height: 23px;
+	border-radius: 2px;
+	background: #f4f0fe;
+	-webkit-transform: rotate(45deg) translateX(-50%);
+	transform: rotate(45deg) translateX(-50%);
+}
+header.type2 .lnb .depth1 > li.on a::after {
+	background: #fff;
+}
+header .lnb .depth2 {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	padding-left: 157px;
+}
+header .lnb .depth2 li:not(:last-child) {
+	margin-right: 50px;
+}
+header .lnb .depth2 a {
+	height: 60px;
+	line-height: 60px;
+	color: #38323e;
+	font-size: 20px;
+	position: relative;
+	display: block;
+}
+header .lnb .depth2 li.on a {
+	color: #8231fc;
+	font-weight: 400;
+}
+header .lnb .depth2 li.on a::after {
+	content: '';
+	width: 100%;
+	height: 4px;
+	background: #8231fc;
+	display: block;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	border-radius: 2px;
+}
+header .lnb .bottom .session {
+	position: absolute;
+	right: 45px;
+	top: 10px;
+	width: 130px;
+	height: 50px;
+}
+header .lnb .bottom .sbHolder {
+	width: 130px;
+	height: 50px;
+	background: #fff;
+}
+header .lnb .bottom .sbSelector:link,
+header .lnb .bottom .sbSelector:visited,
+header .lnb .bottom .sbSelector:hover {
+	color: #38323e !important;
+	font-weight: 800;
+}
+header .lnb .bottom .sbSelector {
+	line-height: 50px;
+	font-size: 16px;
+	text-indent: 21px;
+	background: #fff;
+	border-radius: 25px 25px 0 0;
+}
+header .lnb .bottom .sbToggle {
+	background: url(//cdndata.milkt.co.kr/ele/app/images/mystudy/aiSubject/select_arr_black.png)
+		no-repeat;
+	background-size: 100%;
+	right: 21px;
+}
+header .lnb .bottom .sbOptions {
+	background: #fff;
+	border: none;
+	font-size: 16px;
+	font-weight: 800;
+	padding: 15px 0 15px;
+	box-shadow: 0 0 20px rgba(214, 199, 255, 0.5);
+	max-height: 242px !important;
+	overflow-y: auto;
+	border-radius: 0 0 25px 25px;
+	top: 50px !important;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+} /** 2023-02-27 수정 */
+header .lnb .bottom .sbOptions::before {
+	background: #ccc;
+	top: 0;
+}
+header .lnb .bottom .sbOptions li:not(:last-child) {
+	margin-bottom: 20px;
+}
+header .lnb .bottom .sbOptions a {
+	padding: 0 20px;
+	font-size: 600;
+}
+header .lnb .bottom .sbOptions a:link,
+header .lnb .bottom .sbOptions a:visited {
+	color: #38323e;
+}
+header .lnb .bottom .sbOptions::-webkit-scrollbar {
+	display: none;
+} /** 2023-02-27 수정 */
+
+#content {
+	height: 725px;
+	max-width: 1280px;
+	position: relative;
+	margin: 0 auto;
+}
+.conbox {
+	position: relative;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	height: calc(100% - 140px);
+}
+.conbox.type2 {
+	height: calc(100% - 80px);
+}
+.body_aiSubject .leftMenu {
+	width: 310px;
+	background: #f4f0fe;
+	position: relative;
+	flex-shrink: 0;
+}
+.body_aiSubject .leftMenu .studyingBtn {
+	margin-bottom: 16px;
+}
+.body_aiSubject .leftMenu .studyingBtn > div {
+	position: relative;
+	text-align: center;
+	padding: 0 15px;
+}
+.body_aiSubject .leftMenu .studyingBtn > div::after {
+	content: '';
+	display: block;
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	width: calc(100% - 30px);
+	height: 1px;
+	background: #e7deff;
+	-webkit-transform: translateX(-50%);
+	transform: translateX(-50%);
+}
+.body_aiSubject .leftMenu .studyingBtn p {
+	position: relative;
+	padding: 13px 0 12px;
+	font-size: 16px;
+	color: #38323e;
+	font-weight: 400;
+	font-family: 'Noto Sans KR';
+}
+.body_aiSubject .leftMenu .studyingBtn button {
+	position: relative;
+	font-size: 16px;
+	color: #38323e;
+	font-weight: 400;
+	background: none;
+	border: none;
+	font-family: 'Noto Sans KR';
+	padding: 0 26px 0 0;
+	height: 49px;
+}
+.body_aiSubject .leftMenu .studyingBtn button span {
+	color: #7834ff;
+}
+.body_aiSubject .leftMenu .studyingBtn button::after {
+	content: '';
+	width: 17px;
+	height: 17px;
+	background: url(//cdndata.milkt.co.kr/ele/app/images/mystudy/aiSubject/moreBtn.png) no-repeat;
+	background-size: 17px;
+	position: absolute;
+	right: 0;
+	top: calc(50% + 1px);
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+.body_aiSubject .leftMenu .list {
+	padding-left: 25px;
+}
+.body_aiSubject .leftMenu .thumbTeacher {
+	padding-left: 15px;
+}
+.body_aiSubject .leftMenu .thumbTeacher button {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	align-items: center;
+	background: none;
+	border: none;
+	padding: 0;
+	text-align: left;
+	font-family: 'Noto Sans KR';
+	height: auto;
+	font-weight: 100;
+	position: relative;
+	padding-right: 16px;
+}
+.body_aiSubject .leftMenu .thumbTeacher .thumb {
+	width: 70px;
+	height: 70px;
+	border-radius: 50%;
+	background: #7434ff;
+	overflow: hidden;
+	margin-right: 10px;
+}
+.body_aiSubject .leftMenu .thumbTeacher .thumb img {
+	width: 70px;
+}
+.body_aiSubject .leftMenu .thumbTeacher .name h2 {
+	font-size: 25px;
+	color: #38323e;
+	font-weight: 100;
+	position: relative;
+	display: inline-block;
+}
+.body_aiSubject .leftMenu .thumbTeacher .name h2::after {
+	content: '';
+	width: 17px;
+	height: 17px;
+	background: url(//cdndata.milkt.co.kr/ele/app/images/mystudy/aiSubject/moreBtn.png) no-repeat;
+	background-size: 17px;
+	position: absolute;
+	right: -28px;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+.body_aiSubject .leftMenu .thumbTeacher .name span {
+	font-weight: 400;
+}
+.body_aiSubject .leftMenu .thumbTeacher .name p {
+	font-size: 13px;
+	color: #38323e;
+	opacity: 0.7;
+}
+.body_aiSubject .leftMenu .thumbChar {
+	padding-left: 15px;
+}
+.body_aiSubject .leftMenu .thumbChar > div {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	align-items: center;
+	text-align: left;
+	font-family: 'Noto Sans KR';
+	height: auto;
+	font-weight: 100;
+	position: relative;
+	padding-right: 16px;
+}
+.body_aiSubject .leftMenu .thumbChar .thumb {
+	width: 70px;
+	height: 70px;
+	border-radius: 50%;
+	margin-right: 10px;
+}
+.body_aiSubject .leftMenu .thumbChar .thumb img {
+	width: 100%;
+}
+.body_aiSubject .leftMenu .thumbChar .name h2 {
+	position: relative;
+	display: inline-block;
+	font-size: 25px;
+	color: #38323e;
+	font-weight: 400;
+}
+.body_aiSubject .leftMenu .thumbChar .name p {
+	font-size: 13px;
+	color: #38323e;
+	opacity: 0.7;
+}
+.body_aiSubject .leftMenu .menu {
+	margin-top: 15px;
+}
+.body_aiSubject .leftMenu .menu.type2 {
+	margin-top: 25px;
+} /*선생님 없는경우*/
+.body_aiSubject .leftMenu .menu li:not(:last-child) {
+	margin-bottom: 10px;
+}
+.body_aiSubject .leftMenu .menu li > a {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	height: 80px;
+	border-radius: 25px 0 0 25px;
+	background: #e7deff;
+	align-items: center;
+	font-size: 20px;
+	color: #38323e;
+	padding-left: 50px;
+}
+.body_aiSubject .leftMenu .menu li > a img {
+	margin-right: 30px;
+}
+.body_aiSubject .leftMenu .menu li.on a {
+	background: #fff;
+	font-weight: 800;
+}
+/* #116572 CASE 추가 2024-01-05 */
+.body_aiSubject .leftMenu .menuLect li {
+	position: relative;
+}
+.body_aiSubject .leftMenu .menuLect li + li {
+	margin-top: 10px;
+}
+.body_aiSubject .leftMenu .menuLect li .popupOpenBtn {
+	position: absolute;
+	z-index: 3;
+	top: 0;
+	bottom: 0;
+	left: 15px;
+	margin: auto;
+	width: 70px;
+	height: 70px;
+}
+.body_aiSubject .leftMenu .menuLect li .popupOpenBtn::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 20px;
+	height: 20px;
+	background: url(//cdndata.milkt.co.kr/ele/app/images/mystudy/aiSubject/ico_menuLect_plus.png)
+		no-repeat center/contain;
+}
+.body_aiSubject .leftMenu .menuLect li .imgTch {
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	border-radius: 50%;
+	background-color: #d0beff;
+}
+.body_aiSubject .leftMenu .menuLect li .imgTch.colorA {
+	background-color: #d0beff;
+}
+.body_aiSubject .leftMenu .menuLect li .imgTch.colorB {
+	background-color: #ffbedd;
+}
+.body_aiSubject .leftMenu .menuLect li .imgTch img {
+	position: absolute;
+	top: 16px;
+	width: 100%;
+	-webkit-transform: scale(1.4);
+	transform: scale(1.4);
+}
+.body_aiSubject .leftMenu .menuLect li .lectBox {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	height: 110px;
+	padding: 20px 15px 20px 105px;
+	border-radius: 25px 0 0 25px;
+	background-color: #e7deff;
+}
+.body_aiSubject .leftMenu .menuLect li .sbj {
+	max-width: 100%;
+}
+.body_aiSubject .leftMenu .menuLect li .sbj .level {
+	font-size: 15px;
+	font-weight: 800;
+	color: #7434ff;
+	line-height: 1.2;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.body_aiSubject .leftMenu .menuLect li .sbj p {
+	font-size: 20px;
+	font-weight: 800;
+	color: #38323e;
+	line-height: 1.2;
+	display: -webkit-box;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	white-space: initial;
+}
+.body_aiSubject .leftMenu .menuLect li .sbj .lName {
+	margin-top: 3px;
+}
+.body_aiSubject .leftMenu .menuLect li .sbj .tName {
+	margin-top: 2px;
+}
+.body_aiSubject .leftMenu .menuLect li .sbj .tName span {
+	font-weight: 100;
+}
+.body_aiSubject .leftMenu .menuLect li.on .lectBox {
+	background-color: #fff;
+}
+
+.body_aiSubject .leftMenu .bottomCont {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	padding-bottom: 15px;
+}
+.body_aiSubject .leftMenu .completion {
+	padding: 0 11px 0 13px;
+}
+.body_aiSubject .leftMenu .completion > div {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 11px 0 13px;
+	border-bottom: 1px solid #e7deff;
+}
+.body_aiSubject .leftMenu .completion p {
+	font-size: 15px;
+	color: #38323e;
+	position: relative;
+	padding-left: 12px;
+	line-height: 1;
+}
+.body_aiSubject .leftMenu .completion p span {
+	color: #8231fc;
+	font-weight: 400;
+}
+.body_aiSubject .leftMenu .completion p::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 50%;
+	display: block;
+	width: 7px;
+	height: 7px;
+	border-radius: 50%;
+	background: linear-gradient(to bottom, #a41aff, #794dff);
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+.body_aiSubject .leftMenu .completion .progress {
+	width: 125px;
+	height: 62.5px;
+	overflow: hidden;
+}
+/* .body_aiSubject .leftMenu .completion .progress .cls-2 { stroke-dasharray: 196.25; stroke-dashoffset: 196.25;} */
+.body_aiSubject .leftMenu .completion .progress {
+	position: relative;
+	background: #e7deff;
+	border-radius: 125px 125px 0 0;
+}
+.body_aiSubject .leftMenu .completion .progress .cls-2 {
+	stroke-dasharray: 392.5;
+	stroke-dashoffset: 392.5;
+}
+.body_aiSubject .leftMenu .completion .progress img {
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+.body_aiSubject .leftMenu .popBtnGroup {
+	width: 260px;
+	margin: 15px auto 0;
+}
+.body_aiSubject .leftMenu .popBtnGroup ul {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+}
+.body_aiSubject .leftMenu .popBtnGroup ul li {
+	position: relative;
+}
+.body_aiSubject .leftMenu .popBtnGroup ul li:not(:last-child) {
+	margin-right: 10px;
+}
+.body_aiSubject .leftMenu .popBtnGroup button {
+	width: 125px;
+	height: 45px;
+	padding: 0;
+	background: none;
+	border: none;
+}
+.body_aiSubject .leftMenu .popBtnGroup button img {
+	width: 100%;
+}
+.body_aiSubject .leftMenu .popBtnGroup .linkPopWrap {
+	position: absolute;
+	bottom: calc(100% + 20px);
+	left: -16px;
+	display: none;
+	width: 155px;
+	min-height: 70px;
+	padding: 25px 0;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	border-radius: 25px;
+	background: #fff;
+	text-align: center;
+	filter: drop-shadow(0 0 10px rgba(214, 199, 255, 0.5));
+}
+.body_aiSubject .leftMenu .popBtnGroup .linkPopWrap.on {
+	display: block;
+}
+.body_aiSubject .leftMenu .popBtnGroup .linkPopWrap::after {
+	content: '';
+	position: absolute;
+	bottom: -14px;
+	left: 50%;
+	display: block;
+	-webkit-transform: translateX(-50%);
+	transform: translateX(-50%);
+	width: 32px;
+	height: 15px;
+	background: url(//cdndata.milkt.co.kr/ele/app/images/mystudy/aiSubject/ico_linkpop_tail.png)
+		no-repeat center/cover;
+}
+.body_aiSubject .leftMenu .popBtnGroup .linkPopWrap a {
+	display: inline-block;
+	font-size: 18px;
+	font-weight: 100;
+	color: #38323e;
+	line-height: 1;
+	letter-spacing: -0.06rem;
+	vertical-align: top;
+}
+.body_aiSubject .leftMenu .popBtnGroup .linkPopWrap a:not(:first-child) {
+	margin-top: 18px;
+}
+.body_aiSubject .leftMenu .popBtnGroup .linkPopWrap a::before {
+	content: '';
+	display: inline-block;
+	width: 18px;
+	height: 20px;
+	margin-right: 5px;
+	background: url(//cdndata.milkt.co.kr/ele/app/images/mystudy/aiSubject/ico_linkpop_at.png)
+		no-repeat center/cover;
+	vertical-align: top;
+}
+.body_aiSubject .lectureCont {
+	width: 100%;
+	overflow: hidden;
+}
+
+.body_aiSubject .lectureCont .listBox {
+	overflow-y: auto;
+	height: 585px;
+	padding: 36px 40px 25px;
+}
+.body_aiSubject .lectureCont .listBox.type2 {
+	height: 645px;
+}
+.body_aiSubject .lectureCont .listBox .tit {
+	color: #38323e;
+	font-size: 25px;
+	font-weight: 800;
+	border-bottom: 1px solid #38323e;
+	line-height: 1;
+	padding-bottom: 16px;
+}
+.body_aiSubject .lectureCont .listBox .starPoint {
+	position: relative;
+	min-width: 50px;
+	margin: 0 30px;
+	color: #ff7200;
+	font-size: 18px;
+	font-weight: 800;
+}
+.body_aiSubject .lectureCont .listBox .starPoint button {
+	background: none;
+	padding: 0;
+	border: none;
+	color: inherit;
+	font-size: inherit;
+	font-family: 'Noto Sans KR';
+	position: relative;
+	padding-left: 24px;
+	height: auto;
+}
+.body_aiSubject .lectureCont .listBox .starPoint button::before {
+	content: '';
+	width: 18px;
+	height: 17px;
+	background: url(//cdndata.milkt.co.kr/ele/app/images/mystudy/aiSubject/icon_star.png) no-repeat;
+	background-size: 100%;
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+.body_aiSubject .lectureCont .list article:not(:last-child) {
+	margin-bottom: 35px;
+}
+.body_aiSubject .lectureCont .list li {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-align-items: center;
+	align-items: center;
+	-webkit-justify-content: space-between;
+	justify-content: space-between;
+	border-bottom: 1px dashed #cdcdcd;
+	position: relative;
+	padding: 27px 0;
+}
+.body_aiSubject .lectureCont .list li.mTit {
+	padding: 25px 0;
+}
+.body_aiSubject .lectureCont .list li.mTit .desc {
+	width: 100%;
+}
+.body_aiSubject .lectureCont .list li.mTit .desc a {
+	display: block;
+	font-size: 20px;
+	font-weight: 600;
+	color: #38323e;
+}
+.body_aiSubject .lectureCont .list .sTit {
+	width: 100%;
+	max-width: 500px;
+}
+.body_aiSubject .lectureCont .list .sTit a {
+	color: #38323e;
+	font-size: 18px;
+	font-weight: 400;
+	display: block;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.body_aiSubject .lectureCont .list .info {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-align-items: center;
+	align-items: center;
+	text-align: center;
+}
+.body_aiSubject .lectureCont .list .page {
+	color: #38323e;
+	opacity: 0.4;
+	font-size: 15px;
+}
+.body_aiSubject .lectureCont .list .btn {
+	position: relative;
+}
+.body_aiSubject .lectureCont .list .btn button {
+	width: 130px;
+	height: 45px;
+	border-radius: 45px;
+	color: #fff;
+	border: none;
+	padding: 0;
+	font-family: 'Noto Sans KR';
+	font-size: 18px;
+	font-weight: 800;
+	line-height: 45px;
+}
+.body_aiSubject .lectureCont .list .btn.type1 button {
+	background: #f87c1a;
+}
+.body_aiSubject .lectureCont .list .btn.type2 button {
+	background: #875dff;
+}
+.body_aiSubject .lectureCont .list .btn.type3 button {
+	background: #ffba13;
+}
+.body_aiSubject .lectureCont .list .btn.type4 button {
+	background: #875dff;
+}
+.body_aiSubject .lectureCont .list .btn.type4 button span {
+	color: #00deff;
+}
+.body_aiSubject .lectureCont .list .btn.type5 button {
+	background: #f4f0fe;
+	color: rgba(56, 50, 62, 0.4);
+}
+.body_aiSubject .lectureCont .list .btn.type6 button {
+	background: #875dff;
+}
+.body_aiSubject .lectureCont .list .btn.type7 button {
+	background: #3cbcff;
+} /** 독후감 쓰기 추가 - 2023-02-17 */
+.body_aiSubject .lectureCont .list .btn.type7 + .starPoint {
+	margin: 0 28px;
+}
+.body_aiSubject .lectureCont .list .btn p {
+	position: absolute;
+	color: #999;
+	font-size: 13px;
+	width: 100%;
+	text-align: center;
+	top: calc(100% + 5px);
+	line-height: 1;
+}
+
+.body_aiSubject .lectureCont .cardList .tit {
+	padding-bottom: 28px;
+	border-bottom: none;
+	color: #38323e;
+	font-size: 25px;
+	font-weight: 800;
+	line-height: 1;
+}
+.body_aiSubject .lectureCont .cardList .subTit {
+	margin-top: -13px;
+	padding: 25px 0;
+	border-top: 1px solid #38323e;
+	font-size: 20px;
+	color: #38323e;
+	font-weight: 800;
+}
+.body_aiSubject .lectureCont .cardList ul {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	flex-wrap: wrap;
+	-webkit-align-items: flex-start;
+	align-items: flex-start;
+}
+.body_aiSubject .lectureCont .cardList ul li {
+	position: relative;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-direction: column;
+	flex-direction: column;
+	width: 280px;
+	margin-top: 25px;
+	margin-right: 25px;
+}
+.body_aiSubject .lectureCont .cardList ul li::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: -0.5px;
+	z-index: -1;
+	width: 281px;
+	height: 280px;
+	border: 1px solid #e7deff;
+	border-radius: 40px;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	background: transparent;
+}
+.body_aiSubject .lectureCont .cardList ul li.type2::after {
+	height: 310px;
+}
+.body_aiSubject .lectureCont .cardList ul li:nth-child(1),
+.body_aiSubject .lectureCont .cardList ul li:nth-child(2),
+.body_aiSubject .lectureCont .cardList ul li:nth-child(3) {
+	margin-top: 0;
+}
+.body_aiSubject .lectureCont .cardList ul li:nth-child(3n) {
+	margin-right: 0;
+}
+
+/* left menu 없는 경우*/
+.body_aiSubject .lectureCont .cardList.type2 ul li:nth-child(3n) {
+	margin-right: 25px;
+}
+.body_aiSubject .lectureCont .cardList.type2 ul li:nth-child(4) {
+	margin-top: 0;
+}
+.body_aiSubject .lectureCont .cardList.type2 ul li:nth-child(4n) {
+	margin-right: 0;
+}
+/* ///// left menu 없는 경우 */
+
+.body_aiSubject .lectureCont .cardList img {
+	width: 100%;
+	max-width: 100%;
+}
+.body_aiSubject .lectureCont .cardList .lectureName,
+.body_aiSubject .lectureCont .cardList .info {
+	padding: 0 24px;
+}
+.body_aiSubject .lectureCont .cardList .num {
+	position: absolute;
+	left: 0;
+	top: 0;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-align-items: center;
+	align-items: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	width: 60px;
+	height: 50px;
+	border-radius: 39px 0 39px 0;
+	background: #f4f0fe;
+}
+.body_aiSubject .lectureCont .cardList .num p {
+	font-size: 19px;
+	font-weight: 600;
+	color: #7a34ff;
+} /** 2023-03-21 */
+.body_aiSubject .lectureCont .cardList .thum a {
+	display: block;
+	width: 100%;
+}
+.body_aiSubject .lectureCont .cardList .thum .img {
+	position: relative;
+	max-height: 174px;
+}
+.body_aiSubject .lectureCont .cardList .thum .img img {
+	height: 174px;
+	border-radius: 41px 41px 0 0;
+	vertical-align: top;
+	object-fit: cover;
+}
+.body_aiSubject .lectureCont .cardList .thum .studying {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	border-radius: 50px 0 0 0;
+	width: 70px;
+	height: 70px;
+	color: #fff;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-align-items: center;
+	align-items: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	font-size: 18px;
+	line-height: 1.2;
+	letter-spacing: -0.025em;
+}
+.body_aiSubject .lectureCont .cardList .thum .studying p {
+	margin-left: 4px;
+	margin-top: 4px;
+	text-align: center;
+}
+.body_aiSubject .lectureCont .cardList .thum .studying.type1 {
+	background: #ff7b00;
+}
+.body_aiSubject .lectureCont .cardList .thum .studying.type2 {
+	background: #ffba13;
+}
+.body_aiSubject .lectureCont .cardList .thum .studying.type3 {
+	background: #875dff;
+}
+.body_aiSubject .lectureCont .cardList .thum .studying.type4 {
+	background: #f4f0fe;
+}
+.body_aiSubject .lectureCont .cardList .thum .studying.type4 p {
+	color: #38323e;
+	opacity: 0.4;
+}
+.body_aiSubject .lectureCont .cardList .thum .studying.type5 {
+	background: #875dff;
+}
+.body_aiSubject .lectureCont .cardList .thum .studying.type5 span {
+	color: #00deff;
+}
+.body_aiSubject .lectureCont .cardList .thum .studying.type6 {
+	background: #875dff;
+}
+.body_aiSubject .lectureCont .cardList .lectureName {
+	font-size: 18px;
+	color: #38323e;
+	font-weight: 400;
+	text-align: center;
+}
+.body_aiSubject .lectureCont .cardList .lectureName p {
+	height: 50px;
+	line-height: 50px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	letter-spacing: -0.015em;
+}
+.body_aiSubject .lectureCont .cardList .thum.type2 .lectureName {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-align-items: center;
+	align-items: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	width: 100%;
+	height: 105px;
+}
+.body_aiSubject .lectureCont .cardList .thum.type2 .lectureName p {
+	height: auto;
+	line-height: 1.6;
+	display: -webkit-box;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	white-space: initial;
+}
+.body_aiSubject .lectureCont .cardList .writing {
+	padding: 0 19px;
+}
+.body_aiSubject .lectureCont .cardList .writing .btnGoWrite {
+	display: block;
+	width: 100%;
+	height: 30px;
+	background: #f4f0fe;
+	text-align: center;
+	font-size: 14px;
+	font-weight: 100;
+	color: #38323e;
+	line-height: 28px;
+}
+.body_aiSubject .lectureCont .cardList .writing .btnGoWrite::before {
+	content: '';
+	display: inline-block;
+	width: 13px;
+	height: 13px;
+	margin-right: 5px;
+	background: url(//cdndata.milkt.co.kr/ele/app/images/mystudy/aiSubject/ico_cardList_writing.png)
+		no-repeat center/13px;
+	vertical-align: -1px;
+}
+.body_aiSubject .lectureCont .cardList .bar {
+	margin: 0 24px;
+	width: calc(100% - 48px);
+	height: 1px;
+	background: #f4f0fe;
+}
+.body_aiSubject .lectureCont .cardList .data {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-align-items: center;
+	align-items: center;
+	-webkit-justify-content: space-between;
+	justify-content: space-between;
+	padding: 14px 0 15px;
+}
+.body_aiSubject .lectureCont .cardList .starPoint {
+	margin: 0;
+}
+.body_aiSubject .lectureCont .cardList .date {
+	color: #999;
+	font-size: 13px;
+}
+.body_aiSubject .lectureCont .cardList .date.none span {
+	letter-spacing: 2px;
+	margin-left: 10px;
+}
+.body_aiSubject .lectureCont .cardList article:not(:last-child) {
+	margin-bottom: 60px;
+}
+
+/* 출판사 안내 팝업 */
+.popWrap .popBody .popMsg {
+	margin-top: -6px;
+}
+.popWrap .popBody .colorPrp {
+	color: #8231fc;
+}
+.popWrap .popBody .contTit {
+	font-size: 18px;
+	font-weight: 100;
+	color: #333;
+	line-height: 1;
+}
+.popWrap .popBody .contTit b {
+	font-weight: 600;
+}
+.popWrap .popBody .contNoti {
+	margin-top: 30px;
+	font-size: 18px;
+	font-weight: 400;
+	color: #38353c;
+	line-height: 1;
+	text-align: center;
+}
+.popWrap .popBody .pubCo {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-justify-content: space-around;
+	justify-content: space-around;
+	height: 53px;
+	border-top: 1px solid #38353c;
+	border-bottom: 1px solid #38353c;
+	text-align: center;
+}
+.popWrap .popBody .pubCo li {
+	position: relative;
+	flex: 1 1 auto;
+}
+.popWrap .popBody .pubCo li:not(:first-child)::before {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 0;
+	display: block;
+	width: 1px;
+	height: 15px;
+	background: #d7d7d8;
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+.popWrap .popBody .pubCo li button {
+	display: block;
+	width: 100%;
+	height: 100%;
+	font-size: 18px;
+	font-weight: 100;
+	color: #333;
+	line-height: 51px;
+}
+
+/* 검정 교과 과목 색상 추가 2023-06-21 */
+.popWrap .popBody .bookListWrap {
+	overflow: hidden;
+	position: relative;
+	margin-top: 42px;
+	padding-bottom: 34px;
+}
+.popWrap .popBody .bookListWrap ul {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-align-items: center;
+	align-items: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+}
+.popWrap .popBody .bookListWrap li {
+	position: relative;
+	top: 82px;
+	width: 128px;
+	height: 167px;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: 50% 50%;
+	text-align: center;
+	background-image: url(//cdndata.milkt.co.kr/ele/app/images/mystudy/aiSubject/popWrap_book_math_off.png);
+}
+.popWrap .popBody .bookListWrap li.colorMath {
+	background-image: url(//cdndata.milkt.co.kr/ele/app/images/mystudy/aiSubject/popWrap_book_math_off.png);
+}
+.popWrap .popBody .bookListWrap li.colorSoc {
+	background-image: url(//cdndata.milkt.co.kr/ele/app/images/mystudy/aiSubject/popWrap_book_soc_off.png);
+}
+.popWrap .popBody .bookListWrap li.colorSci {
+	background-image: url(//cdndata.milkt.co.kr/ele/app/images/mystudy/aiSubject/popWrap_book_sci_off.png);
+}
+.popWrap .popBody .bookListWrap li.colorEng {
+	background-image: url(//cdndata.milkt.co.kr/ele/app/images/mystudy/aiSubject/popWrap_book_eng_off.png);
+}
+.popWrap .popBody .bookListWrap li.on {
+	top: 0;
+	transition: 0.2s;
+	background-image: url(//cdndata.milkt.co.kr/ele/app/images/mystudy/aiSubject/popWrap_book_math_on.png);
+}
+.popWrap .popBody .bookListWrap li.colorMath.on {
+	background-image: url(//cdndata.milkt.co.kr/ele/app/images/mystudy/aiSubject/popWrap_book_math_on.png);
+}
+.popWrap .popBody .bookListWrap li.colorSoc.on {
+	background-image: url(//cdndata.milkt.co.kr/ele/app/images/mystudy/aiSubject/popWrap_book_soc_on.png);
+}
+.popWrap .popBody .bookListWrap li.colorSci.on {
+	background-image: url(//cdndata.milkt.co.kr/ele/app/images/mystudy/aiSubject/popWrap_book_sci_on.png);
+}
+.popWrap .popBody .bookListWrap li.colorEng.on {
+	background-image: url(//cdndata.milkt.co.kr/ele/app/images/mystudy/aiSubject/popWrap_book_eng_on.png);
+}
+.popWrap .popBody .bookListWrap li button {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+.popWrap .popBody .bookListWrap li button span {
+	display: inline-block;
+	font-family: 'Noto Sans KR', 'Gulim', '굴림', sans-serif;
+	font-size: 30px;
+	font-weight: 100;
+	color: #fff;
+	line-height: 1;
+	-webkit-transform: translate(-5px, -6px);
+	transform: translate(-5px, -6px);
+}
+.popWrap .popBody .bookListWrap li:not(:first-child) {
+	margin-left: 25px;
+}
+.popWrap .popBody .bookListWrap .prev {
+	position: absolute;
+	top: 30%;
+	left: 0;
+	width: 20px;
+	height: 35px;
+}
+.popWrap .popBody .bookListWrap .next {
+	position: absolute;
+	top: 30%;
+	right: 0;
+	width: 20px;
+	height: 35px;
+	-webkit-transform: rotate(180deg);
+	transform: rotate(180deg);
+}
+.popWrap .popBody .bookListWrap button {
+	position: relative;
+	z-index: 100;
+}
+.popWrap .popBody .bookListWrap button img {
+	width: 100%;
+	vertical-align: top;
+}
+
+/* 영어방학학기 - 2023-03-21 수정 */
+.body_aiSubject .vacation {
+	position: relative;
+	min-width: 900px;
+	margin: 112px auto 0;
+}
+.body_aiSubject .vacation .inner {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-align-items: center;
+	align-items: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-box-pack: center;
+	-webkit-box-align: center;
+}
+.body_aiSubject .vacation .conL {
+	width: 314px;
+}
+.body_aiSubject .vacation .conL img {
+	width: 100%;
+	vertical-align: top;
+	object-fit: cover;
+}
+.body_aiSubject .vacation .conR {
+	margin-left: 32px;
+}
+.body_aiSubject .vacation .conR p {
+	font-size: 29px;
+	font-weight: 100;
+	color: #5c00b2;
+	line-height: 1.56;
+}
+.body_aiSubject .vacation .conR p em {
+	font-weight: 600;
+}
+.body_aiSubject .vacation .conR .btnGoEng {
+	display: table;
+	table-layout: fixed;
+	width: 300px;
+	height: 80px;
+	margin-top: 23px;
+	background: url(//cdndata.milkt.co.kr/ele/app/images/mystudy/aiSubject/img_vacation_btnBg.png)
+		no-repeat center/cover;
+	text-align: center;
+}
+.body_aiSubject .vacation .conR .btnGoEng span {
+	display: table-cell;
+	vertical-align: middle;
+	font-size: 20px;
+	font-weight: 100;
+	color: #fff;
+}
+.body_aiSubject .vacation .conR .btnGoEng span::after {
+	content: '';
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	margin-left: 15px;
+	background: url(//cdndata.milkt.co.kr/ele/app/images/mystudy/aiSubject/ico_vacation_btnArrow.png)
+		no-repeat center/cover;
+	vertical-align: -2px;
+}
+.body_aiSubject .vacation .conR .btnGoEng span b {
+	font-weight: 600;
+}
+
+/* 학습 안내 레이어 - mystudy.css에서 가져옴 && 네이밍 변경 [ .lpop_setting.study_info => .lpopStudyinfo ] */
+.lpopStudyinfo * {
+	letter-spacing: 0;
+}
+.lpopStudyinfo .popContents {
+	border-radius: 20px;
+}
+.lpopStudyinfo .tlt {
+	width: 1050px;
+	height: 70px;
+	background: #f77c19;
+	border-top-left-radius: 17px;
+	border-top-right-radius: 17px;
+}
+.lpopStudyinfo .tlt h3 {
+	padding: 0 0 0 35px;
+	width: 1020px;
+	height: 70px;
+	line-height: 70px;
+	font-family:
+		BM JUA,
+		'Noto Sans KR';
+	font-weight: normal;
+	font-size: 32px;
+	text-align: left;
+	color: #fff;
+}
+.lpopStudyinfo .tlt h3 span {
+	color: #ffff00;
+}
+.lpopStudyinfo .tlt h3 span em {
+	border: 1px solid #ffff00;
+	border-radius: 25px;
+	padding: 4px 12px;
+	font-size: 20px;
+	vertical-align: middle;
+	margin-right: 5px;
+}
+.lpopStudyinfo p {
+	text-align: left;
+	padding: 0;
+	margin: 0;
+	font-weight: 100;
+}
+.lpopStudyinfo .lpop_close {
+	position: absolute;
+	top: 17px;
+	right: 25px;
+	width: 32px;
+	height: 32px;
+	background: url(//cdndata.milkt.co.kr/ele/app/images/break/close03.png) no-repeat 0 0;
+	background-size: 32px;
+	text-indent: -9999px;
+	border: 0;
+	box-shadow: none;
+	border-radius: 0;
+}
+.lpopStudyinfo .cont {
+	height: 550px;
+	padding: 21px 35px 34px;
+}
+.lpopStudyinfo .cont .menu_tab {
+	text-align: left;
+}
+.lpopStudyinfo .cont .menu_tab ul {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-justify-content: flex-start;
+	justify-content: flex-start;
+}
+.lpopStudyinfo .cont .menu_tab ul li {
+	width: 100%;
+}
+.lpopStudyinfo .cont .menu_tab.type2 ul li {
+	width: 20%;
+}
+.lpopStudyinfo .cont .menu_tab.type2 ul li a {
+	font-size: 22px;
+}
+.lpopStudyinfo .cont .menu_tab ul li:not(:first-child) {
+	margin-left: 8px;
+}
+.lpopStudyinfo .cont .menu_tab ul li a {
+	display: block;
+	width: 100%;
+	height: 66px;
+	border: 3px solid #f6e7d4;
+	border-bottom: none;
+	border-radius: 20px 20px 0 0;
+	padding-left: 0;
+	font-family:
+		BM JUA,
+		'Noto Sans KR';
+	font-weight: normal;
+	font-size: 27px;
+	line-height: 66px;
+	color: #56340e;
+	text-align: center;
+}
+.lpopStudyinfo .cont .menu_tab ul li.active a {
+	background: #f6e7d4;
+}
+.lpopStudyinfo .cont p.info_result {
+	width: auto;
+	height: auto;
+	z-index: 20;
+	position: absolute;
+	bottom: 15px;
+	right: 34px;
+	color: #898989;
+	font-size: 15px;
+	padding: 0;
+	margin: 0;
+	letter-spacing: -1px;
+}
+.lpopStudyinfo .cont .menu_cont {
+	position: relative;
+	z-index: 10;
+}
+.lpopStudyinfo .cont .menu_cont .inner {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-justify-content: space-between;
+	justify-content: space-between;
+}
+.lpopStudyinfo .cont .menu_cont > div {
+	max-height: 430px;
+	padding: 31px 45px 29px;
+	background: #f6e7d4;
+}
+.lpopStudyinfo .cont .menu_cont > div .box_left {
+	width: 395px;
+	flex-shrink: 0;
+}
+.lpopStudyinfo .cont .menu_cont > div .box_left .box01 {
+	overflow: hidden;
+	height: 140px;
+	background: #fff;
+	border-radius: 20px;
+	padding: 15px 25px 0 40px;
+	text-align: left;
+}
+.lpopStudyinfo .cont .menu_cont > div .box_left .box01 h4 span {
+	background: url(//cdndata.milkt.co.kr/ele/app/images/mystudy/ico_studyinfo.png) left top no-repeat;
+	background-size: 40px;
+	width: 37px;
+	height: 36px;
+	text-indent: -9999em;
+	display: inline-block;
+	vertical-align: middle;
+}
+.lpopStudyinfo .cont .menu_cont > div .box_left .box01 h4 b {
+	display: inline-block;
+	margin-left: 12px;
+	font-size: 21px;
+	color: #f77c19;
+	font-weight: 800;
+	vertical-align: middle;
+}
+.lpopStudyinfo .cont .menu_cont > div .box_left .box01 p {
+	font-size: 16px;
+	color: #333;
+	padding-top: 9px;
+	height: auto;
+	letter-spacing: -0.035rem;
+	line-height: 1.4;
+	word-break: break-all;
+	display: -webkit-box;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	white-space: initial;
+	word-break: keep-all;
+}
+.lpopStudyinfo .cont .menu_cont > div .box_left .box01 p span {
+	font-weight: 800;
+}
+.lpopStudyinfo .cont .menu_cont > div .box_left .box02 {
+	overflow: hidden;
+	height: 210px;
+	margin-top: 20px;
+	padding: 20px 25px 0 40px;
+	border-radius: 20px;
+	background: #fff;
+	text-align: left;
+}
+.lpopStudyinfo .cont .menu_cont > div .box_left .box02 h4 span {
+	background: url(//cdndata.milkt.co.kr/ele/app/images/mystudy/ico_studyinfo.png) 0 -61px no-repeat;
+	background-size: 40px;
+	width: 26px;
+	height: 32px;
+	text-indent: -9999em;
+	display: inline-block;
+	vertical-align: middle;
+}
+.lpopStudyinfo .cont .menu_cont > div .box_left .box02 h4 b {
+	display: inline-block;
+	margin-left: 12px;
+	font-size: 21px;
+	color: #f77c19;
+	font-weight: 800;
+	vertical-align: middle;
+}
+.lpopStudyinfo .cont .menu_cont > div .box_left .box02 p {
+	font-size: 16px;
+	color: #333;
+	padding-top: 8px;
+	height: auto;
+	letter-spacing: -0.035rem;
+	line-height: 1.4;
+	word-break: break-all;
+	display: -webkit-box;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	-webkit-line-clamp: 6;
+	-webkit-box-orient: vertical;
+	white-space: initial;
+	word-break: keep-all;
+}
+.lpopStudyinfo .cont .menu_cont > div .box_left .box02 p span {
+	font-weight: 800;
+}
+.lpopStudyinfo .cont .menu_cont > div .box_right {
+	min-height: 370px;
+}
+.lpopStudyinfo .cont .menu_cont > div .box_right .box03 {
+	position: relative;
+	width: 460px;
+	height: 370px;
+	max-height: 370px;
+	background: #fff;
+	border-radius: 20px;
+	padding: 18px 30px 0 40px;
+	vertical-align: top;
+	text-align: left;
+}
+.lpopStudyinfo .cont .menu_cont > div .box_right .box03 h4 span {
+	background: url(//cdndata.milkt.co.kr/ele/app/images/mystudy/ico_studyinfo.png) 0 -118px no-repeat;
+	background-size: 40px;
+	width: 32px;
+	height: 36px;
+	text-indent: -9999em;
+	display: inline-block;
+	vertical-align: middle;
+}
+.lpopStudyinfo .cont .menu_cont > div .box_right .box03 h4 b {
+	display: inline-block;
+	margin-left: 12px;
+	font-size: 21px;
+	color: #f77c19;
+	font-weight: 800;
+	vertical-align: middle;
+}
+.lpopStudyinfo .cont .menu_cont > div .box_right .box03 ul {
+	margin-top: 17px;
+}
+.lpopStudyinfo .cont .menu_cont > div .box_right .box03 ul li {
+	background: url(//cdndata.milkt.co.kr/ele/app/images/mystudy/ico_bar.gif) left 12px no-repeat;
+	background-size: 3px;
+	padding-left: 7px;
+	font-size: 17px;
+	color: #333;
+	letter-spacing: -1px;
+}
+.lpopStudyinfo .cont .menu_cont > div .box_right .box03 ul li:not(:first-child) {
+	margin-top: 20px;
+}
+.lpopStudyinfo .cont .menu_cont > div .box_right .box03 ul.type2 li:not(:first-child) {
+	margin-top: 14px;
+} /* 2023-11-22 추가 */
+.lpopStudyinfo .cont .menu_cont > div .box_right .box03 ul li span {
+	font-weight: 800;
+}
+.lpopStudyinfo .cont .menu_cont > div .box_right .box03 ul li .point {
+	color: #903600;
+}
+.lpopStudyinfo .cont .menu_cont > div .box_right .box03 ul li .space {
+	margin: 2px 0 0 97px;
+	display: block;
+}
+.lpopStudyinfo .cont .menu_cont > div .box_right .box03 .ai_infotxt {
+	position: absolute;
+	bottom: 16px;
+	font-size: 14px;
+	font-weight: 100;
+	color: #666;
+	text-align: left;
+	letter-spacing: -0.05rem;
+}
+/* #116572 MGT "box04, box05" CASE 추가 2024-01-05 */
+.lpopStudyinfo .cont .menu_cont > div .box_right .box04 {
+	position: relative;
+	width: 460px;
+	height: 370px;
+	max-height: 370px;
+	background: #fff;
+	border-radius: 20px;
+	padding: 20px 20px 0 50px;
+	vertical-align: top;
+	text-align: left;
+}
+.lpopStudyinfo .cont .menu_cont > div .box_right .box04 h4 span {
+	background: url(//cdndata.milkt.co.kr/ele/app/images/mystudy/ico_studyinfo.png) 0 -118px no-repeat;
+	background-size: 40px;
+	width: 32px;
+	height: 36px;
+	text-indent: -9999em;
+	display: inline-block;
+	vertical-align: middle;
+}
+.lpopStudyinfo .cont .menu_cont > div .box_right .box04 h4 b {
+	display: inline-block;
+	margin-left: 12px;
+	font-size: 21px;
+	color: #f77c19;
+	font-weight: 800;
+	vertical-align: middle;
+}
+.lpopStudyinfo .cont .menu_cont > div .box_right .box04 .learningSteps {
+	margin-top: 16px;
+}
+.lpopStudyinfo .cont .menu_cont > div .box_right .box04 .learningSteps li + li {
+	margin-top: 15px;
+}
+.lpopStudyinfo .cont .menu_cont > div .box_right .box04 .learningSteps li strong {
+	display: inline-block;
+	height: 25px;
+	padding: 0 7px;
+	border-radius: 5px;
+	background-color: #f77c19;
+	font-size: 16px;
+	font-weight: 800;
+	color: #fff;
+	line-height: 25px;
+	letter-spacing: -0.02em;
+}
+.lpopStudyinfo .cont .menu_cont > div .box_right .box04 .learningSteps li p {
+	margin-top: 5px;
+	font-size: 16px;
+	font-weight: 800;
+	color: #333;
+	line-height: 1.6;
+	letter-spacing: -0.04em;
+}
+.lpopStudyinfo .cont .menu_cont > div .box_right .box04 .learningSteps li .sDesc {
+	margin-top: 10px;
+	font-size: 14px;
+	font-weight: 400;
+	color: #7c7c7c;
+	line-height: 1.4;
+	letter-spacing: -0.03em;
+}
+.lpopStudyinfo .cont .menu_cont > div .box_right .box04 .aiInfotxt {
+	position: absolute;
+	bottom: 20px;
+	left: 0;
+	right: 0;
+	margin: auto;
+	font-size: 14px;
+	font-weight: 400;
+	color: #7c7c7c;
+	text-align: center;
+	letter-spacing: -0.03em;
+}
+
+/* 독후감쓰기 레이어 - mystudy.css에서 가져옴 2023-03-03 수정 */
+.lpop_report {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	margin-left: -640px;
+	width: 1280px;
+	height: 725px;
+	z-index: 20;
+	background: #fff;
+	z-index: 45;
+	box-sizing: border-box;
+}
+.lpop_report * {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.lpop_report .cont_area {
+	width: 1280px !important;
+	height: 725px;
+	background: #fff;
+	overflow: hidden;
+}
+.lpop_report .cont_area .header {
+	background: url(//cdndata.milkt.co.kr/ele/app/images/examstudy/bg_report_top.jpg) left top
+		no-repeat;
+	background-size: 1280px;
+	height: 95px;
+	position: relative;
+}
+.lpop_report .cont_area .header h3 {
+	font-family: 'BM JUA';
+	font-size: 50px;
+	color: #fff;
+	font-weight: normal;
+	letter-spacing: -1px;
+	text-align: left;
+	padding: 23px 0 0 600px;
+	box-sizing: border-box;
+}
+.lpop_report .cont_area .header h3 em {
+	color: #f87c1a;
+}
+.lpop_report .cont_area .header p.txt_info {
+	font-size: 13px;
+	color: #b08264;
+	line-height: 18px;
+	position: absolute;
+	top: 42px;
+	left: 70px;
+}
+.lpop_report .cont_area .header .lpop_close {
+	background: url(//cdndata.milkt.co.kr/ele/app/images/examstudy/ico_performance.png) left top
+		no-repeat;
+	background-size: 30px;
+	position: absolute;
+	top: 33px;
+	right: 30px;
+	text-indent: -9999em;
+	display: block;
+	width: 30px;
+	height: 30px;
+}
+.lpop_report .cont_area .performance_wrap {
+	width: 1280px;
+	height: 660px;
+	overflow: hidden;
+	overflow-y: auto;
+	padding-bottom: 30px;
+}
+.lpop_report .cont_area .performance_wrap .innerWrap {
+	width: 1220px;
+	height: auto;
+	margin: 30px;
+	border: 3px solid #56340e;
+	border-radius: 18px;
+	overflow: hidden;
+	padding-bottom: 30px;
+}
+.lpop_report .cont_area .performance_wrap .innerWrap dl dt {
+	height: 53px;
+	background: #f6e7d4;
+	border-bottom: 1px solid #56340e;
+	padding: 15px 0 17px 30px;
+	font-size: 20px;
+	font-weight: bold;
+	color: #56340e;
+	width: 148px;
+	float: left;
+}
+.lpop_report .cont_area .performance_wrap .innerWrap dl dt span {
+	background: url(//cdndata.milkt.co.kr/ele/app/images/examstudy/ico_performance02.png) left top
+		no-repeat;
+	background-size: 29px;
+	margin-right: 12px;
+	padding-left: 12px;
+	display: inline-block;
+	text-indent: -9999em;
+}
+.lpop_report .cont_area .performance_wrap .innerWrap dl dt.chapter span {
+	width: 24px;
+	height: 19px;
+	background-position: 0 0;
+	vertical-align: middle;
+}
+.lpop_report .cont_area .performance_wrap .innerWrap dl dt.example span {
+	width: 24px;
+	height: 20px;
+	background-position: 3px -28px;
+	vertical-align: middle;
+}
+.lpop_report .cont_area .performance_wrap .innerWrap dl dd {
+	height: 53px;
+	border-bottom: 1px solid #56340e;
+	padding: 15px 0 17px 29px;
+	font-size: 20px;
+	font-weight: bold;
+	color: #000;
+	width: calc(100% - 148px);
+	float: left;
+}
+.lpop_report .cont_area .performance_wrap .innerWrap dl::after {
+	content: '';
+	display: block;
+	clear: both;
+}
+.lpop_report .cont_area .performance_wrap .innerWrap .btn_section {
+	width: 100%;
+	text-align: center;
+}
+.lpop_report .cont_area .performance_wrap .innerWrap .btn_section span {
+	display: inline-block;
+	width: 215px;
+	height: 60px;
+	border-radius: 30px;
+	box-sizing: border-box;
+}
+.lpop_report .cont_area .performance_wrap .innerWrap .btn_section span a {
+	display: block;
+	width: 215px;
+	height: 60px;
+	font-family: 'BM JUA';
+	font-size: 27px;
+	line-height: 2.3em;
+	padding-left: 27px;
+	box-sizing: border-box;
+}
+.lpop_report .cont_area .performance_wrap .innerWrap .btn_section span.btn_view {
+	background: url(//cdndata.milkt.co.kr/ele/app/images/examstudy/ico_report_view.png) 40px 11px
+		no-repeat #f4ddbf;
+	background-size: 31px;
+}
+.lpop_report .cont_area .performance_wrap .innerWrap .btn_section span.btn_view a {
+	color: #754a1a;
+}
+.lpop_report .cont_area .performance_wrap .innerWrap .btn_section span.btn_write {
+	background: url(//cdndata.milkt.co.kr/ele/app/images/examstudy/ico_report_write.png) 32px 12px
+		no-repeat #f87c1a;
+	background-size: 36px;
+	margin-left: 10px;
+}
+.lpop_report .cont_area .performance_wrap .innerWrap .btn_section span.btn_write a {
+	color: #fff;
+}
+.lpop_report .cont_area .performance_wrap .editer_area input[type='text'] {
+	vertical-align: middle;
+	font-size: 14pt !important;
+	height: 22px !important;
+	color: #000;
+	font-weight: bold;
+	padding: 5px 2%;
+	margin: 5px 0;
+}
+.lpop_report .cont_area .performance_wrap .editer_area span {
+	vertical-align: middle;
+}
+.lpop_report .cont_area .performance_wrap .editer_area table tr td {
+	margin: 5px 0;
+	padding: 10px 10px !important;
+	height: auto !important;
+	line-height: 1.3;
+}
+.lpop_report .cont_area .performance_wrap .editer_area p + table {
+	margin-top: 10px;
+}
+.lpop_report .cont_area .performance_wrap .editer_area > p {
+	margin-top: 5px;
+}
+.lpop_report .cont_area .performance_wrap .editer_area > p img {
+	vertical-align: middle;
+}
+.lpop_report .cont_area .performance_wrap .editer_area img {
+	padding: 5px;
+}
+.lpop_report .cont_area .performance_wrap .editer_area {
+	background: #fff;
+	margin: 27px;
+	width: 1160px;
+	height: 100%;
+	min-height: 215px;
+	border: 0;
+	border-radius: 0;
+}
+.lpop_report .cont_area .performance_wrap .editer_area .text {
+	font-size: 20px;
+	color: #000;
+}
+.lpop_report .cont_area .performance_wrap .editer_area textarea {
+	width: 100%;
+	height: 230px;
+	background: #f7f7f7;
+	border: 1px solid #dfdfdf;
+	font-size: 16px;
+	color: #333;
+	box-sizing: border-box;
+	padding: 25px;
+	margin-top: 25px;
+}
+
+/* 1학기 핵심 개념/핵심 문제  학습안내 레이어 2022-10-06 주석 => mystudy.css에서 가져옴 2023-05-16 */
+.lpop_studyinfo_core {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 30;
+	background: rgba(0, 0, 0, 0.65);
+}
+.lpop_studyinfo_core .txt_area {
+	position: absolute;
+	width: 825px;
+	height: 415px;
+	top: 50%;
+	left: 50%;
+	margin-top: -207px;
+	margin-left: -412px;
+	background: #fff;
+	border: 0;
+	border-radius: 20px;
+}
+.lpop_studyinfo_core .txt_area > div {
+	padding: 0;
+	margin: 0;
+}
+.lpop_studyinfo_core .txt_area .tlt {
+	width: 100%;
+	height: 70px;
+	background: #f77c19;
+	border-top-left-radius: 17px;
+	border-top-right-radius: 17px;
+}
+.lpop_studyinfo_core .txt_area .tlt h3 {
+	padding: 11px 0 0 35px;
+	width: 1020px;
+	height: 47px;
+	line-height: 55px;
+	font-family:
+		BM JUA,
+		'나눔고딕';
+	font-weight: normal;
+	font-size: 32px;
+	text-align: left;
+	color: #fff;
+}
+.lpop_studyinfo_core .txt_area .lpop_close {
+	position: absolute;
+	top: 20px;
+	right: 32px;
+	width: 32px;
+	height: 32px;
+	background: url(//cdndata.milkt.co.kr/ele/app/images/mystudy/ico_related.png) no-repeat 0 -100px;
+	background-size: 50px;
+	text-indent: -9999px;
+	border: 0;
+	box-shadow: none;
+	border-radius: 0;
+}
+.lpop_studyinfo_core .txt_area .cont {
+	height: auto !important;
+	margin: 23px 31px 0 36px;
+}
+.lpop_studyinfo_core .txt_area .cont ul li {
+	padding: 0 0 0 17px;
+	margin: 10px 0 16px;
+	color: #333;
+	font-size: 18px;
+	font-weight: bold;
+	background: url(//cdndata.milkt.co.kr/ele/app/images/mystudy/lpop_info_dot.png) no-repeat 0 6px;
+	background-size: 6px;
+}
+.lpop_studyinfo_core .txt_area .cont ul li em {
+	color: #f77c19;
+}
+.lpop_studyinfo_core .txt_area .cont table.tbl_flow {
+	width: 740px;
+	height: 207px;
+	table-layout: fixed;
+	margin: 0 0 0 17px;
+	background: url(//cdndata.milkt.co.kr/ele/app/images/mystudy/lpop_info_tbl.png) no-repeat 0 0;
+	background-size: 740px;
+}
+.lpop_studyinfo_core .txt_area .cont table.tbl_flow thead tr {
+	height: 50px;
+}
+.lpop_studyinfo_core .txt_area .cont table.tbl_flow thead th {
+	border: 0;
+	color: #333;
+	font-size: 18px;
+}
+.lpop_studyinfo_core .txt_area .cont table.tbl_flow tbody th {
+	border: 0;
+	text-align: center;
+	color: #333;
+	font-size: 18px;
+	font-weight: bold;
+}
+.lpop_studyinfo_core .txt_area .cont table.tbl_flow tbody tr:first-child td {
+	height: 61px;
+}
+.lpop_studyinfo_core .txt_area .cont table.tbl_flow tbody td {
+	border: 0;
+	padding: 0;
+	height: 94px;
+	text-align: center;
+	color: #333;
+	font-size: 18px;
+	vertical-align: middle;
+}
+.lpop_studyinfo_core .txt_area .cont table.tbl_flow tbody td .stxt {
+	color: #333;
+	font-size: 13px;
+	margin: 0;
+}
+.lpop_studyinfo_core .txt_area .cont table.tbl_flow tbody td .on {
+	color: #f77c19;
+	font-weight: bold;
+	padding: 0 0 0 20px;
+	background: url(//cdndata.milkt.co.kr/ele/app/images/mystudy/lpop_info_flag.png) no-repeat 0 50%;
+	background-size: 12px;
+}
+.lpop_studyinfo_core .txt_area .cont table.tbl_flow tbody td > span {
+	display: inline-block;
+	margin: 7px 0;
+}
+.lpop_studyinfo_core .info_img img {
+	width: 100%;
+}
+.lpop_studyinfo_core .info_txt {
+	font-size: 18px;
+	line-height: 23px;
+	color: #333;
+	text-align: center;
+	font-weight: normal;
+	letter-spacing: -1px;
+}
+
+/* 1학기 핵심 개념/핵심 문제  학습안내 레이어 2022-10-06 주석  => mystudy.css에서 가져옴 2023-05-16 */
+.lpop_studyinfo_core {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 30;
+	background: rgba(0, 0, 0, 0.65);
+}
+.lpop_studyinfo_core .txt_area {
+	position: absolute;
+	width: 825px;
+	height: 415px;
+	top: 50%;
+	left: 50%;
+	margin-top: -207px;
+	margin-left: -412px;
+	background: #fff;
+	border: 0;
+	border-radius: 20px;
+}
+.lpop_studyinfo_core .txt_area > div {
+	padding: 0;
+	margin: 0;
+}
+.lpop_studyinfo_core .txt_area .tlt {
+	width: 100%;
+	height: 70px;
+	background: #f77c19;
+	border-top-left-radius: 17px;
+	border-top-right-radius: 17px;
+}
+.lpop_studyinfo_core .txt_area .tlt h3 {
+	padding: 11px 0 0 35px;
+	width: 1020px;
+	height: 47px;
+	line-height: 55px;
+	font-family:
+		BM JUA,
+		'나눔고딕';
+	font-weight: normal;
+	font-size: 32px;
+	text-align: left;
+	color: #fff;
+}
+.lpop_studyinfo_core .txt_area .lpop_close {
+	position: absolute;
+	top: 20px;
+	right: 32px;
+	width: 32px;
+	height: 32px;
+	background: url(//cdndata.milkt.co.kr/ele/app/images/mystudy/ico_related.png) no-repeat 0 -100px;
+	background-size: 50px;
+	text-indent: -9999px;
+	border: 0;
+	box-shadow: none;
+	border-radius: 0;
+}
+.lpop_studyinfo_core .txt_area .cont {
+	height: auto !important;
+	margin: 23px 31px 0 36px;
+}
+.lpop_studyinfo_core .txt_area .cont ul li {
+	padding: 0 0 0 17px;
+	margin: 10px 0 16px;
+	color: #333;
+	font-size: 18px;
+	font-weight: bold;
+	background: url(//cdndata.milkt.co.kr/ele/app/images/mystudy/lpop_info_dot.png) no-repeat 0 6px;
+	background-size: 6px;
+}
+.lpop_studyinfo_core .txt_area .cont ul li em {
+	color: #f77c19;
+}
+.lpop_studyinfo_core .txt_area .cont table.tbl_flow {
+	width: 740px;
+	height: 207px;
+	table-layout: fixed;
+	margin: 0 0 0 17px;
+	background: url(//cdndata.milkt.co.kr/ele/app/images/mystudy/lpop_info_tbl.png) no-repeat 0 0;
+	background-size: 740px;
+}
+.lpop_studyinfo_core .txt_area .cont table.tbl_flow thead tr {
+	height: 50px;
+}
+.lpop_studyinfo_core .txt_area .cont table.tbl_flow thead th {
+	border: 0;
+	color: #333;
+	font-size: 18px;
+}
+.lpop_studyinfo_core .txt_area .cont table.tbl_flow tbody th {
+	border: 0;
+	text-align: center;
+	color: #333;
+	font-size: 18px;
+	font-weight: bold;
+}
+.lpop_studyinfo_core .txt_area .cont table.tbl_flow tbody tr:first-child td {
+	height: 61px;
+}
+.lpop_studyinfo_core .txt_area .cont table.tbl_flow tbody td {
+	border: 0;
+	padding: 0;
+	height: 94px;
+	text-align: center;
+	color: #333;
+	font-size: 18px;
+	vertical-align: middle;
+}
+.lpop_studyinfo_core .txt_area .cont table.tbl_flow tbody td .stxt {
+	color: #333;
+	font-size: 13px;
+	margin: 0;
+}
+.lpop_studyinfo_core .txt_area .cont table.tbl_flow tbody td .on {
+	color: #f77c19;
+	font-weight: bold;
+	padding: 0 0 0 20px;
+	background: url(//cdndata.milkt.co.kr/ele/app/images/mystudy/lpop_info_flag.png) no-repeat 0 50%;
+	background-size: 12px;
+}
+.lpop_studyinfo_core .txt_area .cont table.tbl_flow tbody td > span {
+	display: inline-block;
+	margin: 7px 0;
+}
+.lpop_studyinfo_core .info_img img {
+	width: 100%;
+}
+.lpop_studyinfo_core .info_txt {
+	font-size: 18px;
+	line-height: 23px;
+	color: #333;
+	text-align: center;
+	font-weight: normal;
+	letter-spacing: -1px;
+}

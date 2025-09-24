@@ -1,0 +1,49 @@
+{
+	"name": "milkt_dit_nuxt2_starter",
+	"description": "Nuxt2 + TypeScript + composition-api + Pinia + Axios + Proxy  + es2015 + ie11 + tab10.1 Starter",
+	"version": "2.17.2",
+	"private": true,
+	"scripts": {
+		"dev": "npm i && nuxt --dotenv .env.local --open",
+		"dev:local": "npm i && nuxt --hostname=local-pilot.milkt.co.kr --dotenv .env.local --open",
+		"build": "npm run clean && npm i && nuxt build --dotenv .env.production && npm run deploy:nuxt && npm run deploy:server && npm run deploy:config && npm run deploy:install",
+		"build:dev": "npm run clean && npm i && nuxt build --dotenv .env.development && npm run deploy:nuxt && npm run deploy:server && npm run deploy:config && npm run deploy:install",
+		"build:test": "npm run clean && npm i && nuxt build --dotenv .env.test && npm run deploy:nuxt && npm run deploy:server && npm run deploy:config && npm run deploy:install",
+		"build:local": "npm run clean && npm i && nuxt build --dotenv .env.local && npm run deploy:nuxt && npm run deploy:server && npm run deploy:config && npm run deploy:install",
+		"start": "nuxt start",
+		"generate": "nuxt generate",
+		"lint": "eslint --max-warnings 0 --ext .ts,.vue .",
+		"clean": "node ./tasks/clean.js",
+		"deploy:nuxt": "copyfiles -u 1 ./.nuxt/**/*.* ../deploy/.nuxt",
+		"deploy:server": "copyfiles -a ./server/**/*.* ../deploy/ && copyfiles -a ./api/**/*.* ../deploy/ && copyfiles -a ./router.js ../deploy/ && copyfiles -a ./static/js/** ../deploy/ && copyfiles -a ./static/css/** ../deploy/ && copyfiles -a ./static/include/** ../deploy/ ",
+		"deploy:config": "copyfiles -a ./web.config ../deploy/ && copyfiles -a ./nuxt.config.js ../deploy/ && copyfiles -a ./package.json ../deploy/ && copyfiles -a ./.env.* ../deploy/ ",
+		"deploy:install": "cd.. && cd deploy && npm install"
+	},
+	"dependencies": {
+		"@nuxtjs/axios": "^5.13.6",
+		"@nuxtjs/composition-api": "^0.33.1",
+		"@nuxtjs/dotenv": "^1.4.2",
+		"@pinia/nuxt": "^0.2.1",
+		"axios": "^1.6.7",
+		"consola": "^2.9.0",
+		"express": "^4.18.2",
+		"html2canvas": "^1.4.1",
+		"nuxt": "^2.17.2",
+		"nuxt-property-decorator": "^2.9.1",
+		"universal-cookie": "^6.1.3"
+	},
+	"devDependencies": {
+		"@nuxt/babel-preset-app": "^2.17.3",
+		"@nuxt/types": "^2.17.3",
+		"@nuxt/typescript-build": "^3.0.2",
+		"@nuxtjs/device": "^2.3.0",
+		"@nuxtjs/eslint-config-typescript": "^12.1.0",
+		"copyfiles": "^2.4.1",
+		"eslint": "^8.56.0",
+		"eslint-config-prettier": "^9.1.0",
+		"eslint-plugin-prettier": "^5.1.3"
+	},
+	"overrides": {
+		"vue": "^2"
+	}
+}

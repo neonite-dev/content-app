@@ -1,0 +1,123 @@
+@charset "UTF-8";
+.sbHolder {
+	background-color: #fff;
+	border: solid 1px #457dd0;
+	font-size: 18px;
+	font-weight: normal;
+	height: 30px;
+	line-height: 30px;
+	position: relative;
+	min-width: 92px;
+	border-radius: 5px;
+	z-index: 1;
+	display: inline-block;
+}
+.sbHolder:focus .sbSelector {
+}
+.sbSelector {
+	display: block;
+	height: 30px;
+	left: 0;
+	line-height: 30px;
+	outline: none;
+	overflow: hidden;
+	position: absolute;
+	text-indent: 10px;
+	top: 0;
+	width: 100%;
+	/*width: 170px;*/
+}
+.sbSelector:link,
+.sbSelector:visited,
+.sbSelector:hover {
+	color: #000;
+	outline: none;
+	text-decoration: none;
+}
+.sbToggle {
+	background: url(//cdata.milkt.co.kr/edubank/images/common/select-icons_x2.png) 0 -116px no-repeat;
+	background-size: 23px;
+	display: block;
+	height: 30px;
+	outline: none;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 30px;
+}
+.sbToggle:hover {
+	background: url(//cdata.milkt.co.kr/edubank/images/common/select-icons_x2.png) 0 -167px no-repeat;
+	background-size: 23px;
+}
+.sbToggleOpen {
+	background: url(//cdata.milkt.co.kr/edubank/images/common/select-icons_x2.png) 0 -16px no-repeat;
+	background-size: 23px;
+}
+.sbToggleOpen:hover {
+	background: url(//cdata.milkt.co.kr/edubank/images/common/select-icons_x2.png) 0 -66px no-repeat;
+	background-size: 23px;
+}
+.sbHolderDisabled {
+	background-color: #3c3c3c;
+	border: solid 1px #457dd0;
+}
+.sbHolderDisabled .sbHolder {
+}
+.sbHolderDisabled .sbToggle {
+}
+.sbOptions {
+	background-color: #fff;
+	border: solid 1px #457dd0;
+	list-style: none;
+	left: -1px;
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	top: 30px;
+	/*width: 200px;*/
+	width: 100%;
+	z-index: 10;
+	overflow-y: auto;
+	border-radius: 5px;
+}
+.sbOptions li {
+	padding: 0 0px;
+}
+.sbOptions a {
+	display: block;
+	outline: none;
+	padding: 7px 0 7px 5px;
+}
+.sbOptions a:link,
+.sbOptions a:visited {
+	color: #454545;
+	text-decoration: none;
+}
+/*
+.sbOptions a:hover,
+.sbOptions a:focus,*/
+.sbOptions a.sbFocus {
+	color: #fff;
+	background: #478fd9;
+}
+.sbOptions li.last a {
+	border-bottom: none;
+}
+
+.sbHolder:focus .sbSelector {
+}
+
+.sbOptions .sbDisabled {
+	color: #999;
+	display: block;
+	padding: 7px 0 7px 3px;
+}
+.sbOptions .sbGroup {
+	color: #ebb52d;
+	display: block;
+	font-weight: bold;
+	padding: 7px 0 7px 3px;
+}
+.sbOptions .sbSub {
+	padding-left: 17px;
+}

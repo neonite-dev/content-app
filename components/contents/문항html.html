@@ -1,0 +1,722 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko"><head>
+<title>문항 미리보기</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="initial-scale=1.5, maximum-scale=1.5, minimum-scale=1.5">
+<style type="text/css">
+.paper
+{
+	border:1px solid silver;
+	background-color:white;
+	-webkit-box-shadow:0 8px 8px rgba(0, 0, 0, 0.4);
+	-moz-box-shadow:0 8px 8px rgba(0, 0, 0, 0.4);
+	box-shadow:0 8px 8px rgba(0, 0, 0, 0.4);
+}
+</style>
+<link rel="stylesheet" type="text/css" href="//app.milkt.co.kr/include/edubank/common/css/choproblem_tab.asp?pfontsize=15&amp;hfontsize=15&amp;cfontsize=15&amp;sfontsize=15&amp;efontsize=15&amp;xfontsize=15">
+<script type="text/javascript" language="javascript">
+//<![CDATA[
+     //document.domain = "milkt.co.kr";
+//]]>
+</script>
+<script type="text/javascript" src="//pilot.milkt.co.kr/include/edubank/common/js/jquery-1.10.2.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="//pilot.milkt.co.kr/include/edubank/common/js/config.js?20250827143705" charset="utf-8"></script>
+<script type="text/javascript" src="//pilot.milkt.co.kr/include/edubank/common/js/common.js?20250827143705" charset="utf-8"></script>
+<script type="text/javascript" src="//pilot.milkt.co.kr/include/edubank/common/js/makemathjax.js?20250827143705" charset="utf-8"></script>
+<script type="text/javascript" src="//pilot.milkt.co.kr/include/edubank/common/js/nchoproblem.js?20250827143705" charset="utf-8"></script>
+<script type="text/javascript" src="//pilot.milkt.co.kr/include/edubank/common/js/drawpaper.js?20250827143705" charset="utf-8"></script>
+<script type="text/javascript" src="//pilot.milkt.co.kr/include/edubank/common/js/audio.js?20250827143705" charset="utf-8"></script>
+
+<script type="text/javascript">
+//<![CDATA[
+
+	//alert('sample3_test');
+
+    _loginchk = "N"
+    var objPaper = null;
+    function doinit() {
+        var strTemplate = ""
+
+        objPaper = new drawPaper({
+            //모드 - edit(편집),select(문항 선택),view(미리보기), test(이테스트)
+            bankmode: "test",
+            //number, check, radio  (문항 앞에 번호를 보여줄 것인지, checkbox, radio를 보여 줄것인지)
+            numbering: "number",
+            //보여주기할 필드(문항, 해답, 해설, 힌트), 
+            //단순히 viewfield:"paeh"로 표시해도 됨.. ex)문제와 정답만 표시할거면 viewfield:"pa"
+            viewfield: { problem: true, answer: false, explain: false, hint: false },
+            //DB정보를 보여줄 것인지 여부(문항 위에 단원, 난이도 표시)
+            viewdbinfo: false,
+            //정답 표시 여부
+            //answer:실제 정답, userinput:사용자 입력값
+            answerchecked: { answer: false, userinput: true },
+            //시험지 단 정보
+            //cnt : 0-단없음, 1-1단, 2-2단, 3-한문항씩 보기
+            //width : 1단의 폭
+            //height :  1단의 높이
+            daninfo: { cnt: 3, width: 0, height: 0 },
+            //템플릿 html
+            template: strTemplate,
+            //보여줄 문항 리트스
+            //code-문항코드, 
+            //numbering - 문항번호(생략하거나 빈문자열일때는 문항번호가 나옴..
+            //head - 문항위에 나타낼 html, tail - 문항 아래에 나타낼 html, 
+            //result : 채점 표시 0-틀림, 1-세모, 2-맞음, null-표시안함
+            //userinput: 사용자 입력값
+            //단순히 problem:"4617397,4617398,4617399,4617340"과 같은 형식도 가능
+            problem: parent.getTestJsonData(),
+            //		problem:
+            //			[
+            //				{code:1021,number:"", head:"", tail:"", result:"", userinput:""},
+            //				{code:1020,number:"", head:"", tail:"", result:"", userinput:""}, 
+            //				{code:1056,number:"", head:"", tail:"", result:"", userinput:""},
+            //				{code:1005,number:"", head:"", tail:"", result:"", userinput:""},
+            //				{code:1060,number:"", head:"", tail:"", result:"", userinput:""},
+            //				{code:1063,number:"", head:"", tail:"", result:"", userinput:""},
+            //				{code:1062,number:"", head:"", tail:"", result:"", userinput:""},
+            //				{code:1058,number:"", head:"", tail:"", result:"", userinput:""}
+
+            //			],
+
+            //시험지 생성후 리턴될 callback function
+            success: function () {
+                var objload = document.getElementById("divprogress");
+                if (objload) objload.parentNode.removeChild(objload);
+
+                //부모창의 iframe크기 조절 함수 호출	        
+                setTimeout(function () { makeBNKPlayer(); }, 1);
+
+                // 유사문제 지문 번호 삭제 (sik#22650)
+                if ("TEST" == "SIMILAR") {
+                    setTimeout(function () { parent.SimilarQuizNum_Hide(); }, 500);
+                }
+            },
+            complete: function () {
+                try { parent.setIFRAMESize(); } catch (e) { }
+            }
+        });
+
+    }
+    //현재 윈도우의 크리 리턴
+    function getWINSize() {
+        if (bdrawcomplete == false) return null;
+        var ifDoc = null;
+        try {
+            ifDoc = document.documentElement;
+        }
+        catch (e1) {
+            try {
+                ifDoc = documentElement;
+            }
+            catch (e2) { }
+        }
+        if (ifDoc) {
+            return [ifDoc.scrollWidth, ifDoc.scrollHeight];
+        }
+        return [null, null];
+    }
+
+
+    $(window).load(function () {
+        //부모창의 iframe크기 조절 함수 호출
+        try {
+            setTimeout(function () {
+                parent.setIFRAMESize();
+            }, 700);
+        } catch (e) { }
+
+    }); 
+
+
+//]]>
+</script>
+
+</head>
+
+<body style="margin: 18px 10px 10px;" onload="doinit()">
+	<form name="bnkfrm" method="post" action="?" onsubmit="return false;" style="margin:0;padding:0;">
+	<input type="hidden" name="f_etcfield" value="">
+	
+	<div class="chobank" id="chobank" style="opacity: 100;">
+	<div id="divconfig" class="divconfig" style="display:none;" configeq="jaxedit"></div>
+
+
+	<div class="divproblem" name="divproblem" file_id="30175329" header_id="" problem_id="30175332" ptype="50" edityn="Y" answer="*" dbanswer="" draw="Y" userinput="" style="">
+		<input type="hidden" name="f_input" class="bnkinput" id="f_sinpupt_30175332" value="">
+		<input type="hidden" name="f_problem_id" value="30175332">
+
+		<div class="divheader" header_id="" style="display: none;">
+			<div class="divdbinfo2" style="display: none;"><a href="javascript:viewOneHeader()"></a></div>
+			<div class="divheadbuttons">
+				<input type="button" id="btnheader1" value="-" onclick="bnkShowHideHeader(this)" show="Y">
+			</div>
+			<div class="divheadcontent" sname="bnk_element" key="h"></div>
+			<div class="divheadexplain" sname="bnk_element" key="h" setflag="Y" style="display: none;"></div>
+			<div class="divspcehead2prob" sname="bnk_element" key=""></div>
+		</div>
+		<div class="divdbinfo" style="display: none;">
+			<div class="divfileinfo">30175329-5지 선택/</div>
+			<div class="divanalysisinfo"><ul><li>30175332-중/2022 개정/천재(함) 4-1/1. My Name Is Amy</li></ul></div>
+			<div class="divorigininfo"></div>
+		</div>
+        <div class="divtophtml"></div>
+		<div class="divcontenthead"></div>
+		<div class="divprobcontent">
+			<div class="divaddfilelist"></div>
+			<div class="divquestionbox" sname="bnk_element" key="q30175332" fpath="problem/301753/30175329/question/" legend="" ansopt="NNNN00" id="divquestionbox_30175332">
+				<div class="divquestion"><p style="margin-left:1.0pt;"><span class="spnnumbering" id="spnnumbering_30175332">1. </span>대화를 듣고, 알맞은 그림을 고르세요.&nbsp;&nbsp;<span style="position: relative; display: inline-block; width: 38px; height: 38px; z-index: 99990; vertical-align: middle;"><img src="https://cdata3.milkt.co.kr/eleedubase/edubank/images/audio/default.png" alt="1/0px 0px 0px 0px/" width="38" height="38" vspace="0" hspace="0" border="0" style="margin: 0px; cursor: pointer; position: absolute; left: 0px; top: 0px; z-index: 99999;" class="sndcontrol" path="https://cdata3.milkt.co.kr/eleedubase/problem/301753/30175329/question/20250117101919.MP3?0" id="imgid_1" playmode="A" problem_id="30175332"></span></p> </div>
+				<div class="divchoice">
+					<ol class="column2">
+						<li class="lichoice1" ord="1" pid="30175332" style="position: relative; vertical-align: top;"><div style="display:inline-block;position:relative;text-decoration-skip-ink:none;"><a href="javascript:doNothing()"><p><img class="imgchoice" src="https://cdata3.milkt.co.kr/eleedubase/images/etest/1_off.png" id="imgchoice_30175332_1" onclick="objBank.selectChoice('lichoice',30175332,1)" seleceted="N" style="vertical-align: top;"><span class="onlyprint">①</span><span style="display:inline-block;width:5px;"></span>&nbsp;&nbsp;</p><p><img src="http://cdata3.milkt.co.kr/eleedubase//problem/301753/30175329/choice/_hcv_c130175329_1.png?x=40475" alt="2/0px 0px 0px 0px/" width="137" height="136" vspace="0" hspace="0" border="0" style="margin: 0px; vertical-align: top;" id="imgid_3"></p></a><div class="lblchoicecover" style="position: absolute; left: 0px; top: 0px; width: 100%; height: 90%; z-index: 9999; cursor: pointer;"></div></div></li>
+						<li class="lichoice2" ord="2" pid="30175332" style="position: relative; vertical-align: top;"><div style="display:inline-block;position:relative;text-decoration-skip-ink:none;"><a href="javascript:doNothing()"><p><img class="imgchoice" src="https://cdata3.milkt.co.kr/eleedubase/images/etest/2_off.png" id="imgchoice_30175332_2" onclick="objBank.selectChoice('lichoice',30175332,2)" seleceted="N" style="vertical-align: top;"><span class="onlyprint">②</span><span style="display:inline-block;width:5px;"></span>&nbsp;&nbsp;</p><p><img src="http://cdata3.milkt.co.kr/eleedubase//problem/301753/30175329/choice/_hcv_c230175329_1.png?x=40475" alt="3/0px 0px 0px 0px/" width="137" height="136" vspace="0" hspace="0" border="0" style="margin: 0px; vertical-align: top;" id="imgid_5"></p></a><div class="lblchoicecover" style="position: absolute; left: 0px; top: 0px; width: 100%; height: 90%; z-index: 9999; cursor: pointer;"></div></div></li>
+						<li class="lichoice3" ord="3" pid="30175332" style="position: relative; vertical-align: top;"><div style="display:inline-block;position:relative;text-decoration-skip-ink:none;"><a href="javascript:doNothing()"><p><img class="imgchoice" src="https://cdata3.milkt.co.kr/eleedubase/images/etest/3_off.png" id="imgchoice_30175332_3" onclick="objBank.selectChoice('lichoice',30175332,3)" seleceted="N" style="vertical-align: top;"><span class="onlyprint">③</span><span style="display:inline-block;width:5px;"></span>&nbsp;&nbsp;</p><p><img src="http://cdata3.milkt.co.kr/eleedubase//problem/301753/30175329/choice/_hcv_c330175329_1.png?x=40475" alt="4/0px 0px 0px 0px/" width="137" height="136" vspace="0" hspace="0" border="0" style="margin: 0px; vertical-align: top;" id="imgid_7"></p></a><div class="lblchoicecover" style="position: absolute; left: 0px; top: 0px; width: 100%; height: 90%; z-index: 9999; cursor: pointer;"></div></div></li>
+						<li class="lichoice4" ord="4" pid="30175332" style="position: relative; vertical-align: top;"><div style="display:inline-block;position:relative;text-decoration-skip-ink:none;"><a href="javascript:doNothing()"><p><img class="imgchoice" src="https://cdata3.milkt.co.kr/eleedubase/images/etest/4_off.png" id="imgchoice_30175332_4" onclick="objBank.selectChoice('lichoice',30175332,4)" seleceted="N" style="vertical-align: top;"><span class="onlyprint">④</span><span style="display:inline-block;width:5px;"></span>&nbsp;&nbsp;</p><p><img src="http://cdata3.milkt.co.kr/eleedubase//problem/301753/30175329/choice/_hcv_c430175329_1.png?x=40475" alt="5/0px 0px 0px 0px/" width="137" height="136" vspace="0" hspace="0" border="0" style="margin: 0px; vertical-align: top;" id="imgid_9"></p></a><div class="lblchoicecover" style="position: absolute; left: 0px; top: 0px; width: 100%; height: 90%; z-index: 9999; cursor: pointer;"></div></div></li>
+						<li class="lichoice5" ord="5" pid="30175332" style="position: relative; vertical-align: top;"><div style="display:inline-block;position:relative;text-decoration-skip-ink:none;"><a href="javascript:doNothing()"><p><img class="imgchoice" src="https://cdata3.milkt.co.kr/eleedubase/images/etest/5_off.png" id="imgchoice_30175332_5" onclick="objBank.selectChoice('lichoice',30175332,5)" seleceted="N" style="vertical-align: top;"><span class="onlyprint">⑤</span><span style="display:inline-block;width:5px;"></span>&nbsp;&nbsp;</p><p><img src="http://cdata3.milkt.co.kr/eleedubase//problem/301753/30175329/choice/_hcv_c530175329_1.png?x=40475" alt="6/0px 0px 0px 0px/" width="137" height="136" vspace="0" hspace="0" border="0" style="margin: 0px; vertical-align: top;" id="imgid_11"></p></a><div class="lblchoicecover" style="position: absolute; left: 0px; top: 0px; width: 100%; height: 90%; z-index: 9999; cursor: pointer;"></div></div></li>
+					</ol>
+				</div>
+				
+				<div class="divquestiontail"></div>
+			</div>
+			<div class="divsolutionbox" sname="bnk_element" key="a30175332">
+				<div class="divanswer" setflag="Y" style="display: none;"><p style="margin-left:1.0pt;"><img src="https://cdata3.milkt.co.kr/eleedubase/edubank/images/questionbank/answer.png" width="48px" height="27px" id="imgid_12">&nbsp;③</p></div>
+				<div class="divexplain" setflag="Y" style="display: none;"><p style="margin-left:1.0pt;"><img src="https://cdata3.milkt.co.kr/eleedubase/edubank/images/questionbank/explanation.png" width="48px" height="27px" id="imgid_13">&nbsp;&nbsp;</p><p>Good morning.은 아침에 하는 인사이므로&nbsp;③이 알맞은 그림입니다.&nbsp;</p><p>(녹음내용)&nbsp;</p><p>B: Good morning, Suji. 안녕, 수지야.&nbsp;</p><p>G: Good morning, Danny. 안녕, 대니.</p></div>
+				<div class="divscript" style="display: none;"></div>
+				<div class="divhint" style="display: none;"></div>
+				<div class="divsolutiontail"></div>
+			</div>
+            <div class="divquestionhead"></div>
+		</div>
+		<div class="divcontenttail"></div>
+		<div class="divspcprob2prob" setwork="Y"></div>
+	</div>
+
+
+	<div class="divproblem" name="divproblem" file_id="30175330" header_id="" problem_id="30175333" ptype="50" edityn="Y" answer="*" dbanswer="" draw="Y" userinput="" style="display: none;">
+		<input type="hidden" name="f_input" class="bnkinput" id="f_sinpupt_30175333" value="">
+		<input type="hidden" name="f_problem_id" value="30175333">
+
+		<div class="divheader" header_id="" style="display: none;">
+			<div class="divdbinfo2" style="display: none;"><a href="javascript:viewOneHeader()"></a></div>
+			<div class="divheadbuttons">
+				<input type="button" id="btnheader1" value="-" onclick="bnkShowHideHeader(this)" show="Y">
+			</div>
+			<div class="divheadcontent" sname="bnk_element" key="h"></div>
+			<div class="divheadexplain" sname="bnk_element" key="h" setflag="Y" style="display: none;"></div>
+			<div class="divspcehead2prob" sname="bnk_element" key=""></div>
+		</div>
+		<div class="divdbinfo" style="display: none;">
+			<div class="divfileinfo">30175330-5지 선택/</div>
+			<div class="divanalysisinfo"><ul><li>30175333-중/2022 개정/천재(함) 4-1/1. My Name Is Amy</li></ul></div>
+			<div class="divorigininfo"></div>
+		</div>
+        <div class="divtophtml"></div>
+		<div class="divcontenthead"></div>
+		<div class="divprobcontent">
+			<div class="divaddfilelist"></div>
+			<div class="divquestionbox" sname="bnk_element" key="q30175333" fpath="problem/301753/30175330/question/" legend="" ansopt="NNNN00" id="divquestionbox_30175333">
+				<div class="divquestion"><p style="margin-left:1.0pt;"><span class="spnnumbering" id="spnnumbering_30175333">2. </span>대화를 듣고, 가장 자연스러운 것을 고르세요.&nbsp;&nbsp;<span style="position: relative; display: inline-block; width: 38px; height: 38px; z-index: 99990; vertical-align: middle;"><img src="https://cdata3.milkt.co.kr/eleedubase/edubank/images/audio/default.png" alt="1/0px 0px 0px 0px/" width="38" height="38" vspace="0" hspace="0" border="0" style="margin: 0px; cursor: pointer; position: absolute; left: 0px; top: 0px; z-index: 99999;" class="sndcontrol" path="https://cdata3.milkt.co.kr/eleedubase/problem/301753/30175330/question/20250117101757.MP3?0" id="imgid_14" playmode="A" problem_id="30175333"></span></p> </div>
+				<div class="divchoice">
+					<ol class="column3">
+						<li class="lichoice1" ord="1" pid="30175333" style="position: relative; vertical-align: top;"><div style="display:inline-block;position:relative;text-decoration-skip-ink:none;"><a href="javascript:doNothing()"><img class="imgchoice" src="https://cdata3.milkt.co.kr/eleedubase/images/etest/1_off.png" id="imgchoice_30175333_1" onclick="objBank.selectChoice('lichoice',30175333,1)" seleceted="N" style="vertical-align: top;"><span class="onlyprint">①</span><span style="display:inline-block;width:5px;"></span></a><div class="lblchoicecover" style="position: absolute; left: 0px; top: 0px; width: 100%; height: 90%; z-index: 9999; cursor: pointer;"></div></div></li>
+						<li class="lichoice2" ord="2" pid="30175333" style="position: relative; vertical-align: top;"><div style="display:inline-block;position:relative;text-decoration-skip-ink:none;"><a href="javascript:doNothing()"><img class="imgchoice" src="https://cdata3.milkt.co.kr/eleedubase/images/etest/2_off.png" id="imgchoice_30175333_2" onclick="objBank.selectChoice('lichoice',30175333,2)" seleceted="N" style="vertical-align: top;"><span class="onlyprint">②</span><span style="display:inline-block;width:5px;"></span></a><div class="lblchoicecover" style="position: absolute; left: 0px; top: 0px; width: 100%; height: 90%; z-index: 9999; cursor: pointer;"></div></div></li>
+						<li class="lichoice3" ord="3" pid="30175333" style="position: relative; vertical-align: top;"><div style="display:inline-block;position:relative;text-decoration-skip-ink:none;"><a href="javascript:doNothing()"><img class="imgchoice" src="https://cdata3.milkt.co.kr/eleedubase/images/etest/3_off.png" id="imgchoice_30175333_3" onclick="objBank.selectChoice('lichoice',30175333,3)" seleceted="N" style="vertical-align: top;"><span class="onlyprint">③</span><span style="display:inline-block;width:5px;"></span></a><div class="lblchoicecover" style="position: absolute; left: 0px; top: 0px; width: 100%; height: 90%; z-index: 9999; cursor: pointer;"></div></div></li>
+						<li class="lichoice4" ord="4" pid="30175333" style="position: relative; vertical-align: top;"><div style="display:inline-block;position:relative;text-decoration-skip-ink:none;"><a href="javascript:doNothing()"><img class="imgchoice" src="https://cdata3.milkt.co.kr/eleedubase/images/etest/4_off.png" id="imgchoice_30175333_4" onclick="objBank.selectChoice('lichoice',30175333,4)" seleceted="N" style="vertical-align: top;"><span class="onlyprint">④</span><span style="display:inline-block;width:5px;"></span></a><div class="lblchoicecover" style="position: absolute; left: 0px; top: 0px; width: 100%; height: 90%; z-index: 9999; cursor: pointer;"></div></div></li>
+						<li class="lichoice5" ord="5" pid="30175333" style="position: relative; vertical-align: top;"><div style="display:inline-block;position:relative;text-decoration-skip-ink:none;"><a href="javascript:doNothing()"><img class="imgchoice" src="https://cdata3.milkt.co.kr/eleedubase/images/etest/5_off.png" id="imgchoice_30175333_5" onclick="objBank.selectChoice('lichoice',30175333,5)" seleceted="N" style="vertical-align: top;"><span class="onlyprint">⑤</span><span style="display:inline-block;width:5px;"></span></a><div class="lblchoicecover" style="position: absolute; left: 0px; top: 0px; width: 100%; height: 90%; z-index: 9999; cursor: pointer;"></div></div></li>
+					</ol>
+				</div>
+				
+				<div class="divquestiontail"></div>
+			</div>
+			<div class="divsolutionbox" sname="bnk_element" key="a30175333">
+				<div class="divanswer" setflag="Y" style="display: none;"><p style="margin-left:1.0pt;"><img src="https://cdata3.milkt.co.kr/eleedubase/edubank/images/questionbank/answer.png" width="48px" height="27px" id="imgid_20">&nbsp;⑤</p></div>
+				<div class="divexplain" setflag="Y" style="display: none;"><p style="margin-left:1.0pt;"><img src="https://cdata3.milkt.co.kr/eleedubase/edubank/images/questionbank/explanation.png" width="48px" height="27px" id="imgid_21">&nbsp;&nbsp;</p><p>안부를 묻고 답하는 대화인 ⑤가 자연스럽습니다.&nbsp;</p><p>(녹음내용)&nbsp;</p><p>① G: How are you? 잘 지내니?&nbsp;</p><p>&nbsp;&nbsp;&nbsp;B: You're welcome. 천만에.&nbsp;</p><p>② G: Good afternoon. 안녕.&nbsp;</p><p>&nbsp;&nbsp;&nbsp;B: Good morning. 안녕.&nbsp;</p><p>③ G: What's your name? 네 이름은 뭐니?&nbsp;</p><p>&nbsp;&nbsp;&nbsp;B: I'm okay, thanks. 나는 괜찮아, 고마워.&nbsp;</p><p>④ G: Good morning, Kevin. 안녕, Kevin.&nbsp;</p><p>&nbsp;&nbsp;&nbsp;B: Goodbye, Sumi. 잘 가, 수미야.&nbsp;</p><p>⑤ G: How are you? 잘 지내니?&nbsp;</p><p>&nbsp;&nbsp;&nbsp;B: Not bad, thank you. 나쁘지 않아, 고마워.</p></div>
+				<div class="divscript" style="display: none;"></div>
+				<div class="divhint" style="display: none;"></div>
+				<div class="divsolutiontail"></div>
+			</div>
+            <div class="divquestionhead"></div>
+		</div>
+		<div class="divcontenttail"></div>
+		<div class="divspcprob2prob" setwork="Y"></div>
+	</div>
+
+
+	<div class="divproblem" name="divproblem" file_id="30175331" header_id="" problem_id="30175334" ptype="20" edityn="Y" answer="*" dbanswer="" draw="Y" userinput="" style="display: none;">
+		<input type="hidden" name="f_input" class="bnkinput" id="f_sinpupt_30175334" value="">
+		<input type="hidden" name="f_problem_id" value="30175334">
+
+		<div class="divheader" header_id="" style="display: none;">
+			<div class="divdbinfo2" style="display: none;"><a href="javascript:viewOneHeader()"></a></div>
+			<div class="divheadbuttons">
+				<input type="button" id="btnheader1" value="-" onclick="bnkShowHideHeader(this)" show="Y">
+			</div>
+			<div class="divheadcontent" sname="bnk_element" key="h"></div>
+			<div class="divheadexplain" sname="bnk_element" key="h" setflag="Y" style="display: none;"></div>
+			<div class="divspcehead2prob" sname="bnk_element" key=""></div>
+		</div>
+		<div class="divdbinfo" style="display: none;">
+			<div class="divfileinfo">30175331-2지 선택/</div>
+			<div class="divanalysisinfo"><ul><li>30175334-하/2022 개정/천재(함) 4-1/1. My Name Is Amy</li></ul></div>
+			<div class="divorigininfo"></div>
+		</div>
+        <div class="divtophtml"></div>
+		<div class="divcontenthead"></div>
+		<div class="divprobcontent">
+			<div class="divaddfilelist"></div>
+			<div class="divquestionbox" sname="bnk_element" key="q30175334" fpath="problem/301753/30175331/question/" legend="" ansopt="NNNN00" id="divquestionbox_30175334">
+				<div class="divquestion"><p style="margin-left:1.0pt;"><span class="spnnumbering" id="spnnumbering_30175334">3. </span>다음을 듣고, 오후에 하는 인사말을 고르세요.&nbsp;&nbsp;<span style="position: relative; display: inline-block; width: 38px; height: 38px; z-index: 99990; vertical-align: middle;"><img src="https://cdata3.milkt.co.kr/eleedubase/edubank/images/audio/default.png" alt="1/0px 0px 0px 0px/" width="38" height="38" vspace="0" hspace="0" border="0" style="margin: 0px; cursor: pointer; position: absolute; left: 0px; top: 0px; z-index: 99999;" class="sndcontrol" path="https://cdata3.milkt.co.kr/eleedubase/problem/301753/30175331/question/20250117102457.MP3?0" id="imgid_22" playmode="A" problem_id="30175334"></span></p> </div>
+				<div class="divchoice">
+					<ol class="column2">
+						<li class="lichoice1" ord="1" pid="30175334" style="position: relative; vertical-align: top;"><div style="display:inline-block;position:relative;text-decoration-skip-ink:none;"><a href="javascript:doNothing()"><img class="imgchoice" src="https://cdata3.milkt.co.kr/eleedubase/images/etest/1_off.png" id="imgchoice_30175334_1" onclick="objBank.selectChoice('lichoice',30175334,1)" seleceted="N" style="vertical-align: top;"><span class="onlyprint">①</span><span style="display:inline-block;width:5px;"></span></a><div class="lblchoicecover" style="position: absolute; left: 0px; top: 0px; width: 100%; height: 90%; z-index: 9999; cursor: pointer;"></div></div></li>
+						<li class="lichoice2" ord="2" pid="30175334" style="position: relative; vertical-align: top;"><div style="display:inline-block;position:relative;text-decoration-skip-ink:none;"><a href="javascript:doNothing()"><img class="imgchoice" src="https://cdata3.milkt.co.kr/eleedubase/images/etest/2_off.png" id="imgchoice_30175334_2" onclick="objBank.selectChoice('lichoice',30175334,2)" seleceted="N" style="vertical-align: top;"><span class="onlyprint">②</span><span style="display:inline-block;width:5px;"></span></a><div class="lblchoicecover" style="position: absolute; left: 0px; top: 0px; width: 100%; height: 90%; z-index: 9999; cursor: pointer;"></div></div></li>
+						<li class="lichoice3" ord="3" pid="30175334" style="display: none; position: relative; vertical-align: top;"><div style="display:inline-block;position:relative;text-decoration-skip-ink:none;"><a href="javascript:doNothing()"><img class="imgchoice" src="https://cdata3.milkt.co.kr/eleedubase/images/etest/3_off.png" id="imgchoice_30175334_3" onclick="objBank.selectChoice('lichoice',30175334,3)" seleceted="N" style="vertical-align: top;"><span class="onlyprint">③</span><span style="display:inline-block;width:5px;"></span></a><div class="lblchoicecover" style="position: absolute; left: 0px; top: 0px; width: 100%; height: 90%; z-index: 9999; cursor: pointer;"></div></div></li>
+						<li class="lichoice4" ord="4" pid="30175334" style="display: none; position: relative; vertical-align: top;"><div style="display:inline-block;position:relative;text-decoration-skip-ink:none;"><a href="javascript:doNothing()"><img class="imgchoice" src="https://cdata3.milkt.co.kr/eleedubase/images/etest/4_off.png" id="imgchoice_30175334_4" onclick="objBank.selectChoice('lichoice',30175334,4)" seleceted="N" style="vertical-align: top;"><span class="onlyprint">④</span><span style="display:inline-block;width:5px;"></span></a><div class="lblchoicecover" style="position: absolute; left: 0px; top: 0px; width: 100%; height: 90%; z-index: 9999; cursor: pointer;"></div></div></li>
+						<li class="lichoice5" ord="5" pid="30175334" style="display: none; position: relative; vertical-align: top;"><div style="display:inline-block;position:relative;text-decoration-skip-ink:none;"><a href="javascript:doNothing()"><img class="imgchoice" src="https://cdata3.milkt.co.kr/eleedubase/images/etest/5_off.png" id="imgchoice_30175334_5" onclick="objBank.selectChoice('lichoice',30175334,5)" seleceted="N" style="vertical-align: top;"><span class="onlyprint">⑤</span><span style="display:inline-block;width:5px;"></span></a><div class="lblchoicecover" style="position: absolute; left: 0px; top: 0px; width: 100%; height: 90%; z-index: 9999; cursor: pointer;"></div></div></li>
+					</ol>
+				</div>
+				
+				<div class="divquestiontail"></div>
+			</div>
+			<div class="divsolutionbox" sname="bnk_element" key="a30175334">
+				<div class="divanswer" setflag="Y" style="display: none;"><p style="margin-left:1.0pt;"><img src="https://cdata3.milkt.co.kr/eleedubase/edubank/images/questionbank/answer.png" width="48px" height="27px" id="imgid_28">&nbsp;②</p></div>
+				<div class="divexplain" setflag="Y" style="display: none;"><p style="margin-left:1.0pt;"><img src="https://cdata3.milkt.co.kr/eleedubase/edubank/images/questionbank/explanation.png" width="48px" height="27px" id="imgid_29">&nbsp;&nbsp;</p><p>‘오후’를 가리키는 말은 afternoon이므로 오후에 하는 인사말은 Good afternoon.입니다.&nbsp;</p><p>(녹음내용)&nbsp;</p><p>G: ① Good morning. 안녕. (아침 인사)&nbsp;</p><p>&nbsp;&nbsp;&nbsp;② Good afternoon. 안녕. (오후 인사)</p></div>
+				<div class="divscript" style="display: none;"></div>
+				<div class="divhint" style="display: none;"></div>
+				<div class="divsolutiontail"></div>
+			</div>
+            <div class="divquestionhead"></div>
+		</div>
+		<div class="divcontenttail"></div>
+		<div class="divspcprob2prob" setwork="Y"></div>
+	</div>
+
+
+	<div class="divproblem" name="divproblem" file_id="30175332" header_id="" problem_id="30175335" ptype="60" edityn="Y" answer="*********" dbanswer="" draw="Y" userinput="" style="display: none;">
+		<input type="hidden" name="f_input" class="bnkinput" id="f_sinpupt_30175335" value="">
+		<input type="hidden" name="f_problem_id" value="30175335">
+
+		<div class="divheader" header_id="" style="display: none;">
+			<div class="divdbinfo2" style="display: none;"><a href="javascript:viewOneHeader()"></a></div>
+			<div class="divheadbuttons">
+				<input type="button" id="btnheader1" value="-" onclick="bnkShowHideHeader(this)" show="Y">
+			</div>
+			<div class="divheadcontent" sname="bnk_element" key="h"></div>
+			<div class="divheadexplain" sname="bnk_element" key="h" setflag="Y" style="display: none;"></div>
+			<div class="divspcehead2prob" sname="bnk_element" key=""></div>
+		</div>
+		<div class="divdbinfo" style="display: none;">
+			<div class="divfileinfo">30175332-단답 유순형/</div>
+			<div class="divanalysisinfo"><ul><li>30175335-하/2022 개정/천재(함) 4-1/1. My Name Is Amy</li></ul></div>
+			<div class="divorigininfo"></div>
+		</div>
+        <div class="divtophtml"></div>
+		<div class="divcontenthead"></div>
+		<div class="divprobcontent">
+			<div class="divaddfilelist"></div>
+			<div class="divquestionbox" sname="bnk_element" key="q30175335" fpath="problem/301753/30175332/question/" legend="" ansopt="NYNN00" id="divquestionbox_30175335">
+				<div class="divquestion"><p style="margin-left:1.0pt;"><span class="spnnumbering" id="spnnumbering_30175335">4. </span>그림을 보고, 알맞은 낱말을 골라 쓰세요.</p><p style="text-align:center;"><img src="http://cdata3.milkt.co.kr/eleedubase//problem/301753/30175332/question/_hcv_qn30175332_1.png?x=40475" alt="1/0px 0px 0px 0px/" width="207" height="141" vspace="0" hspace="0" border="0" style="margin:0px 0px 0px 0px;" id="imgid_30"></p><p></p><table class="rectangle" style="height:36px;"><tbody><tr><td><div class="spnboxtbl"><div class="spnboxtblptag" style="text-align:center;"><font style="color:#3aa4c1;"><b>|</b></font>보기<font style="color:#3aa4c1;"><b>|</b></font></div><div class="spnboxtblptag" style="text-align:center;">morning, afternoon</div></div></td></tr></tbody></table><p></p><p style="text-align:right;">(<span style="font-size: 0pt; margin: 0px; padding: 0px;">&nbsp;</span><span class="spnmathjax" style="font-size:110%;"><span style="text-align: center;" aria-readonly="true" class="MD" role="textbox"><span class="MJ"><nobr><span style="display: inline-block;"><span style="width: 1px; height: 0px; overflow: hidden; margin-right: -1px; display: inline-block;"></span><span style="width: 6.02em; height: 0px; font-size: 103%; display: inline-block; position: relative;"><span style="left: 0em; top: -2.51em; position: absolute; cliptop: 1.31em; clipright: 1000em; clipbottom: 3.11em; clipleft: -0.59em;"><span><span><span><span style="width: 0.16em; height: 0em; overflow: hidden; vertical-align: 0em; display: inline-block;"></span><span style="border: 1px solid rgb(0, 0, 1); width: 5.82em; height: 1.39em; margin-right: -5.82em; margin-left: -0.06em; vertical-align: -0.46em; display: inline-block; min-height: 1.2em; min-width: 0.5em; position: relative;" class="spnieseven"><span style="border: 0px; position: absolute; left: 0px; top: 0px; width: 131px; height: 30px; z-index: 9;"><input type="text" class="txtinput3" name="f_txt_30175335" id="f_txt_30175335_0" onkeyup="inputKeyUpEvent(this)" onkeypress="inputKeyPressEvent(this, event)"></span></span><span style="padding-right: 0.06em; position: relative;"><span><span><span style="width: 1px; height: 0px; overflow: hidden; margin-right: -1px; display: inline-block;"></span><span style="width: 5.69em; height: 0px; display: inline-block; position: relative;"><span style="left: 0.13em; top: -2.71em; position: absolute; cliptop: 1.71em; clipright: 1000em; clipbottom: 3.11em; clipleft: -0.59em;"><span><span><span style="font-family: STIXGeneral,'Arial Unicode MS',serif; font-size: 97%; font-style: normal; font-weight: normal;">​</span></span><span style="height: 0em; margin-left: -0.16em; vertical-align: 0em;"></span><span style="padding-left: 0.16em;"><span><span><span style="font-family: STIXGeneral,'Arial Unicode MS',serif; font-size: 97%; font-style: normal; font-weight: normal;">​</span></span><span style="padding-left: 0.16em; font-family: MM;">&nbsp;</span><span><span style="font-family: STIXGeneral,'Arial Unicode MS',serif; font-size: 97%; font-style: normal; font-weight: normal;">​</span></span><span style="padding-left: 0.16em; font-family: MM;">&nbsp;</span><span><span style="font-family: STIXGeneral,'Arial Unicode MS',serif; font-size: 97%; font-style: normal; font-weight: normal;">​</span></span><span style="padding-left: 0.16em; font-family: MM;">&nbsp;</span><span><span style="font-family: STIXGeneral,'Arial Unicode MS',serif; font-size: 97%; font-style: normal; font-weight: normal;">​</span></span><span style="padding-left: 0.16em; font-family: MM;">&nbsp;</span><span style="width: 0.27em; height: 0em; overflow: hidden; vertical-align: 0em; display: inline-block;"></span><span style="width: 0.27em; height: 0em; overflow: hidden; vertical-align: 0em; display: inline-block;"></span><span><span><span><span style="font-family: STIXGeneral,'Arial Unicode MS',serif; font-size: 97%; font-style: normal; font-weight: normal;">　</span></span></span></span><span style="font-family: MM;">&nbsp;</span><span><span style="font-family: STIXGeneral,'Arial Unicode MS',serif; font-size: 97%; font-style: normal; font-weight: normal;">​</span></span><span style="padding-left: 0.16em; font-family: MM;">&nbsp;</span><span><span style="font-family: STIXGeneral,'Arial Unicode MS',serif; font-size: 97%; font-style: normal; font-weight: normal;">​</span></span><span style="padding-left: 0.16em; font-family: MM;">&nbsp;</span><span><span style="font-family: STIXGeneral,'Arial Unicode MS',serif; font-size: 97%; font-style: normal; font-weight: normal;">​</span></span><span style="padding-left: 0.16em; font-family: MM;">&nbsp;</span><span><span style="font-family: STIXGeneral,'Arial Unicode MS',serif; font-size: 97%; font-style: normal; font-weight: normal;">​</span></span><span style="padding-left: 0.16em; font-family: MM;">&nbsp;</span><span style="width: 0.27em; height: 0em; overflow: hidden; vertical-align: 0em; display: inline-block;"></span><span style="width: 0.27em; height: 0em; overflow: hidden; vertical-align: 0em; display: inline-block;"></span></span></span><span><span style="font-family: STIXGeneral,'Arial Unicode MS',serif; font-size: 97%; font-style: normal; font-weight: normal;">​</span></span><span style="height: 0em; margin-left: -0.16em; vertical-align: 0em;"></span></span><span style="width: 0px; height: 2.71em; display: inline-block;"></span></span></span></span></span></span></span></span></span><span style="width: 0px; height: 2.51em; display: inline-block;"></span></span></span><span style="width: 0px; height: 1.57em; overflow: hidden; vertical-align: -0.47em; border-left-color: currentColor; border-left-width: 0em; border-left-style: solid; display: inline-block;"></span></span></nobr></span></span></span>)</p> </div>
+				<div class="divchoice" style="display: none;">
+					<ol class="column0">
+						<li class="lichoice1"><a href="#"></a></li>
+						<li class="lichoice2"><a href="#"></a></li>
+						<li class="lichoice3"><a href="#"></a></li>
+						<li class="lichoice4"><a href="#"></a></li>
+						<li class="lichoice5"><a href="#"></a></li>
+					</ol>
+				</div>
+				
+				<div class="divquestiontail"></div>
+			</div>
+			<div class="divsolutionbox" sname="bnk_element" key="a30175335">
+				<div class="divanswer" setflag="Y" style="display: none;"><p style="margin-left:1.0pt;"><img src="https://cdata3.milkt.co.kr/eleedubase/edubank/images/questionbank/answer.png" width="48px" height="27px" id="imgid_31">&nbsp;afternoon</p></div>
+				<div class="divexplain" setflag="Y" style="display: none;"><p style="margin-left:1.0pt;"><img src="https://cdata3.milkt.co.kr/eleedubase/edubank/images/questionbank/explanation.png" width="48px" height="27px" id="imgid_32">&nbsp;</p><p>시계가 12시 20분을 가리키고 있고, 해가 떠 있으므로 오후임을 알 수 있습니다. 영어로 ‘오후’는 afternoon입니다.</p></div>
+				<div class="divscript" style="display: none;"></div>
+				<div class="divhint" style="display: none;"></div>
+				<div class="divsolutiontail"></div>
+			</div>
+            <div class="divquestionhead"></div>
+		</div>
+		<div class="divcontenttail"></div>
+		<div class="divspcprob2prob" setwork="Y"></div>
+	</div>
+
+
+	<div class="divproblem" name="divproblem" file_id="30175333" header_id="" problem_id="30175336" ptype="60" edityn="Y" answer="*" dbanswer="" draw="Y" userinput="" style="display: none;">
+		<input type="hidden" name="f_input" class="bnkinput" id="f_sinpupt_30175336" value="">
+		<input type="hidden" name="f_problem_id" value="30175336">
+
+		<div class="divheader" header_id="" style="display: none;">
+			<div class="divdbinfo2" style="display: none;"><a href="javascript:viewOneHeader()"></a></div>
+			<div class="divheadbuttons">
+				<input type="button" id="btnheader1" value="-" onclick="bnkShowHideHeader(this)" show="Y">
+			</div>
+			<div class="divheadcontent" sname="bnk_element" key="h"></div>
+			<div class="divheadexplain" sname="bnk_element" key="h" setflag="Y" style="display: none;"></div>
+			<div class="divspcehead2prob" sname="bnk_element" key=""></div>
+		</div>
+		<div class="divdbinfo" style="display: none;">
+			<div class="divfileinfo">30175333-단답 유순형/</div>
+			<div class="divanalysisinfo"><ul><li>30175336-하/2022 개정/천재(함) 4-1/1. My Name Is Amy</li></ul></div>
+			<div class="divorigininfo"></div>
+		</div>
+        <div class="divtophtml"></div>
+		<div class="divcontenthead"></div>
+		<div class="divprobcontent">
+			<div class="divaddfilelist"></div>
+			<div class="divquestionbox" sname="bnk_element" key="q30175336" fpath="problem/301753/30175333/question/" legend="" ansopt="NYNN00" id="divquestionbox_30175336">
+				<div class="divquestion"><p style="margin-left:1.0pt;"><span class="spnnumbering" id="spnnumbering_30175336">5. </span>우리말과 같은 뜻이 되도록, 알맞은 글자를 쓰세요.&nbsp;</p><p></p><table class="rectangle" style="height:45px;"><tbody><tr><td><div class="spnboxtbl"><div class="spnboxtblptag" style="text-align:left;">안녕. (아침 인사)&nbsp;</div><div class="spnboxtblptag" style="text-align:left;">→ Good mor<u>&nbsp;&nbsp;&nbsp;&nbsp;</u>ing.&nbsp;</div></div></td></tr></tbody></table><p></p><p>&nbsp;</p><p style="text-align:right;">(<span style="font-size: 0pt; margin: 0px; padding: 0px;">&nbsp;</span><span class="spnmathjax" style="font-size:110%;"><span style="text-align: center;" aria-readonly="true" class="MD" role="textbox"><span class="MJ"><nobr><span style="display: inline-block;"><span style="width: 1px; height: 0px; overflow: hidden; margin-right: -1px; display: inline-block;"></span><span style="width: 1.98em; height: 0px; font-size: 103%; display: inline-block; position: relative;"><span style="left: 0em; top: -2.11em; position: absolute; cliptop: 0.92em; clipright: 1000em; clipbottom: 2.71em; clipleft: -0.59em;"><span><span><span><span style="width: 0.16em; height: 0em; overflow: hidden; vertical-align: 0.26em; display: inline-block;"></span><span style="width: 0.13em; height: 0px; display: inline-block; position: relative;"><span style="background: none; border: 1px solid rgb(0, 0, 1); left: -0.06em; top: -1.06em; width: 1.92em; height: 1.53em; overflow: hidden; display: inline-block; position: relative; min-height: 1.2em; min-width: 0.5em;" class="spnieseven"><span style="border: 0px; position: absolute; left: 0px; top: 0px; width: 43px; height: 34px; z-index: 9;"><input type="text" class="txtinput3" name="f_txt_30175336" id="f_txt_30175336_0" onkeyup="inputKeyUpEvent(this)" onkeypress="inputKeyPressEvent(this, event)"></span></span></span><span style="padding-right: 0.06em; position: relative;"><span><span><span style="width: 1px; height: 0px; overflow: hidden; margin-right: -1px; display: inline-block;"></span><span style="width: 1.65em; height: 0px; display: inline-block; position: relative;"><span style="left: 0.13em; top: -3.57em; position: absolute; cliptop: 2.57em; clipright: 1000em; clipbottom: 3.97em; clipleft: -0.59em;"><span><span><span style="font-family: STIXGeneral,'Arial Unicode MS',serif; font-size: 97%; font-style: normal; font-weight: normal;">​</span></span><span style="margin-left: -0.16em; vertical-align: 0.26em;"></span><span style="padding-left: 0.16em;"><span><span style="width: 0.16em; height: 0em; overflow: hidden; vertical-align: 0.26em; display: inline-block;"></span><span><span><span><span style="font-family: STIXGeneral,'Arial Unicode MS',serif; font-size: 97%; font-style: normal; font-weight: normal;">　</span></span></span></span><span style="font-family: MM;">&nbsp;</span><span style="width: 0.16em; height: 0em; overflow: hidden; vertical-align: 0.86em; display: inline-block;"></span></span></span><span><span style="font-family: STIXGeneral,'Arial Unicode MS',serif; font-size: 97%; font-style: normal; font-weight: normal;">​</span></span><span style="margin-left: -0.16em; vertical-align: 0.86em;"></span></span><img class="MathJax_strut" style="width: 0px; height: 3.57em;" src="about:blank" border="0"></span></span></span></span></span></span></span></span><img class="MathJax_strut" style="width: 0px; height: 2.11em;" src="about:blank" border="0"></span></span><span style="width: 0px; height: 1.57em; overflow: hidden; vertical-align: -0.47em; border-left-color: currentColor; border-left-width: 0em; border-left-style: solid; display: inline-block;"></span></span></nobr></span></span></span>)</p> </div>
+				<div class="divchoice" style="display: none;">
+					<ol class="column0">
+						<li class="lichoice1"><a href="#"></a></li>
+						<li class="lichoice2"><a href="#"></a></li>
+						<li class="lichoice3"><a href="#"></a></li>
+						<li class="lichoice4"><a href="#"></a></li>
+						<li class="lichoice5"><a href="#"></a></li>
+					</ol>
+				</div>
+				
+				<div class="divquestiontail"></div>
+			</div>
+			<div class="divsolutionbox" sname="bnk_element" key="a30175336">
+				<div class="divanswer" setflag="Y" style="display: none;"><p style="margin-left:1.0pt;"><img src="https://cdata3.milkt.co.kr/eleedubase/edubank/images/questionbank/answer.png" width="48px" height="27px" id="imgid_33">&nbsp;n</p></div>
+				<div class="divexplain" setflag="Y" style="display: none;"><p style="margin-left:1.0pt;"><img src="https://cdata3.milkt.co.kr/eleedubase/edubank/images/questionbank/explanation.png" width="48px" height="27px" id="imgid_34">&nbsp;&nbsp;</p><p>아침 인사를 할 때는 Good morning.이라고 말합니다.</p></div>
+				<div class="divscript" style="display: none;"></div>
+				<div class="divhint" style="display: none;"></div>
+				<div class="divsolutiontail"></div>
+			</div>
+            <div class="divquestionhead"></div>
+		</div>
+		<div class="divcontenttail"></div>
+		<div class="divspcprob2prob" setwork="Y"></div>
+	</div>
+</div>
+	</form>
+
+
+<div style="display: none;"><img src="https://cdata3.milkt.co.kr/eleedubase/images/etest/cdot.png" id="imgid_35"><img src="https://cdata3.milkt.co.kr/eleedubase/images/etest/sdot.png" id="imgid_36"><img src="https://cdata3.milkt.co.kr/eleedubase/images/etest/chk_ico01.png" id="imgid_37"><img src="https://cdata3.milkt.co.kr/eleedubase/images/etest/chk_ico02.png" id="imgid_38"><img src="https://cdata3.milkt.co.kr/eleedubase/images/etest/chk_ico03.png" id="imgid_39"><img src="https://cdata3.milkt.co.kr/eleedubase/images/etest/chk_ico04.png" id="imgid_40"><img src="https://cdata3.milkt.co.kr/eleedubase/images/etest/chk_ico05.png" id="imgid_41"><img src="https://cdata3.milkt.co.kr/eleedubase/images/etest/1_on.png" id="imgid_42"><img src="https://cdata3.milkt.co.kr/eleedubase/images/etest/1_off.png" id="imgid_43"><img src="https://cdata3.milkt.co.kr/eleedubase/images/etest/2_on.png" id="imgid_44"><img src="https://cdata3.milkt.co.kr/eleedubase/images/etest/2_off.png" id="imgid_45"><img src="https://cdata3.milkt.co.kr/eleedubase/images/etest/3_on.png" id="imgid_46"><img src="https://cdata3.milkt.co.kr/eleedubase/images/etest/3_off.png" id="imgid_47"><img src="https://cdata3.milkt.co.kr/eleedubase/images/etest/4_on.png" id="imgid_48"><img src="https://cdata3.milkt.co.kr/eleedubase/images/etest/4_off.png" id="imgid_49"><img src="https://cdata3.milkt.co.kr/eleedubase/images/etest/5_on.png" id="imgid_50"><img src="https://cdata3.milkt.co.kr/eleedubase/images/etest/5_off.png" id="imgid_51"><img src="https://cdata3.milkt.co.kr/eleedubase/images/etest/6_on.png" id="imgid_52"><img src="https://cdata3.milkt.co.kr/eleedubase/images/etest/6_off.png" id="imgid_53"><img src="https://cdata3.milkt.co.kr/eleedubase/images/etest/7_on.png" id="imgid_54"><img src="https://cdata3.milkt.co.kr/eleedubase/images/etest/7_off.png" id="imgid_55"><img src="https://cdata3.milkt.co.kr/eleedubase/images/etest/8_on.png" id="imgid_56"><img src="https://cdata3.milkt.co.kr/eleedubase/images/etest/8_off.png" id="imgid_57"><img src="https://cdata3.milkt.co.kr/eleedubase/images/etest/9_on.png" id="imgid_58"><img src="https://cdata3.milkt.co.kr/eleedubase/images/etest/9_off.png" id="imgid_59"><img src="https://cdata3.milkt.co.kr/eleedubase/images/etest/10_on.png" id="imgid_60"><img src="https://cdata3.milkt.co.kr/eleedubase/images/etest/10_off.png" id="imgid_61"><img src="https://cdata3.milkt.co.kr/eleedubase/images/etest/11_on.png" id="imgid_62"><img src="https://cdata3.milkt.co.kr/eleedubase/images/etest/11_off.png" id="imgid_63"><img src="https://cdata3.milkt.co.kr/eleedubase/images/etest/12_on.png" id="imgid_64"><img src="https://cdata3.milkt.co.kr/eleedubase/images/etest/12_off.png" id="imgid_65"><img src="https://cdata3.milkt.co.kr/eleedubase/images/etest/13_on.png" id="imgid_66"><img src="https://cdata3.milkt.co.kr/eleedubase/images/etest/13_off.png" id="imgid_67"><img src="https://cdata3.milkt.co.kr/eleedubase/images/etest/14_on.png" id="imgid_68"><img src="https://cdata3.milkt.co.kr/eleedubase/images/etest/14_off.png" id="imgid_69"><img src="https://cdata3.milkt.co.kr/eleedubase/images/etest/15_on.png" id="imgid_70"><img src="https://cdata3.milkt.co.kr/eleedubase/images/etest/15_off.png" id="imgid_71"></div><div id="diveqlegend" style="display: none;">
+
+
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width initial-scale=1.0 minimum-scale=1 user-scalable=0">	
+	<title>에듀베이스 키패드</title>
+
+
+
+<div id="eqlegend_01" style="display:none;">
+	<!-- 1.중고등 타블렛 721px 이상 -->
+	<div id="eqlegend_01_over720" class="key_wrap midhigh_tab">
+		<div class="key_rows key_sm">
+			<div class="key_indv" onclick="insertEqTxt('1');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/num_1.png" alt="*" id="imgid_72"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('2');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/num_2.png" alt="*" id="imgid_73"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('3');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/num_3.png" alt="*" id="imgid_74"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('4');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/num_4.png" alt="*" id="imgid_75"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('5');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/num_5.png" alt="*" id="imgid_76"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('6');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/num_6.png" alt="*" id="imgid_77"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('7');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/num_7.png" alt="*" id="imgid_78"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('8');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/num_8.png" alt="*" id="imgid_79"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('9');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/num_9.png" alt="*" id="imgid_80"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('0');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/num_0.png" alt="*" id="imgid_81"></div></div>
+			<div class="key_indv" onclick="insertEqTxt(',');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/sign_comma.png" alt="*" id="imgid_82"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('.');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/sign_dot.png" alt="*" id="imgid_83"></div></div>
+		</div>
+		<div class="key_rows key_sm">
+			<div class="key_indv" onclick="insertEqTxt('a');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/letter_sm_a.png" alt="*" id="imgid_84"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('b');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/letter_sm_b.png" alt="*" id="imgid_85"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('c');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/letter_sm_c.png" alt="*" id="imgid_86"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('i');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/letter_sm_i.png" alt="*" id="imgid_87"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('l');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/letter_sm_l.png" alt="*" id="imgid_88"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('m');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/letter_sm_m.png" alt="*" id="imgid_89"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('n');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/letter_sm_n.png" alt="*" id="imgid_90"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('r');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/letter_sm_r.png" alt="*" id="imgid_91"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('x');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/letter_sm_x.png" alt="*" id="imgid_92"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('y');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/letter_sm_y.png" alt="*" id="imgid_93"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('z');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/letter_sm_z.png" alt="*" id="imgid_94"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('π');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/math_pi.png" alt="*" id="imgid_95"></div></div>
+		</div>
+		<div class="key_rows key_sm">
+			<div class="key_indv" onclick="insertEqTxt('A');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/letter_cap_a.png" alt="*" id="imgid_96"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('B');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/letter_cap_b.png" alt="*" id="imgid_97"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('C');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/letter_cap_c.png" alt="*" id="imgid_98"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('D');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/letter_cap_d.png" alt="*" id="imgid_99"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('E');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/letter_cap_e.png" alt="*" id="imgid_100"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('O');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/letter_cap_o.png" alt="*" id="imgid_101"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('P');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/letter_cap_p.png" alt="*" id="imgid_102"></div></div>
+			<div class="key_indv" onclick="insertEqTxt(':');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/sign_colon.png" alt="*" id="imgid_103"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('(');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/math_b_l.png" alt="*" id="imgid_104"></div></div>
+			<div class="key_indv" onclick="insertEqTxt(')');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/math_b_r.png" alt="*" id="imgid_105"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('{');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/math_mb_l.png" alt="*" id="imgid_106"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('}');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/math_mb_r.png" alt="*" id="imgid_107"></div></div>
+		</div>
+		<div class="key_rows key_sm">
+			<div class="key_indv" onclick="insertEqTxt('+');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/sign_plus.png" alt="*" id="imgid_108"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('‒');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/sign_minus.png" alt="*" id="imgid_109"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('±');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/sign_plusminus.png" alt="*" id="imgid_110"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('×');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/sign_times.png" alt="*" id="imgid_111"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('÷');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/sign_divide.png" alt="*" id="imgid_112"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('=');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/sign_equal.png" alt="*" id="imgid_113"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('≠');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/sign_notequal.png" alt="*" id="imgid_114"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('≡');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/sign_3bar.png" alt="*" id="imgid_115"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('∽');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/sign_appr.png" alt="*" id="imgid_116"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('//');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/sign_2slash.png" alt="*" id="imgid_117"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('⊥');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/sign_pp.png" alt="*" id="imgid_118"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('|');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/math_vertical.png" alt="*" id="imgid_119"></div></div>
+		</div>
+		<div class="key_rows">
+			<div class="key_indv" onclick="insertEqControl('[(dyad){[#1]}]');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/math_dyad.png" alt="*" id="imgid_120"></div></div>
+			<div class="key_indv" onclick="insertEqControl('[(vec){[#1]}]');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/math_vec.png" alt="*" id="imgid_121"></div></div>
+			<div class="key_indv" onclick="insertEqControl('[(bar){[#1]}]');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/math_bar.png" alt="*" id="imgid_122"></div></div>
+			<div class="key_indv" onclick="insertEqControl('[(arch){[#1]}]');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/math_arch.png" alt="*" id="imgid_123"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('△');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/math_tri.png" alt="*" id="imgid_124"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('□');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/math_quad.png" alt="*" id="imgid_125"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('∠');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/math_angle.png" alt="*" id="imgid_126"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('°');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/math_degree.png" alt="*" id="imgid_127"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('&lt;');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/math_ineq_l1.png" alt="*" id="imgid_128"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('&gt;');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/math_ineq_r1.png" alt="*" id="imgid_129"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('≤');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/math_ineq_l2.png" alt="*" id="imgid_130"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('≥');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/math_ineq_r2.png" alt="*" id="imgid_131"></div></div>
+		</div>
+		<div class="key_rows">
+			<div class="key_indv" onclick="insertEqControl('[(over){[[#1]•[#2]]}]');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/math_fraction.png" alt="*" id="imgid_132"></div></div>
+			<div class="key_indv" onclick="insertEqControl(' [(sqrt){[#1]}]');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/math_root.png" alt="*" id="imgid_133"></div></div>
+			<div class="key_indv" onclick="insertEqControl('[(sup){[#1•#2]}]');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/math_sup.png" alt="*" id="imgid_134"></div></div>
+			<div class="key_indv" onclick="insertEqControl('[(sub){[#1•#2]}]');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/math_sub.png" alt="*" id="imgid_135"></div></div>
+			<div class="key_indv" onclick="insertEqControl('[(dot){[#1]}]');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/math_circ.png" alt="*" id="imgid_136"></div></div>
+			<div class="key_indv" onclick="insertEqControl('[(sin){[#1]}]');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/math_sin.png" alt="*" id="imgid_137"></div></div>
+			<div class="key_indv" onclick="insertEqControl('[(cos){[#1]}]');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/math_cos.png" alt="*" id="imgid_138"></div></div>
+			<div class="key_indv" onclick="insertEqControl('[(tan){[#1]}]');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/math_tan.png" alt="*" id="imgid_139"></div></div>
+			<div class="key_indv dft_key" onclick="goEqPos(-1);"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/btn_curs_l.png" alt="*" id="imgid_140"></div></div>
+			<div class="key_indv dft_key" onclick="goEqPos(1);"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/btn_curs_r.png" alt="*" id="imgid_141"></div></div>
+			<div class="key_indv dft_key" onclick="delEqPos(-1);"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/btn_back.png" alt="*" id="imgid_142"></div></div>
+			<div class="key_indv dft_key" onclick="delEqPos(1);"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/btn_del.png" alt="*" id="imgid_143"></div></div>
+		</div>
+	</div>
+	<!-- //중고등 타블렛 -->
+	<!-- 중고등 모바일 720px 이하 -->
+	<!-- 중고등 모바일 -->
+	<div id="eqlegend_01_under720" class="key_wrap midhigh_mob">
+		<div class="key_rows grp_num">
+			<div class="key_indv" onclick="insertEqTxt('1');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/num_1.png" alt="*" id="imgid_144"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('2');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/num_2.png" alt="*" id="imgid_145"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('3');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/num_3.png" alt="*" id="imgid_146"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('4');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/num_4.png" alt="*" id="imgid_147"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('5');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/num_5.png" alt="*" id="imgid_148"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('6');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/num_6.png" alt="*" id="imgid_149"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('7');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/num_7.png" alt="*" id="imgid_150"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('8');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/num_8.png" alt="*" id="imgid_151"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('9');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/num_9.png" alt="*" id="imgid_152"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('0');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/num_0.png" alt="*" id="imgid_153"></div></div>
+		</div>
+		<!-- 수식 1 -->
+		<div id="diveqtab01" class="key_grp on">				
+			<div class="key_rows">
+				<div class="key_indv" onclick="insertEqControl('[(over){[[#1]•[#2]]}]');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/math_fraction.png" alt="*" id="imgid_154"></div></div>
+				<div class="key_indv" onclick="insertEqControl(' [(sqrt){[#1]}]');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/math_root.png" alt="*" id="imgid_155"></div></div>
+				<div class="key_indv" onclick="insertEqControl('[(sub){[#1•#2]}]');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/math_sub.png" alt="*" id="imgid_156"></div></div>
+				<div class="key_indv" onclick="insertEqControl('[(sup){[#1•#2]}]');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/math_sup.png" alt="*" id="imgid_157"></div></div>
+				<div class="key_indv dft_key" onclick="delEqPos(-1);"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/btn_back.png" alt="*" id="imgid_158"></div></div>
+			</div>			
+			<div class="key_rows">
+				<div class="key_indv" onclick="insertEqControl('[(dyad){[#1]}]');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/math_dyad.png" alt="*" id="imgid_159"></div></div>
+				<div class="key_indv" onclick="insertEqControl('[(vec){[#1]}]');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/math_vec.png" alt="*" id="imgid_160"></div></div>
+				<div class="key_indv" onclick="insertEqControl('[(bar){[#1]}]');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/math_bar.png" alt="*" id="imgid_161"></div></div>
+				<div class="key_indv" onclick="insertEqControl('[(arch){[#1]}]');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/math_arch.png" alt="*" id="imgid_162"></div></div>
+				<div class="key_indv" onclick="insertEqControl('[(dot){[#1]}]');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/math_circ.png" alt="*" id="imgid_163"></div></div>
+			</div>		
+			<div class="key_rows">
+				<div class="key_indv" onclick="insertEqTxt('△');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/math_tri.png" alt="*" id="imgid_164"></div></div>
+				<div class="key_indv" onclick="insertEqTxt('□');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/math_quad.png" alt="*" id="imgid_165"></div></div>
+				<div class="key_indv" onclick="insertEqControl('[(sin){[#1]}]');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/math_sin.png" alt="*" id="imgid_166"></div></div>
+				<div class="key_indv" onclick="insertEqControl('[(cos){[#1]}]');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/math_cos.png" alt="*" id="imgid_167"></div></div>
+				<div class="key_indv" onclick="insertEqControl('[(tan){[#1]}]');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/math_tan.png" alt="*" id="imgid_168"></div></div>
+			</div>
+		</div>	
+		<!-- //수식 1 -->	
+		<!-- 수식 2 -->
+		<div id="diveqtab02" style="display:none;" class="key_grp on">				
+			<div class="key_rows">
+				<div class="key_indv" onclick="insertEqTxt('∠');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/math_angle.png" alt="*" id="imgid_169"></div></div>
+				<div class="key_indv" onclick="insertEqTxt('°');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/math_degree.png" alt="*" id="imgid_170"></div></div>
+				<div class="key_indv" onclick="insertEqTxt('π');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/math_pi.png" alt="*" id="imgid_171"></div></div>
+				<div class="key_indv" onclick="insertEqTxt('|');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/math_vertical.png" alt="*" id="imgid_172"></div></div>
+				<div class="key_indv dft_key" onclick="delEqPos(-1);"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/btn_back.png" alt="*" id="imgid_173"></div></div>
+			</div>
+			<div class="key_rows rows_l">
+				<div class="key_indv" onclick="insertEqTxt('(');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/math_b_l.png" alt="*" id="imgid_174"></div></div>
+				<div class="key_indv" onclick="insertEqTxt(')');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/math_b_r.png" alt="*" id="imgid_175"></div></div>
+				<div class="key_indv" onclick="insertEqTxt('{');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/math_mb_l.png" alt="*" id="imgid_176"></div></div>
+				<div class="key_indv" onclick="insertEqTxt('}');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/math_mb_r.png" alt="*" id="imgid_177"></div></div>
+			</div>
+			<div class="key_rows rows_l">
+				<div class="key_indv" onclick="insertEqTxt('&lt;');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/math_ineq_l1.png" alt="*" id="imgid_178"></div></div>
+				<div class="key_indv" onclick="insertEqTxt('&gt;');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/math_ineq_r1.png" alt="*" id="imgid_179"></div></div>
+				<div class="key_indv" onclick="insertEqTxt('≤');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/math_ineq_l2.png" alt="*" id="imgid_180"></div></div>
+				<div class="key_indv" onclick="insertEqTxt('≥');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/math_ineq_r2.png" alt="*" id="imgid_181"></div></div>
+			</div>
+		</div>	
+		<!-- //수식 2 -->	
+		<!-- 부호 -->
+		<div id="diveqtab03" style="display:none;" class="key_grp on">			
+			<div class="key_rows">
+				<div class="key_indv" onclick="insertEqTxt('+');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/sign_plus.png" alt="*" id="imgid_182"></div></div>
+				<div class="key_indv" onclick="insertEqTxt('‒');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/sign_minus.png" alt="*" id="imgid_183"></div></div>
+				<div class="key_indv" onclick="insertEqTxt('±');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/sign_plusminus.png" alt="*" id="imgid_184"></div></div>
+				<div class="key_indv" onclick="insertEqTxt('×');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/sign_times.png" alt="*" id="imgid_185"></div></div>
+				<div class="key_indv dft_key" onclick="delEqPos(-1);"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/btn_back.png" alt="*" id="imgid_186"></div></div>
+			</div>			
+			<div class="key_rows">
+				<div class="key_indv" onclick="insertEqTxt('÷');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/sign_divide.png" alt="*" id="imgid_187"></div></div>
+				<div class="key_indv" onclick="insertEqTxt('=');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/sign_equal.png" alt="*" id="imgid_188"></div></div>
+				<div class="key_indv" onclick="insertEqTxt('≠');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/sign_notequal.png" alt="*" id="imgid_189"></div></div>
+				<div class="key_indv" onclick="insertEqTxt('≡');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/sign_3bar.png" alt="*" id="imgid_190"></div></div>
+				<div class="key_indv" onclick="insertEqTxt('∽');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/sign_appr.png" alt="*" id="imgid_191"></div></div>
+			</div>		
+			<div class="key_rows">
+				<div class="key_indv" onclick="insertEqTxt('//');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/sign_2slash.png" alt="*" id="imgid_192"></div></div>
+				<div class="key_indv" onclick="insertEqTxt('⊥');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/sign_pp.png" alt="*" id="imgid_193"></div></div>
+				<div class="key_indv" onclick="insertEqTxt(':');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/sign_colon.png" alt="*" id="imgid_194"></div></div>
+				<div class="key_indv" onclick="insertEqTxt(',');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/sign_comma.png" alt="*" id="imgid_195"></div></div>
+				<div class="key_indv" onclick="insertEqTxt('.');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/sign_dot.png" alt="*" id="imgid_196"></div></div>
+			</div>
+		</div>	
+		<!-- //부호 -->
+		<!-- 문자 -->
+		<div id="diveqtab04" style="display:none;" class="key_grp on">				
+			<div class="key_rows grp_txt">
+				<div class="key_indv" onclick="insertEqTxt('A');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/letter_cap_a.png" alt="*" id="imgid_197"></div></div>
+				<div class="key_indv" onclick="insertEqTxt('B');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/letter_cap_b.png" alt="*" id="imgid_198"></div></div>
+				<div class="key_indv" onclick="insertEqTxt('C');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/letter_cap_c.png" alt="*" id="imgid_199"></div></div>
+				<div class="key_indv" onclick="insertEqTxt('D');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/letter_cap_d.png" alt="*" id="imgid_200"></div></div>
+				<div class="key_indv" onclick="insertEqTxt('E');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/letter_cap_e.png" alt="*" id="imgid_201"></div></div>
+				<div class="key_indv" onclick="insertEqTxt('O');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/letter_cap_o.png" alt="*" id="imgid_202"></div></div>
+				<div class="key_indv dft_key" onclick="delEqPos(-1);"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/btn_back.png" alt="*" id="imgid_203"></div></div>
+			</div>			
+			<div class="key_rows rows_l grp_txt">
+				<div class="key_indv" onclick="insertEqTxt('P');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/letter_cap_p.png" alt="*" id="imgid_204"></div></div>
+				<div class="key_indv" onclick="insertEqTxt('a');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/letter_sm_a.png" alt="*" id="imgid_205"></div></div>
+				<div class="key_indv" onclick="insertEqTxt('b');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/letter_sm_b.png" alt="*" id="imgid_206"></div></div>
+				<div class="key_indv" onclick="insertEqTxt('c');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/letter_sm_c.png" alt="*" id="imgid_207"></div></div>
+				<div class="key_indv" onclick="insertEqTxt('i');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/letter_sm_i.png" alt="*" id="imgid_208"></div></div>
+				<div class="key_indv" onclick="insertEqTxt('l');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/letter_sm_l.png" alt="*" id="imgid_209"></div></div>
+				
+			</div>			
+			<div class="key_rows rows_l grp_txt">
+				<div class="key_indv" onclick="insertEqTxt('m');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/letter_sm_m.png" alt="*" id="imgid_210"></div></div>
+				<div class="key_indv" onclick="insertEqTxt('n');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/letter_sm_n.png" alt="*" id="imgid_211"></div></div>
+				<div class="key_indv" onclick="insertEqTxt('x');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/letter_sm_x.png" alt="*" id="imgid_212"></div></div>
+				<div class="key_indv" onclick="insertEqTxt('y');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/letter_sm_y.png" alt="*" id="imgid_213"></div></div>
+				<div class="key_indv" onclick="insertEqTxt('z');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/letter_sm_z.png" alt="*" id="imgid_214"></div></div>
+				<div class="key_indv" onclick="insertEqTxt('r');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/letter_sm_r.png" alt="*" id="imgid_215"></div></div>
+				
+			</div>
+		</div>	
+		<!-- //문자 -->	
+		<div class="key_rows grp_tab">
+			<div onclick="showEqTab('01')" id="divtabbutton01" class="key_indv tab_key on"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/btn_tab01.png" alt="*" id="imgid_216"></div></div>
+			<div onclick="showEqTab('02')" id="divtabbutton02" class="key_indv tab_key"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/btn_tab02.png" alt="*" id="imgid_217"></div></div>
+			<div onclick="showEqTab('03')" id="divtabbutton03" class="key_indv tab_key"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/btn_tab03.png" alt="*" id="imgid_218"></div></div>
+			<div onclick="showEqTab('04')" id="divtabbutton04" class="key_indv tab_key"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/btn_tab04.png" alt="*" id="imgid_219"></div></div>
+			<div class="key_indv dft_key" onclick="goEqPos(-1);"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/btn_curs_l.png" alt="*" id="imgid_220"></div></div>
+			<div class="key_indv dft_key" onclick="goEqPos(1);"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/midhigh/btn_curs_r.png" alt="*" id="imgid_221"></div></div>
+		</div>
+	</div>
+</div>
+
+<div id="eqlegend_02" style="display:none;">
+	<!-- //중고등 모바일 -->
+	<!-- 3.초등 타블렛 721px 이상 -->
+	<!-- 초등 타블렛 -->
+	<div id="eqlegend_02_over720" class="key_wrap elemnt_tab">
+		<div class="key_rows grp_num">
+			<div class="key_indv" onclick="insertEqTxt('1');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/num_1.png" alt="*" id="imgid_222"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('2');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/num_2.png" alt="*" id="imgid_223"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('3');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/num_3.png" alt="*" id="imgid_224"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('4');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/num_4.png" alt="*" id="imgid_225"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('5');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/num_5.png" alt="*" id="imgid_226"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('6');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/num_6.png" alt="*" id="imgid_227"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('7');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/num_7.png" alt="*" id="imgid_228"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('8');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/num_8.png" alt="*" id="imgid_229"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('9');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/num_9.png" alt="*" id="imgid_230"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('0');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/num_0.png" alt="*" id="imgid_231"></div></div>
+			<div class="key_indv dft_key" onclick="delEqPos(1);"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/btn_del.png" alt="*" id="imgid_232"></div></div>
+		</div>
+		<div class="key_rows rows_l">
+			<div class="key_indv" onclick="insertEqTxt('+');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/sign_plus.png" alt="*" id="imgid_233"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('‒');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/sign_minus.png" alt="*" id="imgid_234"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('×');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/sign_times.png" alt="*" id="imgid_235"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('÷');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/sign_divide.png" alt="*" id="imgid_236"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('=');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/sign_equal.png" alt="*" id="imgid_237"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('&lt;');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/math_ineq_l.png" alt="*" id="imgid_238"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('&gt;');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/math_ineq_r.png" alt="*" id="imgid_239"></div></div>
+			<div class="key_indv" onclick="insertEqTxt(':');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/sign_colon.png" alt="*" id="imgid_240"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('°');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/math_degree.png" alt="*" id="imgid_241"></div></div>
+			<div class="key_indv dft_key" onclick="delEqPos(-1);"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/btn_back.png" alt="*" id="imgid_242"></div></div>
+		</div>
+		<div class="key_rows">
+			<div class="key_indv" onclick="insertEqControl('[(over){[[#1]•[#2]]}]');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/math_fraction.png" alt="*" id="imgid_243"></div></div>
+			<div class="key_indv" onclick="insertEqControl('[(sup){[#1•#2]}]');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/math_sub.png" alt="*" id="imgid_244"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('□');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/math_quad.png" alt="*" id="imgid_245"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('△');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/math_tri.png" alt="*" id="imgid_246"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('○');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/math_circ.png" alt="*" id="imgid_247"></div></div>
+			<div class="key_indv" onclick="insertEqTxt(',');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/sign_comma.png" alt="*" id="imgid_248"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('.');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/sign_dot.png" alt="*" id="imgid_249"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('(');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/math_b_l.png" alt="*" id="imgid_250"></div></div>
+			<div class="key_indv" onclick="insertEqTxt(')');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/math_b_r.png" alt="*" id="imgid_251"></div></div>
+			<div class="key_indv dft_key" onclick="goEqPos(-1);"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/btn_curs_l.png" alt="*" id="imgid_252"></div></div>
+			<div class="key_indv dft_key" onclick="goEqPos(1);"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/btn_curs_r.png" alt="*" id="imgid_253"></div></div>
+		</div>
+	</div>
+	<!-- //초등 타블렛 -->
+	<!-- 4.초등 모바일 720px 이하 -->
+	<!-- 초등 모바일 -->
+	<div id="eqlegend_02_under720" class="key_wrap elemnt_mob">
+		<div class="key_rows grp_num">
+			<div class="key_indv" onclick="insertEqTxt('1');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/num_1.png" alt="*" id="imgid_254"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('2');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/num_2.png" alt="*" id="imgid_255"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('3');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/num_3.png" alt="*" id="imgid_256"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('4');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/num_4.png" alt="*" id="imgid_257"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('5');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/num_5.png" alt="*" id="imgid_258"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('6');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/num_6.png" alt="*" id="imgid_259"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('7');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/num_7.png" alt="*" id="imgid_260"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('8');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/num_8.png" alt="*" id="imgid_261"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('9');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/num_9.png" alt="*" id="imgid_262"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('0');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/num_0.png" alt="*" id="imgid_263"></div></div>
+		</div>
+		<div class="key_rows">
+			<div class="key_indv" onclick="insertEqTxt('+');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/sign_plus.png" alt="*" id="imgid_264"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('‒');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/sign_minus.png" alt="*" id="imgid_265"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('×');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/sign_times.png" alt="*" id="imgid_266"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('÷');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/sign_divide.png" alt="*" id="imgid_267"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('=');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/sign_equal.png" alt="*" id="imgid_268"></div></div>
+		</div>
+		<div class="key_rows rows_l">
+			<div class="key_indv" onclick="insertEqTxt('&lt;');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/math_ineq_l.png" alt="*" id="imgid_269"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('&gt;');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/math_ineq_r.png" alt="*" id="imgid_270"></div></div>
+			<div class="key_indv" onclick="insertEqTxt(':');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/sign_colon.png" alt="*" id="imgid_271"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('°');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/math_degree.png" alt="*" id="imgid_272"></div></div>
+		</div>
+		<div class="key_rows">
+			<div class="key_indv" onclick="insertEqTxt('□');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/math_quad.png" alt="*" id="imgid_273"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('△');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/math_tri.png" alt="*" id="imgid_274"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('○');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/math_circ.png" alt="*" id="imgid_275"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('(');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/math_b_l.png" alt="*" id="imgid_276"></div></div>
+			<div class="key_indv" onclick="insertEqTxt(')');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/math_b_r.png" alt="*" id="imgid_277"></div></div>
+		</div>
+		<!-- 수정 -->
+		<div class="key_rows rows_l">
+			<div class="key_indv" onclick="insertEqControl('[(over){[[#1]•[#2]]}]');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/math_fraction.png" alt="*" id="imgid_278"></div></div>
+			<div class="key_indv" onclick="insertEqControl('[(sup){[#1•#2]}]');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/math_sub.png" alt="*" id="imgid_279"></div></div>
+			<div class="key_indv" onclick="insertEqTxt(',');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/sign_comma.png" alt="*" id="imgid_280"></div></div>
+			<div class="key_indv" onclick="insertEqTxt('.');"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/sign_dot.png" alt="*" id="imgid_281"></div></div>
+		</div>
+		<div class="key_rows rows_l">
+			<div class="key_indv dft_key" onclick="goEqPos(-1);"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/btn_curs_l.png" alt="*" id="imgid_282"></div></div>
+			<div class="key_indv dft_key" onclick="goEqPos(1);"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/btn_curs_r.png" alt="*" id="imgid_283"></div></div>
+			<div class="key_indv dft_key" onclick="delEqPos(-1);"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/btn_back.png" alt="*" id="imgid_284"></div></div>
+			<div class="key_indv dft_key" onclick="delEqPos(1);"><div class="key_inner"><img src="/edubank/common/inc/eqlegend/content/images/elemnt/btn_del.png" alt="*" id="imgid_285"></div></div>
+		</div>
+		<!-- //수정 -->
+	</div>
+	<!-- //초등 모바일 -->
+</div>
+
+</div><div style="display:none;" id="objPlayerBox"><audio id="objPlayer_30175334" controls="controls"><source src="https://cdata3.milkt.co.kr/eleedubase/problem/301753/30175331/question/20250117102457.MP3" type="audio/mpeg"><p></p></audio><audio id="objPlayer_30175333" controls="controls"><source src="https://cdata3.milkt.co.kr/eleedubase/problem/301753/30175330/question/20250117101757.MP3" type="audio/mpeg"><p></p></audio><audio id="objPlayer_30175332" controls="controls"><source src="https://cdata3.milkt.co.kr/eleedubase/problem/301753/30175329/question/20250117101919.MP3" type="audio/mpeg"><p></p></audio></div></body></html>
